@@ -10,13 +10,14 @@ git clone git@github.com:neu-info7500-spring-04/bitcoin-explorer.git`
 devbox shell
 cd ui
 npm install
-npm run wunderctl-generate
-npm run wunderctl-up
-
-# new terminal
 npm run dev
 ```
-jec
+
+To start the wundergraph server:
+```
+npm run wunderctl-generate
+npm run wunderctl-up
+```
 
 
 ## Built With
