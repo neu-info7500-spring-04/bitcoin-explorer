@@ -3,8 +3,21 @@
 
 ## Setup
 
-* Install devbox. Instructions: https://www.jetpack.io/devbox/docs/installing_devbox/).
-* `git clone git@github.com:neu-info7500-spring-04/bitcoin-explorer.git`
+Install devbox. Instructions: https://www.jetpack.io/devbox/docs/installing_devbox/).
+
+```
+git clone git@github.com:neu-info7500-spring-04/bitcoin-explorer.git`
+devbox shell
+cd ui
+npm install
+npm run wunderctl-generate
+npm run wunderctl-up
+
+# new terminal
+npm run dev
+```
+jec
+
 
 ## Built With
 
