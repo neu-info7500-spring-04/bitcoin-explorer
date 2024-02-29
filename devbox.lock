@@ -20,26 +20,6 @@
           "store_path": "/nix/store/va3sggfgfb709lm31bzvpjfyapjdy435-nodejs-21.6.2"
         }
       }
-    },
-    "starship@latest": {
-      "last_modified": "2024-02-26T19:46:43Z",
-      "resolved": "github:NixOS/nixpkgs/548a86b335d7ecd8b57ec617781f5e652ab0c38e#starship",
-      "source": "devbox-search",
-      "version": "1.17.1",
-      "systems": {
-        "aarch64-darwin": {
-          "store_path": "/nix/store/vn0gygmds8aksk6972ayzbrb3svfr6fw-starship-1.17.1"
-        },
-        "aarch64-linux": {
-          "store_path": "/nix/store/mpvkkwkgqvr5ch12r9d6jkp1q32z9y9i-starship-1.17.1"
-        },
-        "x86_64-darwin": {
-          "store_path": "/nix/store/hxb1d9rx4nv3pf3hacsq42hi9qxwb019-starship-1.17.1"
-        },
-        "x86_64-linux": {
-          "store_path": "/nix/store/f0i5d991njrwyzgd90351h4zyx0a7z52-starship-1.17.1"
-        }
-      }
     }
   }
 }
