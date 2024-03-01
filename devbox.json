@@ -1,10 +1,12 @@
 {
   "packages": [
-    "nodejs@latest"
+    "nodejs@latest",
+    "starship@latest"
   ],
   "shell": {
     "init_hook": [
-      "echo 'Welcome to devbox!' > /dev/null"
+      "echo 'Welcome to devbox!' > /dev/null",
+      "eval \"$(starship init bash)\""
     ],
     "scripts": {
       "test": [
