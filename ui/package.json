@@ -4,19 +4,26 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:wundergraph": "wunderctl generate && wunderctl up",
+    "build:wundergraph": "wunderctl generate",
     "build": "next build",
+    "check": "tsc --noEmit",
     "start": "next start",
+    "start:wundergraph": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@wundergraph/nextjs": "^0.15.6",
+    "@wundergraph/sdk": "^0.183.0",
+    "graphql": "^16.8.1",
+    "next": "14.1.0",
     "react": "^18",
-    "react-dom": "^18",
-    "next": "14.1.0"
+    "react-dom": "^18"
   },
   "devDependencies": {
-    "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",
-    "@types/react-dom": "^18"
+    "@types/react-dom": "^18",
+    "typescript": "^5"
   }
 }

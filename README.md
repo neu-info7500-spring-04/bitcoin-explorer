@@ -70,7 +70,13 @@ devbox init
 devbox add nodejs
 devbox shell
 npx create-next-app@latest ui --typescript --no-tailwind --use-npm --src-dir --no-eslint --app --import-alias="@/*"
-npx create-wundergraph-app --init
+cd ui
+npm install
+npm install @wundergraph/sdk graphql 
+mkdir .wundergraph
 ```
+
+Then:
+1. Create .wundergraph/wundergraph.config.ts
 
 Then, the `page.tsx` and `page.module.css` files were cleaned up.

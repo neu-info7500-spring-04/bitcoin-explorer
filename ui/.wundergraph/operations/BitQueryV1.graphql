@@ -1,0 +1,7 @@
+query BitcoinV1BlockCount {
+    bitcoin {
+        blocks {
+            count
+        }
+    }
+}
