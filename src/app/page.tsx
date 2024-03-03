@@ -13,11 +13,14 @@ export default async function Home() {
 
     return (
     <main className={styles.main}>
-      <div>
-          {bitcoin.bitquery.bitcoin?.blocks?.map(b => {
-              return b.count
-          })}
-      </div>
+        <div style={{textAlign: "center"}}>
+          <div>Northeastern Bitcoin Explorer</div>
+          <div>
+              {'# blocks: ' + bitcoin.bitquery.bitcoin?.blocks?.map(b => {
+                  return b.count
+              })}
+          </div>
+        </div>
     </main>
   );
 }
