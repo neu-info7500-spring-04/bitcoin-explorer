@@ -10,7 +10,6 @@ npm install
 npm run codegen
 npm run dev
 ```
-The app should be visible at http://localhost:3000.
+The app should be visible at http://localhost:3000:
 
-
-This
+![bitcoin.png](bitcoin.png)
