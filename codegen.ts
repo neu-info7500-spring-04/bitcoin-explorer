@@ -8,13 +8,23 @@ const config: CodegenConfig = {
             },
         },
     },
+    config: {
+        skipTypename: true,
+        enumsAsTypes: true,
+        scalars: {
+            numeric: "number",
+        },
+    },
+    documents: "src/graphql/queries.graphql",
     generates: {
-        'src/lib/graphql/': {
-            preset: 'client',
+        "src/graphql/__generated__/": {
+            preset: "client",
+            config: {},
             plugins: [],
         },
     },
     ignoreNoDocuments: true,
+
 }
 
 export default config

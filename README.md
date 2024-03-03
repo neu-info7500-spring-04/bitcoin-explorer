@@ -7,6 +7,7 @@
 * In the `bitcoin-explorer` directory, execute:
 ```
 npm install
+npm run codegen
 npm run dev
 ```
 The app should be visible at http://localhost:3000.
