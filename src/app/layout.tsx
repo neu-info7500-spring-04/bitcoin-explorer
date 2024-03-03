@@ -1,6 +1,8 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import type {Metadata} from "next";
+import {Inter} from "next/font/google";
 import "./globals.css";
+import {BitcoinDocument} from "@/graphql/__generated__/graphql";
+import {graphqlClient} from "@/graphql/client";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -9,7 +11,7 @@ export const metadata: Metadata = {
   description: "Northeastern University's Bitcoin Explorer",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

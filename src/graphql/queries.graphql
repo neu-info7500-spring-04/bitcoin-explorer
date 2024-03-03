@@ -1,0 +1,9 @@
+query Bitcoin {
+    bitquery {
+        bitcoin {
+            blocks {
+                count
+            }
+        }
+    }
+}
