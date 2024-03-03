@@ -9,7 +9,7 @@ const config: CodegenConfig = {
         },
     },
     generates: {
-        './gql/': {
+        'src/lib/graphql/': {
             preset: 'client',
             plugins: [],
         },
