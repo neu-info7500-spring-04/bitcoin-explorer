@@ -24,6 +24,7 @@
     "graphql": "^16.8.1",
     "graphql-request": "^6.1.0",
     "graphql-ws": "^5.15.0",
-    "typescript": "^5"
+    "typescript": "^5",
+    "axios": "^1.6.7"
   }
 }
