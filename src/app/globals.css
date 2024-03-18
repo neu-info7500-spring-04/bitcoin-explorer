@@ -1,4 +1,11 @@
-:root {
+html {
+  background-color: #131f31;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Below is the default CSS by next.js */
+/* :root {
   --max-width: 1100px;
   --border-radius: 12px;
   --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
@@ -104,4 +111,4 @@ a {
   html {
     color-scheme: dark;
   }
-}
+} */
