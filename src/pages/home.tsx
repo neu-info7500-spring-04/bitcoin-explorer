@@ -1,10 +1,10 @@
 import React from 'react';
 import { components } from '../components';
 
-const home = () => {
+const Home = () => {
   return (
     <div><components.POWAndEmission/></div>
-  )
-}
+  );
+};
 
-export default home
+export default Home;
