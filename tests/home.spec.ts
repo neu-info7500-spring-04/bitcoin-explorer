@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('Display last block and time since last block dynamically in correct format', async ({ page }) => {
+test('Display the last block and dynamically update time in the correct format', async ({ page }) => {
   await page.goto('/');
   const lastBlockHeight = await page.textContent('[data-testid="blockHeight"]');
   expect(lastBlockHeight).not.toBeNull();
