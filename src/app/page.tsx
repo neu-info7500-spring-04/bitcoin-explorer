@@ -9,8 +9,6 @@ async function getBitcoin() {
     );
 }
 
-const data = [{ label: 'A', value: 10 }, { label: 'B', value: 20 }, { label: 'C', value: 15 }];
-
 export default async function Home() {
     const bitcoin = await getBitcoin();
     
@@ -25,10 +23,7 @@ export default async function Home() {
                     
 
                     <RichListChart></RichListChart>
-                        {/* // values={data}
-                        // yValueFn={(item) => item.value}
-                        // xLabelFn={(item) => item.label}
-                    /> */}
+                        
 
                 </div>
             </div>
