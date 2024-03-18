@@ -1,8 +1,11 @@
 query Bitcoin {
     bitquery {
         bitcoin {
-            blocks {
-                count
+            blocks(options: { limit: 1, desc: ["timestamp.iso8601"] }) {
+                height
+                timestamp {
+                    iso8601
+                }
             }
         }
     }
