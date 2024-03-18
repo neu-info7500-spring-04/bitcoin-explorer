@@ -2,6 +2,8 @@ import { BitcoinDocument, BitcoinQuery } from "@/graphql/__generated__/graphql";
 import {graphqlClient} from "@/graphql/client";
 import styles from "./page.module.css";
 import Timer from "./timer";
+import React from 'react';
+import { components } from '../components';
 
 async function getBitcoin(): Promise<BitcoinQuery> {
     return await graphqlClient.request(BitcoinDocument, {});
@@ -28,6 +30,7 @@ export default async function Home() {
             </div>
             <div className={styles.blockTitle}>Time from last block</div>
             <Timer lastBlock={lastBlock} />
+            <div><components.POWAndEmission/></div>
           </div>
     </main>
   );
