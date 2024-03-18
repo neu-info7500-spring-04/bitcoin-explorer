@@ -50,7 +50,8 @@ export default function Timer({ lastBlock }: { lastBlock: LastBlock }) {
   }
 
   return (
-    <div className={styles.timer}>
+    // data-testid attribute on HTML used for playwright testing 
+    <div className={styles.timer} data-testid="timer"> 
       <div className={styles.timeSegment}>
         <div>{timeSinceLastBlock.split(":")[0]}</div>
         <div className={styles.timeUnit}>hours</div>

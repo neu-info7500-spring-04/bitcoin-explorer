@@ -22,7 +22,8 @@ export default async function Home() {
           <div className={styles.block}>
             <div>Northeastern Bitcoin Explorer</div>
             <div className={styles.blockTitle}>Last block</div>
-            <div className={styles.blockHeight}>
+            {/*  data-testid attribute on HTML used for playwright testing  */}
+            <div className={styles.blockHeight} data-testid="blockHeight">
               {formatBlockHeight(lastBlock?.height)}
             </div>
             <div className={styles.blockTitle}>Time from last block</div>
@@ -31,15 +32,3 @@ export default async function Home() {
     </main>
   );
 }
-
-
-    // return (
-    // <main className={styles.main}>
-    //     <div style={{textAlign: "center"}}>
-    //       <div>Northeastern Bitcoin Explorer</div>
-    //       <div>
-    //           {'# blocks: ' + bitcoin.bitquery.bitcoin?.blocks?.map(b => {
-    //               return b.count
-    //           })}
-    //       </div>
-    //     </div>
