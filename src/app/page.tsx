@@ -1,6 +1,8 @@
 import styles from "./page.module.css";
 import {graphqlClient} from "@/graphql/client";
 import {BitcoinDocument} from "@/graphql/__generated__/graphql";
+import React from 'react';
+import { components } from '../components';
 
 async function getBitcoin() {
     return await graphqlClient.request(BitcoinDocument,
@@ -20,6 +22,7 @@ export default async function Home() {
                   return b.count
               })}
           </div>
+          <div><components.POWAndEmission/></div>
         </div>
     </main>
   );
