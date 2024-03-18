@@ -101,22 +101,14 @@ async function getBlockchairapi_00000000() {
 }
 
 interface BarChartProps {
-  /** The values to visualize. */
-  // values: Array<T>;
-
-  /** Returns the y-value, the height, for a value */
-  // yValueFn: (value: T) => number;
-
-  /** Returns the label on the x-axis for a value or its index in the value array. */
-  // xLabelFn: (value: T, idx: number) => string;
-
-  /** Additional styles */
+  
   style?: React.CSSProperties;
 }
 
 function RichListChart<T>({ style }: BarChartProps) {
 
   const values = [
+    // { label: '1,000,000 - 100,000', value: 1 },
     { label: '1,000,000 - 100,000', value: bitcoinAddress_100000.blockchairapi.addressesByBalance?.context?.totalRows },
     { label: '100,000 - 10,000', value: bitcoinAddress_10000.blockchairapi.addressesByBalance?.context?.totalRows },
     { label: '10,000 - 1,000', value: bitcoinAddress_1000.blockchairapi.addressesByBalance?.context?.totalRows },
@@ -132,7 +124,7 @@ function RichListChart<T>({ style }: BarChartProps) {
     { label: '0.000001 - 0.0000001', value: bitcoinAddress_00000001.blockchairapi.addressesByBalance?.context?.totalRows },
     { label: '< 0.0000001', value: bitcoinAddress_00000000.blockchairapi.addressesByBalance?.context?.totalRows },
   ];
-
+  // console.log(bitcoinAddress_100000.blockchairapi.addressesByBalance?.context?.totalRows)
 
   const max = useMemo(() => {
     return values.reduce((prev, curr) => {
@@ -201,6 +193,7 @@ function RichListChart<T>({ style }: BarChartProps) {
                 <div
                   key={"xlabel-" + idx}
                   style={{
+                    height: "1rem",
                     fontSize: "small",
                     flexGrow: 1,
                     paddingLeft: "2%",
@@ -221,7 +214,7 @@ function RichListChart<T>({ style }: BarChartProps) {
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-evenly",
-              width: "30rem"
+              width: "30rem",
               // alignItems: "flex-end",
             }}
           >
@@ -236,9 +229,10 @@ function RichListChart<T>({ style }: BarChartProps) {
                   <div
                     key={"bar-" + idx}
                     style={{
-                      paddingLeft: "2%",
+                      // paddingLeft: "2%",
                       // paddingRight: "2%",
-                      height: 100.0 / values.length + "%",
+                      margin:"0",
+                      height: 200.0 / values.length + "%",
                       width: (v.value / max) * 100 + "%",
                     }}
                   >
@@ -250,7 +244,7 @@ function RichListChart<T>({ style }: BarChartProps) {
                       }}
                     />
                   </div>
-                  <p>{v.value}</p>
+                  <p></p>
                 </div>
               );
             })}
