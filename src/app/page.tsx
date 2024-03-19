@@ -1,5 +1,5 @@
 import { BitcoinDocument, BitcoinQuery } from "@/graphql/__generated__/graphql";
-import { MEMPOOL_QUERY, MempoolCountryNodeStatsQuery } from "@/graphql/__generated__/graphql";
+import { MempoolQuery, MempoolDocument } from "@/graphql/__generated__/graphql";
 
 import {graphqlClient} from "@/graphql/client";
 import styles from "./page.module.css";
@@ -15,9 +15,9 @@ async function getBitcoin(): Promise<BitcoinQuery> {
     return await graphqlClient.request(BitcoinDocument, {});
 }
 
-async function getMempoolCountryNodes(): Promise<MempoolCountryNodeStatsQuery> {
+async function getMempoolCountryNodes(): Promise<MempoolQuery> {
   try {
-    return await graphqlClient.request(MEMPOOL_QUERY, {});
+    return await graphqlClient.request(MempoolDocument, {});
   } catch (error) {
     console.log("Failed to fetch mempool data", error);
     throw error;
@@ -50,10 +50,10 @@ export default async function Home() {
                     <components.POWAndEmission />
                 </div>
             </div>
+            <components.CountryNodeStats mempoolCountryNodes={mempoolCountryNodes}/>
             <div style={{ height: '300px', width: '800px' }}>
                <DistributionChart/>
             </div>
-            <components.CountryNodeStats mempoolCountryNodes={mempoolCountryNodes}/>
         </main>
     );
 }
