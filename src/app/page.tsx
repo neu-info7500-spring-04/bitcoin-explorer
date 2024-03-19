@@ -22,15 +22,16 @@ async function getMempoolCountryNodes(): Promise<MempoolCountryNodeStatsQuery> {
 
 export default async function Home() {
     const bitcoin = await getBitcoin();
-    const mempoolCountryNodes = await getMempoolCountryNodes();
-
+    
     const lastBlock = bitcoin.bitquery.bitcoin?.blocks?.[0];
-
+    
     const formatBlockHeight = (height: number | undefined) => {
-        if (height === undefined) return "";
-        const heightString = height.toString();
-        return `${heightString.slice(0, 3)} ${heightString.slice(3)}`;
-      };
+      if (height === undefined) return "";
+      const heightString = height.toString();
+      return `${heightString.slice(0, 3)} ${heightString.slice(3)}`;
+    };
+    
+    const mempoolCountryNodes = await getMempoolCountryNodes();
     
       return (
         <main className={styles.container}>
