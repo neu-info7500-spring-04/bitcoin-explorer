@@ -1,0 +1,88 @@
+/* styles.css */
+
+/* Container */
+td{
+  color : black;
+  padding: 10px;
+  margin: 10px;
+}
+.App{
+  width: 50%;
+}
+#net-stat {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  /* Table */
+  .card-table {
+    width: 30%;
+    border-collapse: collapse;
+  }
+
+  span#difficulty {
+    font-size: 16px;
+  }
+  
+  table.w-100 {
+    width: 50%;
+  }
+  
+  /* .text-left, .text-right{padding: 10px;
+    margin: 10px;
+    color : black;}
+   */
+  .card-table th,
+  .card-table td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .card-table th {
+    text-align: left;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* Values */
+  .bold {
+    font-weight: bold;
+  }
+  
+  .z-name {
+    color: #333;
+  }
+  
+  .p-value {
+    font-size: 16px;
+  }
+  
+  .p-name {
+    color: #666;
+  }
+  
+  /* Block reward halving */
+  #block_reward_halving {
+    font-size: 14px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    /* Adjust styles for smaller screens */
+    .card-table th,
+    .card-table td {
+      padding: 8px 10px;
+    }
+  
+    .p-value {
+      font-size: 14px;
+    }
+  
+    .p-name,
+    #block_reward_halving {
+      font-size: 12px;
+    }
+  }
+  
