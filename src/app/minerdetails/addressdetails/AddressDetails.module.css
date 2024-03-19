@@ -1,0 +1,47 @@
+/* AddressDetails.module.css or equivalent */
+.container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 40px auto;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-radius: 8px;
+  }
+  
+  .title {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .th, .td {
+    text-align: left;
+    padding: 12px 15px;
+    border-bottom: 1px solid #EEEEEE;
+  }
+  
+  .th {
+    background-color: #007bff;
+    color: #ffffff;
+    font-weight: bold;
+  }
+  
+  .td {
+    color: #333333;
+  }
+  
+  .highlight {
+    font-weight: bold;
+    color: #007bff;
+  }
+
+  .dollar {
+    color: #28a745;
+  }
+  
