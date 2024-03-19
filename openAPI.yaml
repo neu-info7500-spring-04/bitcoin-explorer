@@ -1,0 +1,105 @@
+openapi: 3.0.0
+info:
+  title: Mining Pools Mempool API
+  version: 1.0.0
+paths:
+  /mining/pools/24h:
+    get:
+      summary: Get mining pool statistics for the last 24 hours
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/miningpool"
+
+  /lightning/nodes/countries:
+    get:
+      summary: Returns aggregate capacity and number of clearnet nodes per country.
+      description: Capacity figures are in satoshis.
+      operationId: getLightningNodesCountries
+      responses:
+        "200":
+          description: An array of countries with their Lightning Network nodes statistics.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/countryNodeStats"
+
+components:
+  schemas:
+    miningpool:
+      type: object
+      properties:
+        pools:
+          type: array
+          items:
+            $ref: "#/components/schemas/pool"
+        blockCount:
+          type: integer
+          description: Total number of blocks mined in the last 24 hours
+        lastEstimatedHashrate:
+          type: number
+          description: Last estimated hashrate
+
+    pool:
+      type: object
+      properties:
+        poolId:
+          type: integer
+          description: The unique ID of the pool
+        name:
+          type: string
+          description: The name of the mining pool
+        link:
+          type: string
+          format: uri
+          description: The URL of the mining pool's website
+        blockCount:
+          type: integer
+          description: Number of blocks mined by the pool in the last 24 hours
+        rank:
+          type: integer
+          description: The ranking of the pool based on blocks mined in the last 24 hours
+        emptyBlocks:
+          type: integer
+          description: Number of empty blocks mined by the pool in the last 24 hours
+        slug:
+          type: string
+          description: A unique identifier for the pool
+        avgMatchRate:
+          type: number
+          description: Average match rate of the pool's blocks in the last 24 hours
+        avgFeeDelta:
+          type: string
+          description: Average fee delta of the pool's blocks in the last 24 hours
+        poolUniqueId:
+          type: integer
+          description: The unique ID of the pool
+
+    countryNodeStats:
+      type: object
+      properties:
+        name:
+          type: object
+          properties:
+            de: { type: string }
+            en: { type: string }
+            es: { type: string }
+            fr: { type: string }
+            ja: { type: string }
+            pt-BR: { type: string }
+            ru: { type: string }
+            zh-CN: { type: string }
+        iso:
+          type: string
+        count:
+          type: integer
+        share:
+          type: number
+          format: float
+        capacity:
+          type: string
