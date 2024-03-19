@@ -48,11 +48,11 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.tableContainer}>
-      <h1 style={{ textAlign: 'center' }}>Miner and Address statistics</h1>
+      <h1 style={{ textAlign: 'center', color:'black'}}>Miner and Address statistics</h1>
 
 
         <div>
-          <label htmlFor="fromDate">From: </label>
+          <label style={{ color: 'black' }} htmlFor="fromDate">From: </label>
           <input 
             type="date" 
             id="fromDate" 
@@ -60,7 +60,7 @@ export default function Home() {
             onChange={(e) => setFromDate(new Date(e.target.value))}
           />
 
-          <label htmlFor="tillDate"> To: </label>
+          <label style={{ color: 'black' }} htmlFor="tillDate"> To: </label>
           <input 
             type="date" 
             id="tillDate" 
@@ -74,11 +74,11 @@ export default function Home() {
         <table className={styles.table}>
           <thead>
             <tr>
-              <th>Address</th>
-              <th>Block Count</th>
-              <th>Minimum Date</th>
-              <th>Maximum Date</th>
-              <th>Block Reward (BTC)</th>
+            <th style={{ color: 'black' }}>Address</th>
+              <th style={{ color: 'black' }}>Block Count</th>
+              <th style={{ color: 'black' }}>Minimum Date</th>
+              <th style={{ color: 'black' }}>Maximum Date</th>
+              <th style={{ color: 'black' }}>Block Reward (BTC)</th>
             </tr>
           </thead>
           <tbody>
@@ -92,10 +92,10 @@ export default function Home() {
         {output.outputAddress.address}
       </Link>
                 </td>
-                <td>{output.count}</td>
-                <td>{output.minimum}</td>
-                <td>{output.maximum}</td>
-                <td>{output.value.toFixed(8)}</td>
+                <td style={{ color: 'black' }}>{output.count}</td>
+                <td style={{ color: 'black' }}>{output.minimum}</td>
+                <td style={{ color: 'black' }}>{output.maximum}</td>
+                <td style={{ color: 'black' }}>{output.value.toFixed(8)}</td>
               </tr>
             ))}
           </tbody>

@@ -18,12 +18,14 @@
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    color:black;
   }
   
   .th, .td {
     text-align: left;
     padding: 12px 15px;
     border-bottom: 1px solid #EEEEEE;
+    color: black;
   }
   
   .th {
@@ -33,7 +35,7 @@
   }
   
   .td {
-    color: #333333;
+    color: 'black';
   }
   
   .highlight {

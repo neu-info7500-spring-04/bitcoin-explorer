@@ -8,6 +8,7 @@
   margin: 20px auto;
 }
 
+
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -21,6 +22,7 @@
   text-align: left;
   padding: 20px; /* Increased padding for table cells */
   border-bottom: 1px solid #ddd; /* Reduced border thickness */
+  color:black;
 }
 
 .th {
@@ -31,7 +33,7 @@
 }
 
 .td {
-  color: #333;
+  color: #000000; /* Changed from #333 to black */
 }
 
 .td a, .td a:visited {
