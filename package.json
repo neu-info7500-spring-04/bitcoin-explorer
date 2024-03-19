@@ -11,6 +11,7 @@
     "test": "npx playwright test"
   },
   "dependencies": {
+    "date-fns": "^3.6.0",
     "highcharts-react-official": "^3.2.1",
     "next": "14.1.0",
     "react": "^18",
@@ -23,11 +24,14 @@
     "@types/node": "^20",
     "@types/react": "^18.2.67",
     "@types/react-dom": "^18",
+    "autoprefixer": "^10.4.18",
     "axios": "^1.6.7",
     "dotenv": "^16.4.5",
     "graphql": "^16.8.1",
     "graphql-request": "^6.1.0",
     "graphql-ws": "^5.15.0",
+    "postcss": "^8.4.37",
+    "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
 }

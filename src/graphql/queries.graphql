@@ -1,21 +1,30 @@
 query Bitcoin {
-    bitquery {
-        bitcoin {
-            blocks(options: { limit: 1, desc: ["timestamp.iso8601"] }) {
-                height
-                timestamp {
-                    iso8601
-                }
-            }
+  bitquery {
+    bitcoin {
+      blocks(options: { limit: 1, desc: ["timestamp.iso8601"] }) {
+        height
+        timestamp {
+          iso8601
         }
+      }
     }
+  }
+}
+
+query ActiveNodes {
+  bitnodes {
+    snapshot {
+      totalNodes
+      timestamp
+      latestHeight
+      nodes
+    }
+  }
 }
 
 query Blockchairapi_1 {
   blockchairapi {
-    addressesByBalance(
-      q: "balance(1000000000..100000000)"
-    ) {
+    addressesByBalance(q: "balance(1000000000..100000000)") {
       context {
         totalRows
       }
@@ -24,9 +33,7 @@ query Blockchairapi_1 {
 }
 query Blockchairapi_10 {
   blockchairapi {
-    addressesByBalance(
-      q: "balance(10000000000..1000000000)"
-    ) {
+    addressesByBalance(q: "balance(10000000000..1000000000)") {
       context {
         totalRows
       }
@@ -36,9 +43,7 @@ query Blockchairapi_10 {
 
 query Blockchairapi_100 {
   blockchairapi {
-    addressesByBalance(
-      q: "balance(100000000000..10000000000)"
-    ) {
+    addressesByBalance(q: "balance(100000000000..10000000000)") {
       context {
         totalRows
       }
@@ -48,9 +53,7 @@ query Blockchairapi_100 {
 
 query Blockchairapi_1000 {
   blockchairapi {
-    addressesByBalance(
-      q: "balance(1000000000000..100000000000)"
-    ) {
+    addressesByBalance(q: "balance(1000000000000..100000000000)") {
       context {
         totalRows
       }
@@ -60,9 +63,7 @@ query Blockchairapi_1000 {
 
 query Blockchairapi_10000 {
   blockchairapi {
-    addressesByBalance(
-      q: "balance(100000000000000..1000000000000)"
-    ) {
+    addressesByBalance(q: "balance(100000000000000..1000000000000)") {
       context {
         totalRows
       }
@@ -72,9 +73,7 @@ query Blockchairapi_10000 {
 
 query Blockchairapi_100000 {
   blockchairapi {
-    addressesByBalance(
-      q: "balance(100000000000000..10000000000000)"
-    ) {
+    addressesByBalance(q: "balance(100000000000000..10000000000000)") {
       context {
         totalRows
       }
@@ -84,9 +83,7 @@ query Blockchairapi_100000 {
 
 query Blockchairapi_01 {
   blockchairapi {
-    addressesByBalance(
-      q: "balance(100000000..10000000)"
-    ) {
+    addressesByBalance(q: "balance(100000000..10000000)") {
       context {
         totalRows
       }
@@ -96,9 +93,7 @@ query Blockchairapi_01 {
 
 query Blockchairapi_001 {
   blockchairapi {
-    addressesByBalance(
-      q: "balance(10000000..1000000)"
-    ) {
+    addressesByBalance(q: "balance(10000000..1000000)") {
       context {
         totalRows
       }
@@ -108,9 +103,7 @@ query Blockchairapi_001 {
 
 query Blockchairapi_0001 {
   blockchairapi {
-    addressesByBalance(
-      q: "balance(1000000..100000)"
-    ) {
+    addressesByBalance(q: "balance(1000000..100000)") {
       context {
         totalRows
       }
@@ -120,9 +113,7 @@ query Blockchairapi_0001 {
 
 query Blockchairapi_00001 {
   blockchairapi {
-    addressesByBalance(
-      q: "balance(100000..10000)"
-    ) {
+    addressesByBalance(q: "balance(100000..10000)") {
       context {
         totalRows
       }
@@ -132,9 +123,7 @@ query Blockchairapi_00001 {
 
 query Blockchairapi_000001 {
   blockchairapi {
-    addressesByBalance(
-      q: "balance(10000..1000)"
-    ) {
+    addressesByBalance(q: "balance(10000..1000)") {
       context {
         totalRows
       }
@@ -144,9 +133,7 @@ query Blockchairapi_000001 {
 
 query Blockchairapi_0000001 {
   blockchairapi {
-    addressesByBalance(
-      q: "balance(1000..100)"
-    ) {
+    addressesByBalance(q: "balance(1000..100)") {
       context {
         totalRows
       }
@@ -156,9 +143,7 @@ query Blockchairapi_0000001 {
 
 query Blockchairapi_00000001 {
   blockchairapi {
-    addressesByBalance(
-      q: "balance(100..10)"
-    ) {
+    addressesByBalance(q: "balance(100..10)") {
       context {
         totalRows
       }
@@ -168,9 +153,7 @@ query Blockchairapi_00000001 {
 
 query Blockchairapi_000000001 {
   blockchairapi {
-    addressesByBalance(
-      q: "balance(10..1)"
-    ) {
+    addressesByBalance(q: "balance(10..1)") {
       context {
         totalRows
       }
@@ -180,16 +163,13 @@ query Blockchairapi_000000001 {
 
 query Blockchairapi_000000000 {
   blockchairapi {
-    addressesByBalance(
-      q: "balance(1..0)"
-    ) {
+    addressesByBalance(q: "balance(1..0)") {
       context {
         totalRows
       }
     }
   }
 }
-
 
 query TransactionsAndAddresses {
   bitquery {
@@ -198,7 +178,7 @@ query TransactionsAndAddresses {
         count
       }
       inputs {
-        count(uniq:addresses)
+        count(uniq: addresses)
       }
     }
   }
