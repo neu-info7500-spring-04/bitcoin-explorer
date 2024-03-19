@@ -58,14 +58,14 @@
 
 .blockList {
     border-collapse: collapse;
-    width: 100%; /* Adjust this as necessary */
-    margin-top: 20px; /* Space above the table */
-    font-family: Arial, sans-serif; /* Example font */
-    color: white; /* Set text color to white */
+    width: 100%; 
+    margin-top: 20px; 
+    font-family: Arial, sans-serif; 
+    color: white; 
 }
 
     .blockList thead tr {
-        background-color: #406BBC; /* Darker background for the header */
+        background-color: #406BBC; 
         text-align: left;
     }
 
@@ -75,41 +75,41 @@
 
     .blockList th,
     .blockList td {
-        padding: 8px 15px; /* Adjust padding as necessary */
-        border-right: none; /* Remove vertical lines between columns */
-        border-left: none; /* Remove vertical lines between columns */
-        text-align: center; /* Center align text in cells */
+        padding: 8px 15px; 
+        border-right: none; 
+        border-left: none; 
+        text-align: center; 
     }
 
-    /* Update border-bottom for th to keep horizontal lines */
+    
     .blockList th {
-        border-bottom: 2px solid #555; /* Darker border for the header bottom */
-        /*font-size: 1.1em;*/
+        border-bottom: 2px solid #555; 
+        
     }
 
-        /* No vertical borders for the last th and td on the right */
+        
         .blockList th:last-child,
         .blockList td:last-child {
             border-right: none;
         }
 
-    /* Add horizontal line at the bottom of each row for readability */
+    
     .blockList tbody tr td {
         border-bottom: 1px solid #555;
     }
 
-    /* On hover, highlight the row */
+    
     .blockList tbody tr:hover {
-        background-color: #608FE8; /* White background on hover */
-        color: black; /* Black text on hover */
+        background-color: #608FE8; 
+        color: black; 
     }
 
     .blockList th:first-child,
     .blockList td:first-child {
-        border-left: 1px solid #555; /* Add left border to the first cell */
+        border-left: 1px solid #555; 
     }
 
     .blockList th:last-child,
     .blockList td:last-child {
-        border-right: 1px solid #555; /* Add right border to the last cell */
+        border-right: 1px solid #555; 
     }
