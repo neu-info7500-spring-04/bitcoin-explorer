@@ -35,7 +35,7 @@ export default async function Home() {
                 <Timer lastBlock={lastBlock} />
                 <div className={styles.blockTitle}>Rich chart of Bitcoin addresses</div>
                 <div>
-                    <RichListChart></RichListChart>
+                    <RichListChart />
                 </div>
                 <div>
                     <components.POWAndEmission />
