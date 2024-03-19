@@ -29,6 +29,7 @@ export default async function Home() {
                 </div>
                 <div className={styles.blockTitle}>Time from last block</div>
                 <Timer lastBlock={lastBlock} />
+                <div className={styles.blockTitle}>Rich chart of Bitcoin addresses</div>
                 <div>
                     <RichListChart></RichListChart>
                 </div>

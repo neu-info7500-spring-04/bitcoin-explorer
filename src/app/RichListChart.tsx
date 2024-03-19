@@ -101,7 +101,7 @@ async function getBlockchairapi_00000000() {
 }
 
 interface BarChartProps {
-  
+
   style?: React.CSSProperties;
 }
 
@@ -109,20 +109,20 @@ function RichListChart<T>({ style }: BarChartProps) {
 
   const values = [
     // { label: '1,000,000 - 100,000', value: 1 },
-    { label: '1,000,000 - 100,000', value: bitcoinAddress_100000.blockchairapi.addressesByBalance?.context?.totalRows },
-    { label: '100,000 - 10,000', value: bitcoinAddress_10000.blockchairapi.addressesByBalance?.context?.totalRows },
-    { label: '10,000 - 1,000', value: bitcoinAddress_1000.blockchairapi.addressesByBalance?.context?.totalRows },
-    { label: '1,000 - 100', value: bitcoinAddress_100.blockchairapi.addressesByBalance?.context?.totalRows },
-    { label: '100 - 10', value: bitcoinAddress_10.blockchairapi.addressesByBalance?.context?.totalRows },
-    { label: '10 - 1', value: bitcoinAddress_1.blockchairapi.addressesByBalance?.context?.totalRows },
-    { label: '1 - 0.1', value: bitcoinAddress_01.blockchairapi.addressesByBalance?.context?.totalRows },
-    { label: '0.1 - 0.01', value: bitcoinAddress_001.blockchairapi.addressesByBalance?.context?.totalRows },
-    { label: '0.01 - 0.001', value: bitcoinAddress_0001.blockchairapi.addressesByBalance?.context?.totalRows },
-    { label: '0.001 - 0.0001', value: bitcoinAddress_00001.blockchairapi.addressesByBalance?.context?.totalRows },
-    { label: '0.0001 - 0.00001', value: bitcoinAddress_000001.blockchairapi.addressesByBalance?.context?.totalRows },
-    { label: '0.00001 - 0.000001', value: bitcoinAddress_0000001.blockchairapi.addressesByBalance?.context?.totalRows },
-    { label: '0.000001 - 0.0000001', value: bitcoinAddress_00000001.blockchairapi.addressesByBalance?.context?.totalRows },
-    { label: '< 0.0000001', value: bitcoinAddress_00000000.blockchairapi.addressesByBalance?.context?.totalRows },
+    { label: '1,000,000 - 100,000', value: bitcoinAddress_100000.blockchairapi.addressesByBalance?.context?.totalRows ?? 0 },
+    { label: '100,000 - 10,000', value: bitcoinAddress_10000.blockchairapi.addressesByBalance?.context?.totalRows ?? 0 },
+    { label: '10,000 - 1,000', value: bitcoinAddress_1000.blockchairapi.addressesByBalance?.context?.totalRows ?? 0 },
+    { label: '1,000 - 100', value: bitcoinAddress_100.blockchairapi.addressesByBalance?.context?.totalRows ?? 0 },
+    { label: '100 - 10', value: bitcoinAddress_10.blockchairapi.addressesByBalance?.context?.totalRows ?? 0 },
+    { label: '10 - 1', value: bitcoinAddress_1.blockchairapi.addressesByBalance?.context?.totalRows ?? 0 },
+    { label: '1 - 0.1', value: bitcoinAddress_01.blockchairapi.addressesByBalance?.context?.totalRows ?? 0 },
+    { label: '0.1 - 0.01', value: bitcoinAddress_001.blockchairapi.addressesByBalance?.context?.totalRows ?? 0 },
+    { label: '0.01 - 0.001', value: bitcoinAddress_0001.blockchairapi.addressesByBalance?.context?.totalRows ?? 0 },
+    { label: '0.001 - 0.0001', value: bitcoinAddress_00001.blockchairapi.addressesByBalance?.context?.totalRows ?? 0 },
+    { label: '0.0001 - 0.00001', value: bitcoinAddress_000001.blockchairapi.addressesByBalance?.context?.totalRows ?? 0 },
+    { label: '0.00001 - 0.000001', value: bitcoinAddress_0000001.blockchairapi.addressesByBalance?.context?.totalRows ?? 0 },
+    { label: '0.000001 - 0.0000001', value: bitcoinAddress_00000001.blockchairapi.addressesByBalance?.context?.totalRows ?? 0 },
+    { label: '< 0.0000001', value: bitcoinAddress_00000000.blockchairapi.addressesByBalance?.context?.totalRows ?? 0 },
   ];
   // console.log(bitcoinAddress_100000.blockchairapi.addressesByBalance?.context?.totalRows)
 
@@ -142,22 +142,7 @@ function RichListChart<T>({ style }: BarChartProps) {
       flexWrap: "wrap",
       ...style,
     }}>
-      {/* <div>
-        <span>Blocks: </span>
-        <span>00</span>
-      </div> */}
-      <div>
-        <span>Transactions: </span>
-        <span>{transactions_Addresses.bitquery.bitcoin?.transactions?.map(b => {
-          return b.count
-        })}</span>
-      </div>
-      <div>
-        <span>Address: </span>
-        <span>{transactions_Addresses.bitquery.bitcoin?.inputs?.map(b => {
-          return b.count
-        })}</span>
-      </div>
+      
       <div
         style={{
           display: "flex",
@@ -231,7 +216,7 @@ function RichListChart<T>({ style }: BarChartProps) {
                     style={{
                       // paddingLeft: "2%",
                       // paddingRight: "2%",
-                      margin:"0",
+                      margin: "0",
                       height: 200.0 / values.length + "%",
                       width: (v.value / max) * 100 + "%",
                     }}
@@ -244,7 +229,10 @@ function RichListChart<T>({ style }: BarChartProps) {
                       }}
                     />
                   </div>
-                  <p></p>
+                  <p style={{
+                    margin: "0",
+                    height: 200.0 / values.length + "%",
+                  }}>{v.value}</p>
                 </div>
               );
             })}
