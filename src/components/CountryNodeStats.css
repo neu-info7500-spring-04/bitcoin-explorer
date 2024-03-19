@@ -1,0 +1,51 @@
+.country-node-stats {
+    width: 60vw;
+    max-width: 75rem;
+    margin: 1.5rem auto;
+}
+.country-node-stats__title{
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: -3rem;
+    z-index: 100;
+}
+.country-list__btn {
+    width: 100%;
+    padding: 1rem;
+    color: #E0E0E0;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.country-list {
+    text-align: left;
+
+    border: #E0E0E0 1.5px solid;
+    border-radius: 0.5rem;
+}
+
+.country-list__table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 1.5rem;
+
+    color: #E0E0E0;
+}
+
+.country-list__table th,
+.country-list__table td {
+    color: #E0E0E0;
+    text-align: center;
+    padding: 0.5rem;
+}
+
+.unit {
+    color: #d0c151;
+    font-size: 0.8rem;
+}
+
+.capacity {
+    text-align: right;
+}
