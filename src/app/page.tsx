@@ -3,10 +3,10 @@ import { graphqlClient } from "@/graphql/client";
 import styles from "./page.module.css";
 import LastBlock from "./LastBlock";
 import RichListChart from "./RichListChart";
-import DistributionChart from "./DistributionChart";
 
 import React from 'react';
 import { components } from '../components';
+import DistributionChart from "./components/minerdistributionpool/DistributionChart";
 
 
 async function getBitcoin(): Promise<BitcoinQuery> {
@@ -35,9 +35,9 @@ export default async function Home() {
                 <div>
                     <components.POWAndEmission />
                 </div>
-                <div style={{ height: '300px', width: '800px' }}>
-                    <DistributionChart/>
-                </div>
+            </div>
+            <div style={{ height: '300px', width: '800px' }}>
+               <DistributionChart/>
             </div>
         </main>
     );
