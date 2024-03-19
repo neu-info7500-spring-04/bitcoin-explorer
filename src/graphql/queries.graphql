@@ -183,3 +183,17 @@ query TransactionsAndAddresses {
     }
   }
 }
+
+query Mempool {
+  mempool {
+    countryNodeStats {
+      capacity
+      share
+      count
+      iso
+      name {
+        en
+      }
+    }
+  }
+}
