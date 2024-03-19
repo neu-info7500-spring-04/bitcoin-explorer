@@ -1,12 +1,188 @@
 query Bitcoin {
-    bitquery {
-        bitcoin {
-            blocks(options: { limit: 1, desc: ["timestamp.iso8601"] }) {
-                height
-                timestamp {
-                    iso8601
-                }
-            }
+  bitquery {
+    bitcoin {
+      blocks(options: { limit: 1, desc: ["timestamp.iso8601"] }) {
+        height
+        timestamp {
+          iso8601
         }
+      }
     }
+  }
+}
+
+query Blockchairapi_1 {
+  blockchairapi {
+    addressesByBalance(q: "balance(1000000000..100000000)") {
+      context {
+        totalRows
+      }
+    }
+  }
+}
+query Blockchairapi_10 {
+  blockchairapi {
+    addressesByBalance(q: "balance(10000000000..1000000000)") {
+      context {
+        totalRows
+      }
+    }
+  }
+}
+
+query Blockchairapi_100 {
+  blockchairapi {
+    addressesByBalance(q: "balance(100000000000..10000000000)") {
+      context {
+        totalRows
+      }
+    }
+  }
+}
+
+query Blockchairapi_1000 {
+  blockchairapi {
+    addressesByBalance(q: "balance(1000000000000..100000000000)") {
+      context {
+        totalRows
+      }
+    }
+  }
+}
+
+query Blockchairapi_10000 {
+  blockchairapi {
+    addressesByBalance(q: "balance(100000000000000..1000000000000)") {
+      context {
+        totalRows
+      }
+    }
+  }
+}
+
+query Blockchairapi_100000 {
+  blockchairapi {
+    addressesByBalance(q: "balance(100000000000000..10000000000000)") {
+      context {
+        totalRows
+      }
+    }
+  }
+}
+
+query Blockchairapi_01 {
+  blockchairapi {
+    addressesByBalance(q: "balance(100000000..10000000)") {
+      context {
+        totalRows
+      }
+    }
+  }
+}
+
+query Blockchairapi_001 {
+  blockchairapi {
+    addressesByBalance(q: "balance(10000000..1000000)") {
+      context {
+        totalRows
+      }
+    }
+  }
+}
+
+query Blockchairapi_0001 {
+  blockchairapi {
+    addressesByBalance(q: "balance(1000000..100000)") {
+      context {
+        totalRows
+      }
+    }
+  }
+}
+
+query Blockchairapi_00001 {
+  blockchairapi {
+    addressesByBalance(q: "balance(100000..10000)") {
+      context {
+        totalRows
+      }
+    }
+  }
+}
+
+query Blockchairapi_000001 {
+  blockchairapi {
+    addressesByBalance(q: "balance(10000..1000)") {
+      context {
+        totalRows
+      }
+    }
+  }
+}
+
+query Blockchairapi_0000001 {
+  blockchairapi {
+    addressesByBalance(q: "balance(1000..100)") {
+      context {
+        totalRows
+      }
+    }
+  }
+}
+
+query Blockchairapi_00000001 {
+  blockchairapi {
+    addressesByBalance(q: "balance(100..10)") {
+      context {
+        totalRows
+      }
+    }
+  }
+}
+
+query Blockchairapi_000000001 {
+  blockchairapi {
+    addressesByBalance(q: "balance(10..1)") {
+      context {
+        totalRows
+      }
+    }
+  }
+}
+
+query Blockchairapi_000000000 {
+  blockchairapi {
+    addressesByBalance(q: "balance(1..0)") {
+      context {
+        totalRows
+      }
+    }
+  }
+}
+
+query TransactionsAndAddresses {
+  bitquery {
+    bitcoin {
+      transactions {
+        count
+      }
+      inputs {
+        count(uniq: addresses)
+      }
+    }
+  }
+}
+
+query Mempool {
+  mempool {
+    countryNodeStats {
+      capacity
+      share
+      count
+      iso
+      name {
+        en
+      }
+    }
+  }
 }
