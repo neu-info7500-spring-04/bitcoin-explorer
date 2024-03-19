@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { graphqlClient } from "@/graphql/client";
+import { graphqlClientWithConstantBase } from "@/graphql/client";
 import { AddressDetailsDocument } from "@/graphql/__generated__/graphql";
 import styles from "./AddressDetails.module.css";
 
@@ -12,7 +12,7 @@ const AddressDetails = () => {
   
   const fetchData = async (address, from, till) => {
     try {
-      const data = await graphqlClient.request(AddressDetailsDocument, {
+      const data = await graphqlClientWithConstantBase.request(AddressDetailsDocument, {
         since:from,
         till:till,
         inputAddress:address,

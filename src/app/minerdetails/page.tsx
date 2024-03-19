@@ -1,13 +1,13 @@
 "use client";
 import styles from "./MinerDetails.module.css";
-import { graphqlClient } from "@/graphql/client";
+import { graphqlClientWithConstantBase } from "@/graphql/client";
 import { MinerDataDocument } from "@/graphql/__generated__/graphql";
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 
 function getBitcoinData(limit: number, offset: number, from: string, till: string) {
-  return graphqlClient.request(MinerDataDocument, {
+  return graphqlClientWithConstantBase.request(MinerDataDocument, {
     limit: limit,
     offset: offset,
     from: from,
