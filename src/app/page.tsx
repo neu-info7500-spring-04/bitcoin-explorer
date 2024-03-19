@@ -35,9 +35,8 @@ export default async function Home() {
                     <components.POWAndEmission />
                 </div>
             </div>
-            <div style={{ height: '300px', width: '800px' }}>
-              <DistributionChart/>
-            </div>
+
+
         </main>
     );
 }
