@@ -1,7 +1,7 @@
 import { BitcoinDocument, BitcoinQuery } from "@/graphql/__generated__/graphql";
 import { graphqlClient } from "@/graphql/client";
 import styles from "./page.module.css";
-import Timer from "./timer";
+import LastBlock from "./LastBlock";
 import RichListChart from "./RichListChart";
 
 import React from 'react';
@@ -26,13 +26,7 @@ export default async function Home() {
         <main className={styles.container}>
             <div className={styles.block}>
                 <div>Northeastern Bitcoin Explorer</div>
-                <div className={styles.blockTitle}>Last block</div>
-                {/*  data-testid attribute on HTML used for playwright testing  */}
-                <div className={styles.blockHeight} data-testid="blockHeight">
-                    {formatBlockHeight(lastBlock?.height)}
-                </div>
-                <div className={styles.blockTitle}>Time from last block</div>
-                <Timer lastBlock={lastBlock} />
+                <LastBlock bitcoin={bitcoin} />
                 <div className={styles.blockTitle}>Rich chart of Bitcoin addresses</div>
                 <div>
                     <RichListChart />
