@@ -3,13 +3,17 @@ import { MEMPOOL_QUERY, MempoolCountryNodeStatsQuery } from "@/graphql/__generat
 
 import {graphqlClient} from "@/graphql/client";
 import styles from "./page.module.css";
-import Timer from "./timer";
+import LastBlock from "./LastBlock";
+import RichListChart from "./RichListChart";
+
 import React from 'react';
 import { components } from '../components';
+import DistributionChart from "./components/minerdistributionpool/DistributionChart";
+
 
 async function getBitcoin(): Promise<BitcoinQuery> {
     return await graphqlClient.request(BitcoinDocument, {});
-  }
+}
 
 async function getMempoolCountryNodes(): Promise<MempoolCountryNodeStatsQuery> {
   try {
@@ -26,27 +30,30 @@ export default async function Home() {
     const lastBlock = bitcoin.bitquery.bitcoin?.blocks?.[0];
     
     const formatBlockHeight = (height: number | undefined) => {
-      if (height === undefined) return "";
-      const heightString = height.toString();
-      return `${heightString.slice(0, 3)} ${heightString.slice(3)}`;
+        if (height === undefined) return "";
+        const heightString = height.toString();
+        return `${heightString.slice(0, 3)} ${heightString.slice(3)}`;
     };
-    
+
     const mempoolCountryNodes = await getMempoolCountryNodes();
-    
-      return (
+
+    return (
         <main className={styles.container}>
-          <div className={styles.block}>
-            <div>Northeastern Bitcoin Explorer</div>
-            <div className={styles.blockTitle}>Last block</div>
-            {/*  data-testid attribute on HTML used for playwright testing  */}
-            <div className={styles.blockHeight} data-testid="blockHeight">
-              {formatBlockHeight(lastBlock?.height)}
+            <div className={styles.block}>
+                <div>Northeastern Bitcoin Explorer</div>
+                <LastBlock bitcoin={bitcoin} />
+                <div className={styles.blockTitle}>Rich chart of Bitcoin addresses</div>
+                <div>
+                    <RichListChart />
+                </div>
+                <div>
+                    <components.POWAndEmission />
+                </div>
             </div>
-            <div className={styles.blockTitle}>Time from last block</div>
-            <Timer lastBlock={lastBlock} />
-            <div><components.POWAndEmission/></div>
+            <div style={{ height: '300px', width: '800px' }}>
+               <DistributionChart/>
+            </div>
             <components.CountryNodeStats mempoolCountryNodes={mempoolCountryNodes}/>
-          </div>
         </main>
-  );
+    );
 }

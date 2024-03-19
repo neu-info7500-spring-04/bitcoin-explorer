@@ -48,3 +48,10 @@
   width: 1px;
   background-color: #9ca3af;
 }
+
+.lastBlockContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}

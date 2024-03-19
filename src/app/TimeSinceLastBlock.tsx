@@ -26,7 +26,7 @@ type LastBlock =
     }
   | undefined;
 
-export default function Timer({ lastBlock }: { lastBlock: LastBlock }) {
+export default function TimeSinceLastBlock({ lastBlock }: { lastBlock: LastBlock }) {
   const [timeSinceLastBlock, setTimeSinceLastBlock] = useState("00:00:00");
   const [hasMounted, setHasMounted] = useState(false);
 
