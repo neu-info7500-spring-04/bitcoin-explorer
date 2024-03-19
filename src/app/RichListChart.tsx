@@ -142,7 +142,7 @@ function RichListChart<T>({ style }: BarChartProps) {
       flexWrap: "wrap",
       ...style,
     }}>
-      
+
       <div
         style={{
           display: "flex",

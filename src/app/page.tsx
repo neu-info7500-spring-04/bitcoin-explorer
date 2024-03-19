@@ -4,6 +4,10 @@ import styles from "./page.module.css";
 import Timer from "./timer";
 import RichListChart from "./RichListChart";
 
+import React from 'react';
+import { components } from '../components';
+
+
 async function getBitcoin(): Promise<BitcoinQuery> {
     return await graphqlClient.request(BitcoinDocument, {});
 }
@@ -33,7 +37,12 @@ export default async function Home() {
                 <div>
                     <RichListChart></RichListChart>
                 </div>
+                <div>
+                    <components.POWAndEmission />
+                </div>
             </div>
+
+
         </main>
     );
 }
