@@ -1,6 +1,11 @@
 /* styles.css */
 
 /* Container */
+td{
+  color : black;
+  padding: 10px;
+  margin: 10px;
+}
 .App{
   width: 50%;
 }
@@ -25,7 +30,10 @@
     width: 50%;
   }
   
-  
+  /* .text-left, .text-right{padding: 10px;
+    margin: 10px;
+    color : black;}
+   */
   .card-table th,
   .card-table td {
     padding: 10px 15px;
