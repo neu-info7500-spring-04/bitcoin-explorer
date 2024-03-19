@@ -1,6 +1,8 @@
 import POWAndEmission from "./POWAndEmission";
+import CountryNodeStats from "./CountryNodeStats";
 
 const components = {
-    POWAndEmission
+    POWAndEmission,
+    CountryNodeStats,
 };
 export { components };
