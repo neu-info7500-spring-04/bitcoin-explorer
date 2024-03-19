@@ -32,6 +32,26 @@ query MinerData($limit: Int!, $offset: Int!, $from: BitqueryISO8601DateTime, $ti
 }
 }
 
+query AddressDetails($since: BitqueryISO8601DateTime, $till: BitqueryISO8601DateTime, $inputAddress: String, $outputAddress: String) {
+    bitquery {
+        bitcoin {
+            inputs(date: { since: $since, till: $till }, inputAddress: { is: $inputAddress }) {
+                count
+                maximum(of: date)
+                minimum(of: date)
+                value
+            }
+            outputs(date: { since: $since, till: $till }, outputAddress: { is: $outputAddress }) {
+                count
+                maximum(of: date)
+                minimum(of: date)
+                value
+            }
+        }
+    }
+}
+
+
 
 
 
