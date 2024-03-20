@@ -16,7 +16,6 @@ import BitcoinInfo from '../components/BitcoinInfo';
 import Fees from '../components/Fees';
 import '../components/MainContent.css';
 import BarGraph from "../components/BarGraph";
-import MinerDetails from './minerdetails/page';
 
 async function getBitcoin(): Promise<BitcoinQuery> {
     return await graphqlClient.request(BitcoinDocument, {});
@@ -77,10 +76,6 @@ export default async function Home() {
             <div style={{ height: '300px', width: '800px' }}>
                 <DistributionChart />
             </div>
-
-            <div style={{ marginTop: '50px', width: '100%' }}>
-            <MinerDetails />
-        </div>
         </main>
     );
 }
