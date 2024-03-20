@@ -174,49 +174,6 @@ query TransactionsAndAddresses {
 }
 
 
-query MinerData($limit: Int!, $offset: Int!, $from: BitqueryISO8601DateTime, $till: BitqueryISO8601DateTime) {
-  bitquery{
-  bitcoin{
-    outputs(
-      options: { desc: "value", asc: "outputAddress.address", limit: $limit, offset: $offset }
-      time: { since: $from, till: $till }
-      txIndex: { is: 0 }
-      outputDirection: { is: mining }
-      outputScriptType: { notIn: ["nulldata", "nonstandard"] }
-    ) {
-     count(uniq: blocks)
-                outputAddress {
-                    annotation
-                    address
-                }
-                minimum(of: date)
-                maximum(of: date)
-                countBigInt(uniq: blocks)
-                value
-    }
-  }
-}
-}
-
-query AddressDetails($since: BitqueryISO8601DateTime, $till: BitqueryISO8601DateTime, $inputAddress: String, $outputAddress: String) {
-    bitquery {
-        bitcoin {
-            inputs(date: { since: $since, till: $till }, inputAddress: { is: $inputAddress }) {
-                count
-                maximum(of: date)
-                minimum(of: date)
-                value
-            }
-            outputs(date: { since: $since, till: $till }, outputAddress: { is: $outputAddress }) {
-                count
-                maximum(of: date)
-                minimum(of: date)
-                value
-            }
-        }
-    }
-}
-
   
 query GetBlocks {
 bitquery {
