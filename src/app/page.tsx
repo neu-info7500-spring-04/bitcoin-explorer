@@ -9,6 +9,8 @@ import Blocklists from './Blocklists';
 import React from 'react';
 import { components } from '../components';
 import DistributionChart from "./components/minerdistributionpool/DistributionChart";
+import MinerDetails from './minerdetails/page';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 //Mainent Imports
 import MarketData from "../components/MarketData";
@@ -47,7 +49,10 @@ export default async function Home() {
         <main className={styles.container}>
             <div className={styles.block}>
                 <div>Northeastern Bitcoin Explorer</div>
-                <LastBlock bitcoin={bitcoin} />
+                <div className={styles.containerRow}>
+                    <div className={styles.containerRow}><LastBlock bitcoin={bitcoin} /></div>
+                    <div className={styles.containerRow}><components.BTCMarketData/></div>
+                </div>
                 <div className={styles.blockTitle}>Rich chart of Bitcoin addresses</div>
                 <div>
                     <RichListChart />
@@ -78,6 +83,9 @@ export default async function Home() {
             <div style={{ height: '300px', width: '800px' }}>
                 <DistributionChart />
             </div>
+            <div style={{ marginTop: '50px', width: '100%' }}>
+            <MinerDetails />
+        </div>
         </main>
     );
 }

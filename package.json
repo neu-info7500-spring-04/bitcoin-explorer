@@ -11,6 +11,14 @@
     "test": "npx playwright test"
   },
   "dependencies": {
+    "axios": "^1.6.8",
+    "highcharts-react-official": "^3.2.1",
+    "next": "14.1.0",
+    "react": "^18",
+    "react-datepicker": "^6.4.0",
+    "react-dom": "^18",
+    "react-router-dom": "^6.22.3",
+    "swr": "^2.2.5",
     "@apollo/client": "^3.9.7",
     "chart.js": "^4.4.2",
     "chartjs-plugin-datalabels": "^2.2.0",
@@ -33,6 +41,9 @@
     "graphql-request": "^6.1.0",
     "graphql-ws": "^5.15.0",
     "typescript": "^5",
-    "recharts": "2.12.3"
+    "recharts": "2.12.3",
+    "apexcharts": "^3.30.0",
+    "react-apexcharts": "^1.4.0",
+    "bootstrap":"5.3.3"
   }
 }
