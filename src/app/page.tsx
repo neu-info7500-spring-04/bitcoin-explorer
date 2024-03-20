@@ -6,9 +6,17 @@ import styles from "./page.module.css";
 import LastBlock from "./LastBlock";
 import RichListChart from "./RichListChart";
 
-import React from "react";
 import { components } from "../components";
+import Blocklists from "./Blocklists";
+import React from "react";
 import DistributionChart from "./components/minerdistributionpool/DistributionChart";
+
+//Mainent Imports
+import MarketData from "../components/MarketData";
+import BitcoinInfo from "../components/BitcoinInfo";
+import Fees from "../components/Fees";
+import "../components/MainContent.css";
+import BarGraph from "../components/BarGraph";
 
 async function getBitcoin(): Promise<BitcoinQuery> {
   return await graphqlClient.request(BitcoinDocument, {});
@@ -34,8 +42,6 @@ export default async function Home() {
     return `${heightString.slice(0, 3)} ${heightString.slice(3)}`;
   };
 
-  const mempoolCountryNodes = await getMempoolCountryNodes();
-
   return (
     <main className={styles.container}>
       <div className={styles.block}>
@@ -47,6 +53,21 @@ export default async function Home() {
         </div>
         <div>
           <components.POWAndEmission />
+        </div>
+        <div className="main-content">
+          <div className="info-content">
+            <BitcoinInfo />
+            <BarGraph />
+            <div className="vertical-separator"></div>
+            <Fees />
+          </div>
+          <hr className="section-separator" />
+          <div className="info-content">
+            <MarketData />
+          </div>
+        </div>
+        <div>
+          <Blocklists />
         </div>
       </div>
       <components.CountryNodeStats mempoolCountryNodes={mempoolCountryNodes} />

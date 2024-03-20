@@ -1,0 +1,63 @@
+/* BitcoinInfo.css */
+
+.bitcoin-info-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Align to the start of the container */
+  padding: 20px;
+  min-width: 0; /* Ensures it doesn't overflow its container */
+}
+
+.bitcoin-logo {
+  width: 80px;
+  height: 80px;
+  margin-right: 10px;
+  align-items: center;
+}
+
+.bitcoin-info h1 {
+  color: #00000081;
+  font-family:'Courier New', Courier, monospace;
+}
+
+.bitcoin-info {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.bitcoin-info .price {
+  font-size: 20px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  margin-top: 0px;
+  color: #343a40;
+  font-weight: 500;
+  max-width: 150px;
+}
+
+.bitcoin-info .details {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.details {
+  display: flex;
+  font-size: 0.9em;
+  color: #6c757d; /* Grey color */
+  /* Add more styling as needed */
+}
+
+.difficulty {
+  font-weight: bold;
+  color: black;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 16px;
+}
+
+.block-height {
+  font-weight: bold;
+  color: black;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 16px;
+}
