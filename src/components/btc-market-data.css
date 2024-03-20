@@ -1,0 +1,53 @@
+.Body{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    fill: #ffffff;
+    background-color: #161f30;
+    font-family: 'lattow', sans-serif;
+    margin: auto;
+    color: #ffffff;
+    }
+
+.div{
+    font-family: 'lattow', sans-serif;
+    font-size: 16px;
+    text-align: left;
+    line-height: 24px;
+    letter-spacing: normal;
+    color: #ffffff;
+}  
+  .up{
+    color: green;
+  }
+  
+  .down{
+    color: red;
+  }
+
+  .price-header {
+    font-size: 1.6rem !important;
+    text-align: right !important;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.6;
+    color: inherit;
+}
+
+.average-change{
+    text-align: right !important;
+}
+
+.component-wide{
+    width: 1.1em;
+}
+
+.btc-header{
+    font-weight: 900;
+    font-size: 34px;
+}
+
+.pt-2{
+    padding-top: 0.5rem !important;
+    width: 60%;
+}
