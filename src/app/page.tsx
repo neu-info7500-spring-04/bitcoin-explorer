@@ -60,6 +60,9 @@ export default async function Home() {
                 <div>
                     <components.POWAndEmission />
                 </div>
+                <div>
+                    <components.TransactionFeeData />
+                </div>
                 <div className="main-content">
                     <div className="info-content">
                         <BitcoinInfo />
@@ -74,7 +77,6 @@ export default async function Home() {
                 </div>
                 <div>
                     <Blocklists />
-
                 </div>
             </div>
             <components.CountryNodeStats mempoolCountryNodes={mempoolCountryNodes} />

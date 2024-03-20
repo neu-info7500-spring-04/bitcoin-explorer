@@ -41,6 +41,7 @@
     "graphql-request": "^6.1.0",
     "graphql-ws": "^5.15.0",
     "typescript": "^5",
+    "recharts": "2.12.3",
     "apexcharts": "^3.30.0",
     "react-apexcharts": "^1.4.0",
     "bootstrap":"5.3.3"
