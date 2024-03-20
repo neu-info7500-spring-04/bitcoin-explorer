@@ -19,8 +19,9 @@ type TransactionFeeProps = {
     return dateString;
   };
 
-  // const TransactionFeeChart = async ({ network = 'bitcoin', limit = 7 }: TransactionFeeChartProps) => {
-    async function TransactionFeeData({ network = 'bitcoin', limit = 7 }: TransactionFeeProps) {
+  // const TransactionFeeData = async ({ network = 'bitcoin', limit = 7 }: TransactionFeeProps) => {
+   async function TransactionFeeData({ network = 'bitcoin', limit = 7 }: TransactionFeeProps) {
+  //  const TransactionFeeData: React.FC<TransactionFeeProps> = ({ network = 'bitcoin', limit = 7 }: TransactionFeeProps) => {
         const weekData = await graphqlClient.request(TransactionFeeDocument, {
           network: network,
           limit: limit,
