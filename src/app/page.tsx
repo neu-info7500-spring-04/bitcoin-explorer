@@ -5,14 +5,14 @@ import { graphqlClient } from "@/graphql/client";
 import styles from "./page.module.css";
 import LastBlock from "./LastBlock";
 import RichListChart from "./RichListChart";
-
-import { components } from "../components";
 import Blocklists from "./Blocklists";
 import React from "react";
+import { components } from "../components";
 import DistributionChart from "./components/minerdistributionpool/DistributionChart";
 
 //Mainent Imports
 import MarketData from "../components/MarketData";
+
 import BitcoinInfo from "../components/BitcoinInfo";
 import Fees from "../components/Fees";
 import "../components/MainContent.css";
