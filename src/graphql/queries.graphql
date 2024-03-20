@@ -11,6 +11,31 @@ query Bitcoin {
   }
 }
 
+query ActiveNodes {
+  bitnodes {
+    snapshot {
+      totalNodes
+      timestamp
+      latestHeight
+      nodes
+      }
+    }
+  }
+}
+
+query TransactionFee($network: BitqueryBitcoinNetwork!, $limit: Int!) {
+  bitquery {
+    bitcoin(network: $network) {
+      transactions(options: { desc: "date.date", limit: $limit }) {
+        date {
+          date
+        }
+        feeValueDecimal
+      }
+    }
+  }
+}
+
 query Blockchairapi_1 {
   blockchairapi {
     addressesByBalance(q: "balance(1000000000..100000000)") {
