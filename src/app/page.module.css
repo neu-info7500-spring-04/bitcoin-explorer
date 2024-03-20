@@ -4,6 +4,16 @@
   gap: 2rem;
   justify-content: center;
   align-items: center;
+  background-color: #131f31;
+  color: white;
+}
+
+.containerRow {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
 }
 
 .block {
