@@ -11,6 +11,18 @@ query Bitcoin {
   }
 }
 
+query ActiveNodes {
+  bitnodes {
+    snapshot {
+      totalNodes
+      timestamp
+      latestHeight
+      nodes
+      }
+    }
+  }
+}
+
 query TransactionFee($network: BitqueryBitcoinNetwork!, $limit: Int!) {
   bitquery {
     bitcoin(network: $network) {
