@@ -31,6 +31,7 @@ export default async function Home() {
             <div className={styles.blockTitle}>Time from last block</div>
             <Timer lastBlock={lastBlock} />
             <div><components.POWAndEmission/></div>
+            <div><components.TransactionFeeData/></div>
           </div>
     </main>
   );

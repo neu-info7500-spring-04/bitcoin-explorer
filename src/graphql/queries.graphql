@@ -1,12 +1,25 @@
 query Bitcoin {
-    bitquery {
-        bitcoin {
-            blocks(options: { limit: 1, desc: ["timestamp.iso8601"] }) {
-                height
-                timestamp {
-                    iso8601
-                }
-            }
+  bitquery {
+    bitcoin {
+      blocks(options: { limit: 1, desc: ["timestamp.iso8601"] }) {
+        height
+        timestamp {
+          iso8601
         }
+      }
     }
+  }
+}
+
+query TransactionFee($network: BitqueryBitcoinNetwork!, $limit: Int!) {
+  bitquery {
+    bitcoin(network: $network) {
+      transactions(options: { desc: "date.date", limit: $limit }) {
+        date {
+          date
+        }
+        feeValueDecimal
+      }
+    }
+  }
 }
