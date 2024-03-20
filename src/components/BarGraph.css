@@ -1,0 +1,27 @@
+/* BarGraph.css */
+
+.bar-graph {
+  margin-left: 100px;
+  max-height: 110px;
+  height: 110px;
+  margin-top: -10px;
+  display: flex;
+}
+
+.bar-holder {
+  width: 10px;
+  margin-right: 8px;
+  height: 110px;
+  align-self: flex-end;
+  display: flex;
+  background: rgba(2, 13, 28, 0.1);
+  border-radius: 5px;
+}
+
+.bar {
+  align-self: flex-end;
+    display: inline-block;
+    width: 10px;
+    background: padding-box rgb(247, 147, 26);
+    border-radius: 10px;
+}
