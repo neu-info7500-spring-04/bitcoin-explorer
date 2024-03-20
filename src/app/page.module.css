@@ -1,5 +1,7 @@
 .container {
   display: flex;
+  flex-direction: column;
+  gap: 2rem;
   justify-content: center;
   align-items: center;
 }
@@ -55,3 +57,62 @@
   align-items: center;
   gap: 1rem;
 }
+
+.blockList {
+    border-collapse: collapse;
+    width: 100%; 
+    margin-top: 20px; 
+    font-family: Arial, sans-serif; 
+    color: white; 
+}
+
+    .blockList thead tr {
+        background-color: #406BBC; 
+        text-align: left;
+    }
+
+.blockList tbody{
+    background-color: white;
+    color:black;
+}
+
+    .blockList th,
+    .blockList td {
+        padding: 8px 15px; 
+        border-right: none; 
+        border-left: none; 
+        text-align: center; 
+    }
+
+    
+    .blockList th {
+        border-bottom: 2px solid #555; 
+        
+    }
+
+        
+        .blockList th:last-child,
+        .blockList td:last-child {
+            border-right: none;
+        }
+
+    
+    .blockList tbody tr td {
+        border-bottom: 1px solid #555;
+    }
+
+    
+    .blockList tbody tr:hover {
+        background-color: #608FE8; 
+        color: black; 
+    }
+
+    .blockList th:first-child,
+    .blockList td:first-child {
+        border-left: 1px solid #555; 
+    }
+
+    .blockList th:last-child,
+    .blockList td:last-child {
+        border-right: 1px solid #555; 
+    }
