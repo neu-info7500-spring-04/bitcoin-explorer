@@ -65,6 +65,9 @@ export default async function Home() {
         <div>
           <components.POWAndEmission />
         </div>
+        <div>
+          <components.TransactionFeeData />
+        </div>
         <div className="main-content">
           <div className="info-content">
             <BitcoinInfo />
@@ -80,6 +83,35 @@ export default async function Home() {
         <div>
           <Blocklists />
         </div>
+      </div>
+      <components.CountryNodeStats mempoolCountryNodes={mempoolCountryNodes} />
+      <div style={{ height: "300px", width: "800px" }}>
+        <DistributionChart />
+      </div>
+      <div style={{ marginTop: "50px", width: "100%" }}>
+        <MinerDetails />
+      </div>
+      <div className={styles.blockTitle}>Rich chart of Bitcoin addresses</div>
+      <div>
+        <RichListChart />
+      </div>
+      <div>
+        <components.POWAndEmission />
+      </div>
+      <div className="main-content">
+        <div className="info-content">
+          <BitcoinInfo />
+          <BarGraph />
+          <div className="vertical-separator"></div>
+          <Fees />
+        </div>
+        <hr className="section-separator" />
+        <div className="info-content">
+          <MarketData />
+        </div>
+      </div>
+      <div>
+        <Blocklists />
       </div>
       <components.CountryNodeStats mempoolCountryNodes={mempoolCountryNodes} />
       <div style={{ height: "300px", width: "800px" }}>

@@ -18,6 +18,20 @@ query ActiveNodes {
       timestamp
       latestHeight
       nodes
+      }
+    }
+  }
+}
+
+query TransactionFee($network: BitqueryBitcoinNetwork!, $limit: Int!) {
+  bitquery {
+    bitcoin(network: $network) {
+      transactions(options: { desc: "date.date", limit: $limit }) {
+        date {
+          date
+        }
+        feeValueDecimal
+      }
     }
   }
 }
