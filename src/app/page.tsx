@@ -5,7 +5,7 @@ import {graphqlClient} from "@/graphql/client";
 import styles from "./page.module.css";
 import LastBlock from "./LastBlock";
 import RichListChart from "./RichListChart";
-
+import Blocklists from './Blocklists';
 import React from 'react';
 import { components } from '../components';
 import DistributionChart from "./components/minerdistributionpool/DistributionChart";
@@ -48,6 +48,10 @@ export default async function Home() {
                 </div>
                 <div>
                     <components.POWAndEmission />
+                </div>
+                <div>
+                    <Blocklists />
+
                 </div>
             </div>
             <components.CountryNodeStats mempoolCountryNodes={mempoolCountryNodes}/>
