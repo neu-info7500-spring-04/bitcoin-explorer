@@ -1,0 +1,35 @@
+.fees {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align text to the left */
+  padding: 10px;
+  width: fit-content; /* Adjust the width of the fees container */
+  margin-left: auto; /* This pushes the fees section to the right */
+}
+
+.fees label {
+  font-weight: bold;
+  color: #6c757d;
+  margin-bottom: 10px; /* Space between label and fees */
+}
+
+.fee-item {
+  display: flex;
+  justify-content: flex-start; /* Align the fee details to the left */
+  margin: 4px 0;
+  font-size: 16px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: black;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.fee-label {
+  min-width: 60px; /* Adjust the min-width to align all the fee labels vertically */
+  color: black;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.fee-text {
+  justify-self: start;
+  margin-left: 80px; /* Aligns the value to the start of the cell */
+}
