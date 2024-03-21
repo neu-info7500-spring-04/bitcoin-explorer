@@ -120,6 +120,7 @@ export default async function Home() {
       <div style={{ marginTop: "50px", width: "100%" }}>
         <MinerDetails />
       </div>
+      <components.RankingData />
     </main>
   );
 }
