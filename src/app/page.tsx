@@ -9,7 +9,7 @@ import RichListChart from "./RichListChart";
 import React from 'react';
 import { components } from '../components';
 import DistributionChart from "./components/minerdistributionpool/DistributionChart";
-
+import TodayBlockStats from "../components/TodayBlockStats";
 
 async function getBitcoin(): Promise<BitcoinQuery> {
     return await graphqlClient.request(BitcoinDocument, {});
@@ -49,6 +49,9 @@ export default async function Home() {
                 <div>
                     <components.POWAndEmission />
                 </div>
+            </div>
+            <div>
+                <TodayBlockStats></TodayBlockStats>
             </div>
             <components.CountryNodeStats mempoolCountryNodes={mempoolCountryNodes}/>
             <div style={{ height: '300px', width: '800px' }}>
