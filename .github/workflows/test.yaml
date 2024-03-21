@@ -9,6 +9,8 @@ on:
 jobs:
   Playwright_test:
     runs-on: ubuntu-latest
+    env:
+      GRAPHQL_API_GATEWAY_URL: ${{ secrets.GRAPHQL_API_GATEWAY_URL }}
 
     strategy:
       matrix:
