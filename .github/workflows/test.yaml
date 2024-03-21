@@ -1,5 +1,3 @@
-# yaml file to test github actions
-
 name: Playwright test
 
 on:
@@ -23,6 +21,12 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+    - name: 'Create env file'
+      run: |
+        touch .env
+        echo GRAPHQL_API_GATEWAY_URL="https://bitcoin-grafbase-mahithchigurupati.grafbase.app/graphql" >> .env
+        echo GRAPHQL_API_GATEWAY_KEY= >> .env
+        cat .env
     - run: npm install
-    - run: npm run codegen
+    - run: npx graphql-codegen --require dotenv/config --config codegen.ts dotenv_config_path=.env
     - run: npm test
