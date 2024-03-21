@@ -1,7 +1,7 @@
 export function graphQuery(raw){
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("X-API-KEY", "BQYJEisYvfWsenlNM6A6hg9gHIFyYhEi");
+    myHeaders.append("X-API-KEY", process.env.BITQUERY_API_KEY);
     myHeaders.append("Authorization", "Bearer ory_at_LrTNFYR4lqAHeV9rbF-KRe3LhTOvxpskt7bFGkQqQsA.Bp9rbp8oc67kVtu5VI181wTHjFOUBDCQQt6CoHzTuAw");
     
     const requestOptions = {
