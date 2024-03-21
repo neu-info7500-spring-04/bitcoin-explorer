@@ -47,7 +47,7 @@ export default async function Home() {
   const mempoolCountryNodes = await getMempoolCountryNodes();
 
   return (
-    <main className={styles.container}>
+    <main className={styles.container} id="main">
       <div className={styles.block}>
         <div>Northeastern Bitcoin Explorer</div>
         <div className={styles.containerRow}>
@@ -59,9 +59,9 @@ export default async function Home() {
           </div>
         </div>
         <div className={styles.blockTitle}>Rich chart of Bitcoin addresses</div>
-        <div>
+          {/*<div>
           <RichListChart />
-        </div>
+        </div>*/}
         <div>
           <components.POWAndEmission />
         </div>
@@ -88,38 +88,9 @@ export default async function Home() {
       <div style={{ height: "300px", width: "800px" }}>
         <DistributionChart />
       </div>
-      <div style={{ marginTop: "50px", width: "100%" }}>
+      {/*<div style={{ marginTop: "50px", width: "100%" }}>
         <MinerDetails />
-      </div>
-      <div className={styles.blockTitle}>Rich chart of Bitcoin addresses</div>
-      <div>
-        <RichListChart />
-      </div>
-      <div>
-        <components.POWAndEmission />
-      </div>
-      <div className="main-content">
-        <div className="info-content">
-          <BitcoinInfo />
-          <BarGraph />
-          <div className="vertical-separator"></div>
-          <Fees />
-        </div>
-        <hr className="section-separator" />
-        <div className="info-content">
-          <MarketData />
-        </div>
-      </div>
-      <div>
-        <Blocklists />
-      </div>
-      <components.CountryNodeStats mempoolCountryNodes={mempoolCountryNodes} />
-      <div style={{ height: "300px", width: "800px" }}>
-        <DistributionChart />
-      </div>
-      <div style={{ marginTop: "50px", width: "100%" }}>
-        <MinerDetails />
-      </div>
+      </div>*/}
     </main>
   );
 }
