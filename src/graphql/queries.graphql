@@ -21,7 +21,6 @@ query ActiveNodes {
       }
     }
   }
-}
 
 query TransactionFee($network: BitqueryBitcoinNetwork!, $limit: Int!) {
   bitquery {
