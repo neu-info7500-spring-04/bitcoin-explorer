@@ -1,6 +1,6 @@
 import { BitcoinDocument, BitcoinQuery } from "@/graphql/__generated__/graphql";
 import { MempoolQuery, MempoolDocument } from "@/graphql/__generated__/graphql";
-
+import BlockTransactions from "./BlockTransactions";
 import { graphqlClient } from "@/graphql/client";
 import styles from "./page.module.css";
 import LastBlock from "./LastBlock";
@@ -50,7 +50,7 @@ export default async function Home() {
                 <LastBlock bitcoin={bitcoin} />
                 <div className={styles.blockTitle}>Rich chart of Bitcoin addresses</div>
                 <div>
-                    <RichListChart />
+                   <RichListChart />
                 </div>
                 <div>
                     <components.POWAndEmission />
@@ -69,13 +69,16 @@ export default async function Home() {
                 </div>
                 <div>
                     <Blocklists />
-
                 </div>
             </div>
             <components.CountryNodeStats mempoolCountryNodes={mempoolCountryNodes} />
+            <div>
+                    <BlockTransactions />
+                </div>
             <div style={{ height: '300px', width: '800px' }}>
                 <DistributionChart />
             </div>
+            
         </main>
     );
 }
