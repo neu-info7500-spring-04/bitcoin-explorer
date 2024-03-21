@@ -88,9 +88,9 @@ export default async function Home() {
       <div style={{ height: "300px", width: "800px" }}>
         <DistributionChart />
       </div>
-      {/*<div style={{ marginTop: "50px", width: "100%" }}>
+      <div style={{ marginTop: "50px", width: "100%" }}>
         <MinerDetails />
-      </div>*/}
+      </div>
     </main>
   );
 }
