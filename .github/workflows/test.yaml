@@ -25,5 +25,6 @@ jobs:
         cache: 'npm'
     - run: npm install
     - run: npm install -g graphql-codegen
-    - run: graphql-codegen --require dotenv/config --config codegen.ts
+    - run: npm install -g dotenv
+    - run: graphql-codegen --require dotenv/config --config ./codegen.ts
     - run: npm test
