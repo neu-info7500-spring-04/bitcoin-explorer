@@ -1,0 +1,63 @@
+/* MainContent.css */
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  width: 100%;
+  max-width: 1400px;
+}
+
+.upper-section {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.vertical-separator {
+  height: 150px; /* Match the height of your bar graph */
+  width: 1px;
+  background-color: #e6e6e6;
+  margin: 0 20px; /* Add some space around the separator */
+}
+
+.bitcoin-graph-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1; /* Allows it to take up available space */
+  position: relative; /* For positioning the separator */
+  padding-right: 20px; /* Creates space for the separator */
+}
+
+.section-separator {
+  width: 100%;
+  border-top: 1px solid #e6e6e6; /* Only the top border for a horizontal line */
+  margin: 20px 0; /* Space above and below the separator */
+}
+
+.info-content {
+  display: flex;
+  align-items: center;
+  justify-content: left; /* This will distribute space evenly */
+  width: 100%;
+}
+
+.info-chart-fees {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Distributes space evenly between components */
+  padding: 0px;
+  position: relative; /* For positioning the separator */
+}
+
+.fees {
+  /* Adjust the fees section styles */
+  margin-left: inherit; /* Keep this to push the fees to the right */
+}

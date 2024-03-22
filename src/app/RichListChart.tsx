@@ -1,139 +1,31 @@
-import React, { useMemo } from "react";
 import { graphqlClient } from "@/graphql/client";
-
-import { TransactionsAndAddressesDocument, Blockchairapi_1Document, Blockchairapi_10Document, Blockchairapi_100Document, Blockchairapi_1000Document, Blockchairapi_10000Document, Blockchairapi_100000Document, Blockchairapi_01Document, Blockchairapi_001Document, Blockchairapi_0001Document, Blockchairapi_00001Document, Blockchairapi_000001Document, Blockchairapi_0000001Document, Blockchairapi_00000001Document, Blockchairapi_000000000Document } from "@/graphql/__generated__/graphql";
-// import { Blockchairapi_10Document } from "@/graphql/__generated__/graphql";
-
-const bitcoinAddress_1 = await getBlockchairapi_1()
-const bitcoinAddress_10 = await getBlockchairapi_10()
-const bitcoinAddress_100 = await getBlockchairapi_100()
-const bitcoinAddress_1000 = await getBlockchairapi_1000()
-const bitcoinAddress_10000 = await getBlockchairapi_10000()
-const bitcoinAddress_100000 = await getBlockchairapi_100000()
-const bitcoinAddress_01 = await getBlockchairapi_01()
-const bitcoinAddress_001 = await getBlockchairapi_001()
-const bitcoinAddress_0001 = await getBlockchairapi_0001()
-const bitcoinAddress_00001 = await getBlockchairapi_00001()
-const bitcoinAddress_000001 = await getBlockchairapi_000001()
-const bitcoinAddress_0000001 = await getBlockchairapi_0000001()
-const bitcoinAddress_00000001 = await getBlockchairapi_00000001()
-const bitcoinAddress_00000000 = await getBlockchairapi_00000000()
-const transactions_Addresses = await getTransactionsAndAddresses()
-
-async function getTransactionsAndAddresses() {
-  return await graphqlClient.request(TransactionsAndAddressesDocument,
-    {}
-  );
-}
-
-async function getBlockchairapi_1() {
-  return await graphqlClient.request(Blockchairapi_1Document,
-    {}
-  );
-}
-async function getBlockchairapi_10() {
-  return await graphqlClient.request(Blockchairapi_10Document,
-    {}
-  );
-}
-async function getBlockchairapi_100() {
-  return await graphqlClient.request(Blockchairapi_100Document,
-    {}
-  );
-}
-async function getBlockchairapi_1000() {
-  return await graphqlClient.request(Blockchairapi_1000Document,
-    {}
-  );
-}
-async function getBlockchairapi_10000() {
-  return await graphqlClient.request(Blockchairapi_10000Document,
-    {}
-  );
-}
-async function getBlockchairapi_100000() {
-  return await graphqlClient.request(Blockchairapi_100000Document,
-    {}
-  );
-}
-async function getBlockchairapi_01() {
-  return await graphqlClient.request(Blockchairapi_01Document,
-    {}
-  );
-}
-async function getBlockchairapi_001() {
-  return await graphqlClient.request(Blockchairapi_001Document,
-    {}
-  );
-}
-
-async function getBlockchairapi_0001() {
-  return await graphqlClient.request(Blockchairapi_0001Document,
-    {}
-  );
-}
-async function getBlockchairapi_00001() {
-  return await graphqlClient.request(Blockchairapi_00001Document,
-    {}
-  );
-}
-async function getBlockchairapi_000001() {
-  return await graphqlClient.request(Blockchairapi_000001Document,
-    {}
-  );
-}
-
-async function getBlockchairapi_0000001() {
-  return await graphqlClient.request(Blockchairapi_0000001Document,
-    {}
-  );
-}
-async function getBlockchairapi_00000001() {
-  return await graphqlClient.request(Blockchairapi_00000001Document,
-    {}
-  );
-}
-
-async function getBlockchairapi_00000000() {
-  return await graphqlClient.request(Blockchairapi_000000000Document,
-    {}
-  );
-}
+import { BlockchairapiMergedQuery } from "@/graphql/__generated__/graphql";
+import { use, useMemo } from "react";
 
 interface BarChartProps {
-  /** The values to visualize. */
-  // values: Array<T>;
-
-  /** Returns the y-value, the height, for a value */
-  // yValueFn: (value: T) => number;
-
-  /** Returns the label on the x-axis for a value or its index in the value array. */
-  // xLabelFn: (value: T, idx: number) => string;
-
-  /** Additional styles */
+  bitcoinAddressBalance: BlockchairapiMergedQuery;
   style?: React.CSSProperties;
 }
 
-function RichListChart<T>({ style }: BarChartProps) {
+const RichListChart: React.FC<BarChartProps> = ({ bitcoinAddressBalance, style }) => {
+  // console.log(bitcoinAddress_100000.blockchairapi.addressesByBalance?.context?.totalRows)
 
   const values = [
-    { label: '1,000,000 - 100,000', value: bitcoinAddress_100000.blockchairapi.addressesByBalance?.context?.totalRows },
-    { label: '100,000 - 10,000', value: bitcoinAddress_10000.blockchairapi.addressesByBalance?.context?.totalRows },
-    { label: '10,000 - 1,000', value: bitcoinAddress_1000.blockchairapi.addressesByBalance?.context?.totalRows },
-    { label: '1,000 - 100', value: bitcoinAddress_100.blockchairapi.addressesByBalance?.context?.totalRows },
-    { label: '100 - 10', value: bitcoinAddress_10.blockchairapi.addressesByBalance?.context?.totalRows },
-    { label: '10 - 1', value: bitcoinAddress_1.blockchairapi.addressesByBalance?.context?.totalRows },
-    { label: '1 - 0.1', value: bitcoinAddress_01.blockchairapi.addressesByBalance?.context?.totalRows },
-    { label: '0.1 - 0.01', value: bitcoinAddress_001.blockchairapi.addressesByBalance?.context?.totalRows },
-    { label: '0.01 - 0.001', value: bitcoinAddress_0001.blockchairapi.addressesByBalance?.context?.totalRows },
-    { label: '0.001 - 0.0001', value: bitcoinAddress_00001.blockchairapi.addressesByBalance?.context?.totalRows },
-    { label: '0.0001 - 0.00001', value: bitcoinAddress_000001.blockchairapi.addressesByBalance?.context?.totalRows },
-    { label: '0.00001 - 0.000001', value: bitcoinAddress_0000001.blockchairapi.addressesByBalance?.context?.totalRows },
-    { label: '0.000001 - 0.0000001', value: bitcoinAddress_00000001.blockchairapi.addressesByBalance?.context?.totalRows },
-    { label: '< 0.0000001', value: bitcoinAddress_00000000.blockchairapi.addressesByBalance?.context?.totalRows },
+    { label: '1,000,000 - 100,000', value: bitcoinAddressBalance.blockchairapi.addressesByBalance_100000?.context?.totalRows ?? 0 },
+    { label: '100,000 - 10,000', value: bitcoinAddressBalance.blockchairapi.addressesByBalance_10000?.context?.totalRows ?? 0 },
+    { label: '10,000 - 1,000', value: bitcoinAddressBalance.blockchairapi.addressesByBalance_1000?.context?.totalRows ?? 0 },
+    { label: '1,000 - 100', value: bitcoinAddressBalance.blockchairapi.addressesByBalance_100?.context?.totalRows ?? 0 },
+    { label: '100 - 10', value: bitcoinAddressBalance.blockchairapi.addressesByBalance_10?.context?.totalRows ?? 0 },
+    { label: '10 - 1', value: bitcoinAddressBalance.blockchairapi.addressesByBalance_1?.context?.totalRows ?? 0 },
+    { label: '1 - 0.1', value: bitcoinAddressBalance.blockchairapi.addressesByBalance_01?.context?.totalRows ?? 0 },
+    { label: '0.1 - 0.01', value: bitcoinAddressBalance.blockchairapi.addressesByBalance_001?.context?.totalRows ?? 0 },
+    { label: '0.01 - 0.001', value: bitcoinAddressBalance.blockchairapi.addressesByBalance_0001?.context?.totalRows ?? 0 },
+    { label: '0.001 - 0.0001', value: bitcoinAddressBalance.blockchairapi.addressesByBalance_00001?.context?.totalRows ?? 0 },
+    { label: '0.0001 - 0.00001', value: bitcoinAddressBalance.blockchairapi.addressesByBalance_000001?.context?.totalRows ?? 0 },
+    { label: '0.00001 - 0.000001', value: bitcoinAddressBalance.blockchairapi.addressesByBalance_0000001?.context?.totalRows ?? 0 },
+    { label: '0.000001 - 0.0000001', value: bitcoinAddressBalance.blockchairapi.addressesByBalance_000000001?.context?.totalRows ?? 0 },
+    { label: '< 0.0000001', value: bitcoinAddressBalance.blockchairapi.addressesByBalance_000000000?.context?.totalRows ?? 0 },
   ];
-
-
   const max = useMemo(() => {
     return values.reduce((prev, curr) => {
       const c = curr.value;
@@ -150,22 +42,7 @@ function RichListChart<T>({ style }: BarChartProps) {
       flexWrap: "wrap",
       ...style,
     }}>
-      {/* <div>
-        <span>Blocks: </span>
-        <span>00</span>
-      </div> */}
-      <div>
-        <span>Transactions: </span>
-        <span>{transactions_Addresses.bitquery.bitcoin?.transactions?.map(b => {
-          return b.count
-        })}</span>
-      </div>
-      <div>
-        <span>Address: </span>
-        <span>{transactions_Addresses.bitquery.bitcoin?.inputs?.map(b => {
-          return b.count
-        })}</span>
-      </div>
+
       <div
         style={{
           display: "flex",
@@ -201,6 +78,7 @@ function RichListChart<T>({ style }: BarChartProps) {
                 <div
                   key={"xlabel-" + idx}
                   style={{
+                    height: "1rem",
                     fontSize: "small",
                     flexGrow: 1,
                     paddingLeft: "2%",
@@ -221,7 +99,7 @@ function RichListChart<T>({ style }: BarChartProps) {
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-evenly",
-              width: "30rem"
+              width: "30rem",
               // alignItems: "flex-end",
             }}
           >
@@ -236,9 +114,10 @@ function RichListChart<T>({ style }: BarChartProps) {
                   <div
                     key={"bar-" + idx}
                     style={{
-                      paddingLeft: "2%",
+                      // paddingLeft: "2%",
                       // paddingRight: "2%",
-                      height: 100.0 / values.length + "%",
+                      margin: "0",
+                      height: 200.0 / values.length + "%",
                       width: (v.value / max) * 100 + "%",
                     }}
                   >
@@ -250,7 +129,10 @@ function RichListChart<T>({ style }: BarChartProps) {
                       }}
                     />
                   </div>
-                  <p>{v.value}</p>
+                  <p style={{
+                    margin: "0",
+                    height: 200.0 / values.length + "%",
+                  }}>{v.value}</p>
                 </div>
               );
             })}
