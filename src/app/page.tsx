@@ -11,6 +11,7 @@ import { components } from "../components";
 import DistributionChart from "./components/minerdistributionpool/DistributionChart";
 import MinerDetails from "./minerdetails/page";
 import "bootstrap/dist/css/bootstrap.min.css";
+import CoinMarket from "../components/CoinMarket"
 
 //Mainent Imports
 import MarketData from "../components/MarketData";
@@ -91,6 +92,11 @@ export default async function Home() {
       <div style={{ marginTop: "50px", width: "100%" }}>
         <MinerDetails />
       </div>
+
+      <div className="main-content">
+                <CoinMarket />
+            </div>
+            
     </main>
   );
 }
