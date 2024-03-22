@@ -1,0 +1,125 @@
+/* styles.css */
+/* App.css */
+/* App.css */
+/*
+*/
+
+  
+.header {
+    color: #040504;
+    padding: 10px;
+    font-size: 24px;
+    text-align: left; /* 设置标题靠左显示 */
+    font-family: 'Roboto', sans-serif; /* 使用Roboto字体 */
+    /* 可选：为了增加设计感，你也可以设置字重 */
+    font-weight: 700; /* Roboto的粗体 */
+  }
+  
+  
+  .table-container {
+    margin: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table-header {
+    background-color: #f0f0f0;
+    padding: 25px;
+  }
+
+  .table-header th {
+    background-color: #f0f0f0;
+    color: #040504;
+    padding: 
+    15px;
+  }
+  .table-row {
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  
+  .table-row:last-child {
+    border-bottom: none;
+  }
+  
+  .table-row:hover {
+    background-color: #c1c1c1;
+  }
+  
+  .table-cell {
+    padding: 100px 20px; /* 增加单元格的上下和左右内边距 */
+    text-align: left;
+  }
+  .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5vh; /* 使用视口高度，使容器填满整个屏幕高度 */
+  }
+
+  .button {
+    background-color: #d6d6d6;
+    color: rgb(0, 0, 0);
+    border: 20px; /* 注意：这里应该是border-width属性，如果你想设置边框宽度 */
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 20px; /* 在按钮左右各添加20px的外边距 */
+  }
+  
+  
+  .button:hover {
+    background-color: #818281;
+  }
+  .rowbutton{
+    background-color: #040504; /* 按钮背景颜色 */
+    color: rgb(255, 255, 255); /* 文字颜色 */
+    border: none; /* 无边框 */
+    padding: 5px 15px; /* 上下5px，左右15px的内边距，减小了按钮的大小 */
+    text-align: center; /* 文本居中 */
+    text-decoration: none; /* 无文本装饰 */
+    display: inline-block; /* 行内块级元素 */
+    margin: 4px 2px; /* 外边距 */
+    cursor: pointer; /* 鼠标指针为手形图标 */
+    border-radius: 20px; /* 较大的border-radius创建药丸形状 */
+    font-size: 14px; /* 减小文字大小 */
+    font-weight: bold; /* 加粗文本 */
+  }
+  
+  .pagination {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  /* App.css */
+.table-row td {
+    color: rgb(52, 51, 51); /* 文字颜色 */
+    text-align: center; /* 水平居中 */
+    vertical-align: middle; /* 垂直居中 */
+    padding: 20px; /* 或者根据需要设置适当的填充 */
+    font-size: 14px; /* 减小文字大小 */
+    font-weight: bold; /* 加粗文本 */
+  }
+  
+  /* 这将确保图片也居中显示 */
+  .table-row img {
+    display: block;
+    margin: auto; /* 这将使得图片在其容器内居中 */
+  }
+  
