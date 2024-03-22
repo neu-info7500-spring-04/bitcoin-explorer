@@ -67,7 +67,7 @@ export default async function Home() {
           <components.POWAndEmission />
         </div>
         <div>
-          <components.TransactionFeeData />
+            {/*<components.TransactionFeeData />*/}
         </div>
         <div className="main-content">
           <div className="info-content">
@@ -91,7 +91,7 @@ export default async function Home() {
       </div>
       
       <div style={{ marginTop: "50px", width: "100%" }}>
-        <MinerDetails />
+          {/*<MinerDetails />*/}
       </div>
       <div style={{ marginTop: "50px", width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
     <h2>Enter address to get UTXO distribution statistics</h2>
