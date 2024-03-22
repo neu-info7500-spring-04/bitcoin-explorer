@@ -11,6 +11,7 @@ import { components } from "../components";
 import DistributionChart from "./components/minerdistributionpool/DistributionChart";
 import MinerDetails from "./minerdetails/page";
 import "bootstrap/dist/css/bootstrap.min.css";
+import CryptoMarketData from "../components/CryptoMarketData";
 
 //Mainent Imports
 import MarketData from "../components/MarketData";
@@ -90,6 +91,9 @@ export default async function Home() {
       </div>
       <div style={{ marginTop: "50px", width: "100%" }}>
         <MinerDetails />
+      </div>
+      <div>
+        <CryptoMarketData/>
       </div>
     </main>
   );
