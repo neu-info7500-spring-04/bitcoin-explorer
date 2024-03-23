@@ -17,6 +17,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 //Mainent Imports
 import MarketData from "../components/MarketData";
+import LatestTransactions from '../components/LatestTransactions';
 
 import BitcoinInfo from "../components/BitcoinInfo";
 import Fees from "../components/Fees";
@@ -119,6 +120,11 @@ export default async function Home() {
         </div>
       </div>
       <components.RankingData />
+
+       <div>
+      <h1>Transactions</h1>
+      <LatestTransactions />
+      </div>
 
       <div style={{ marginTop: "20px", width: "80%", display: "flex" }}>
         <MempoolRecent/>
