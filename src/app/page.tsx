@@ -67,8 +67,8 @@ export default async function Home() {
         <div>
           <components.POWAndEmission />
         </div>
-        <div>
-          {/*<components.TransactionFeeData />*/}
+        <div className={styles.containerRow}>
+            <components.TransactionFeeData />
         </div>
         <div className="main-content">
           <div className="info-content">
