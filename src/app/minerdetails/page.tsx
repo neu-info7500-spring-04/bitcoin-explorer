@@ -1,106 +1,115 @@
-"use client";
-import styles from "./MinerDetails.module.css";
-import { graphqlClientWithConstantBase } from "@/graphql/client";
-import { MinerDataDocument } from "@/graphql/__generated__/graphql";
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
+import { BitcoinDocument, BitcoinQuery } from "@/graphql/__generated__/graphql";
+import { MempoolQuery, MempoolDocument } from "@/graphql/__generated__/graphql";
+import UtxoChart from "./UTXOData"; 
+import UtxoPieChart from "../components/UtxoPieChart"; 
+import { graphqlClient } from "@/graphql/client";
+import styles from "./page.module.css";
+import LastBlock from "./LastBlock";
+import RichListChart from "./RichListChart";
+import Blocklists from "./Blocklists";
+import React from "react";
+import { components } from "../components";
+import DistributionChart from "./components/minerdistributionpool/DistributionChart";
+import MinerDetails from "./minerdetails/page";
+import "bootstrap/dist/css/bootstrap.min.css";
 
+//Mainent Imports
+import MarketData from "../components/MarketData";
+import LatestTransactions from '../components/LatestTransactions';
 
-function getBitcoinData(limit: number, offset: number, from: string, till: string) {
-  return graphqlClientWithConstantBase.request(MinerDataDocument, {
-    limit: limit,
-    offset: offset,
-    from: from,
-    till: till
-  })
-  .then(response => response.bitquery.bitcoin.outputs)
-  .catch(error => {
-    console.error('Error fetching Bitcoin data:', error);
-    throw new Error('Error fetching Bitcoin data');
-  });
+import BitcoinInfo from "../components/BitcoinInfo";
+import Fees from "../components/Fees";
+import "../components/MainContent.css";
+import BarGraph from "../components/BarGraph";
+
+async function getBitcoin(): Promise<BitcoinQuery> {
+  return await graphqlClient.request(BitcoinDocument, {});
 }
 
-export default function Home() {
-  const limit = 10;
-  const offset = 0;
-  const [fromDate, setFromDate] = useState(new Date(new Date().setDate(new Date().getDate() - 7)));
-  const [tillDate, setTillDate] = useState(new Date());
-  const [bitcoinData, setBitcoinData] = useState([]);
+async function getMempoolCountryNodes(): Promise<MempoolQuery> {
+  try {
+    return await graphqlClient.request(MempoolDocument, {});
+  } catch (error) {
+    console.log("Failed to fetch mempool data", error);
+    throw error;
+  }
+}
 
-  // Call the function with parameters
-  // const bitcoinData = await getBitcoinData(limit, offset, fromDate, tillDate);
-  // console.log('Bitcoin data:', bitcoinData);
+export default async function Home() {
+  const bitcoin = await getBitcoin();
 
-  const fetchBitcoinData = () => {
-    getBitcoinData(limit, offset, fromDate, tillDate)
-      .then(data => {
-        setBitcoinData(data);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
+  const lastBlock = bitcoin.bitquery.bitcoin?.blocks?.[0];
+
+  const formatBlockHeight = (height: number | undefined) => {
+    if (height === undefined) return "";
+    const heightString = height.toString();
+    return `${heightString.slice(0, 3)} ${heightString.slice(3)}`;
   };
 
-  useEffect(() => {
-    fetchBitcoinData(); 
-  }, []);
+  const mempoolCountryNodes = await getMempoolCountryNodes();
 
   return (
-    <main className={styles.main}>
-      <div className={styles.tableContainer}>
-      <h1 style={{ textAlign: 'center', color:'black'}}>Miner and Address statistics</h1>
-
-
-        <div>
-          <label style={{ color: 'black' }} htmlFor="fromDate">From: </label>
-          <input 
-            type="date" 
-            id="fromDate" 
-            value={fromDate.toISOString().split('T')[0]}
-            onChange={(e) => setFromDate(new Date(e.target.value))}
-          />
-
-          <label style={{ color: 'black' }} htmlFor="tillDate"> To: </label>
-          <input 
-            type="date" 
-            id="tillDate" 
-            value={tillDate.toISOString().split('T')[0]}
-            onChange={(e) => setTillDate(new Date(e.target.value))}
-          />
-
-          <button onClick={fetchBitcoinData}>Search</button>
+    <main className={styles.container} id="main">
+      <div className={styles.block}>
+        <div>Northeastern Bitcoin Explorer</div>
+        <div className={styles.containerRow}>
+          <div className={styles.containerRow}>
+            <LastBlock bitcoin={bitcoin} />
+          </div>
+          <div className={styles.containerRow}>
+            <components.BTCMarketData />
+          </div>
         </div>
-
-        <table className={styles.table}>
-          <thead>
-            <tr>
-            <th style={{ color: 'black' }}>Address</th>
-              <th style={{ color: 'black' }}>Block Count</th>
-              <th style={{ color: 'black' }}>Minimum Date</th>
-              <th style={{ color: 'black' }}>Maximum Date</th>
-              <th style={{ color: 'black' }}>Block Reward (BTC)</th>
-            </tr>
-          </thead>
-          <tbody>
-            {bitcoinData.map((output, index) => (
-              <tr key={index}>
-                <td>
-                <Link 
-        href={`/minerdetails/addressdetails?address=${output.outputAddress.address}&from=${fromDate.toISOString().split('T')[0]}&till=${tillDate.toISOString().split('T')[0]}`}
-        className={styles.addressLink} // Apply styles directly to Link if necessary
-      >
-        {output.outputAddress.address}
-      </Link>
-                </td>
-                <td style={{ color: 'black' }}>{output.count}</td>
-                <td style={{ color: 'black' }}>{output.minimum}</td>
-                <td style={{ color: 'black' }}>{output.maximum}</td>
-                <td style={{ color: 'black' }}>{output.value.toFixed(8)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <div className={styles.blockTitle}>Rich chart of Bitcoin addresses</div>
+          {/*<div>
+          <RichListChart />
+        </div>*/}
+        <div>
+          <components.POWAndEmission />
+        </div>
+        <div>
+            {/*<components.TransactionFeeData />*/}
+        </div>
+        <div className="main-content">
+          <div className="info-content">
+            <BitcoinInfo />
+            <BarGraph />
+            <div className="vertical-separator"></div>
+            <Fees />
+          </div>
+          <hr className="section-separator" />
+          <div className="info-content">
+            <MarketData />
+          </div>
+        </div>
+        <div>
+          <Blocklists />
+        </div>
       </div>
+      <components.CountryNodeStats mempoolCountryNodes={mempoolCountryNodes} />
+      <div style={{ height: "300px", width: "800px" }}>
+        <DistributionChart />
+      </div>
+      <div>
+      <h1>Transactions</h1>
+      <LatestTransactions />
+      </div>
+      
+      <div style={{ marginTop: "50px", width: "100%" }}>
+          {/*<MinerDetails />*/}
+      </div>
+      <div style={{ marginTop: "50px", width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
+    <h2>Enter address to get UTXO distribution statistics</h2>
+    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "100%" }}>
+        <div style={{ marginRight: "20px" }}>
+            <UtxoChart />
+        </div>
+        <div>
+            <UtxoPieChart /> 
+        </div>
+    </div>
+</div>
+
     </main>
   );
 }

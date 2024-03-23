@@ -1,0 +1,26 @@
+.transactionsList {
+    background-color: #ffffff; /* Change as per your design */
+    border: 1px solid #e1e4e8; /* Change as per your design */
+    border-radius: 6px;
+    padding: 16px;
+    margin: 16px 0;
+  }
+  
+  .transactionsList h2 {
+    margin-bottom: 16px;
+  }
+  
+  .transactionItem {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #e1e4e8; /* Change as per your design */
+  }
+  
+  .transactionItem span {
+    min-width: 100px;
+    text-align: left;
+  }
+  
+  /* Add more styles as needed */
+  
