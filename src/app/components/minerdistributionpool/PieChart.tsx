@@ -1,11 +1,13 @@
 "use client"
-import React from 'react';
-import Highcharts from 'highcharts';
-import HighchartsReact from 'highcharts-react-official';
-import highcharts3d from 'highcharts/highcharts-3d';
+import React, {useRef} from 'react';
+import Highcharts from 'highcharts'
+import HighchartsExporting from 'highcharts/modules/exporting'
+import HighchartsReact from 'highcharts-react-official'
 
-// Initialize the 3D extension
-highcharts3d(Highcharts);
+if (typeof Highcharts === 'object') {
+    HighchartsExporting(Highcharts)
+}
+
 
 export interface Pool {
     name: string;
@@ -63,11 +65,14 @@ const PieChart: React.FC<PieChartProps> = ({ pools, blockCount }) => {
         }
     };
 
+    const chartComponentRef = useRef<any>(null);
+
     return (
         <div style={{ float: 'left', width: '50%' }}>
             <HighchartsReact
                 highcharts={Highcharts}
                 options={options}
+                ref={chartComponentRef}
             />
         </div>
     );

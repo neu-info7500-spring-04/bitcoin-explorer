@@ -1,0 +1,31 @@
+.wrapper {
+    width: 500px;
+    border-radius: 10px;
+    background-color: #1D1F30;
+    height: 500px;
+
+}
+
+.capacity {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    height: 20%;
+}
+
+.capacity-name {
+    font-size: 20px;
+    color: #4E6AB6;
+    margin-bottom: 10px;
+}
+
+.capacity-number {
+    font-size: 18px;
+    color: white;
+}
+
+.capacity-note {
+    font-size: 14px;
+    color: grey;
+}

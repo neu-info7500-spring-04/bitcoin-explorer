@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic'; // Import dynamic from Next.js
 import './btc-market-data.css';
-import Chart from 'react-apexcharts';
+//import Chart from 'react-apexcharts';
 import { ApexOptions } from "apexcharts";
 
 interface CoinData {
@@ -15,7 +15,7 @@ interface CoinData {
   [key: string]: any;
 }
 
-//const Chart = dynamic(() => import('react-apexcharts'), { ssr: false }); // Dynamically import Chart component
+const Chart = dynamic(() => import('react-apexcharts'), { ssr: false }); // Dynamically import Chart component
 
 const api_url = 'https://api.bitaps.com/market/v1/ticker/btcusd';
 

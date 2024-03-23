@@ -7,7 +7,7 @@
 * Check that the `GRAPHQL_API_GATEWAY_URL` in `.env` points to the API gateway (e.g. Grafbase endpoint).
 * In the `bitcoin-explorer` directory, execute:
 ```
-npm install
+npm install 
 npm run codegen
 npm run dev
 ```
@@ -28,3 +28,4 @@ npx playwright test
 npx playwright show-report
 ```
 
+testing CI
