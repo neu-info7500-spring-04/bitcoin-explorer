@@ -1,6 +1,6 @@
 'use client'
-import React, { useState, useEffect } from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Text } from 'recharts';
+import React, { useEffect, useRef } from 'react';
+import * as echarts from 'echarts';
 
 type Transaction = {
   date: string;
@@ -15,28 +15,56 @@ type ChartProps = {
 };
 
 const TransactionFeesChart: React.FC<ChartProps> = ({ data }) => {
+  const chartRef = useRef(null);
 
-  const transactions: Transaction[] = data.map(transaction => ({
-    date: transaction.date,
-    feeValueDecimal: transaction.feeValueDecimal
-  }));
+  useEffect(() => {
+    const chart = echarts.init(chartRef.current);
 
-  return (
-    <div>
-    <ResponsiveContainer width={800} height={400}>
-      <LineChart data={data} margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
-      <Text  >Daily Transaction fees</Text>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="date" angle={-45} reversed={true} />
-        <YAxis tickFormatter={(tick) => `${tick} BTC`}/>
-        <Tooltip />
-        <Legend />
-        <Line type="monotone" name="Transaction Fees" dataKey="feeValueDecimal" stroke="#8884d8" />
-      </LineChart>
-    </ResponsiveContainer>
-    </div>
-    
-  );
+    const dates = data.map(transaction => transaction.date);
+    const values = data.map(transaction => transaction.feeValueDecimal);
+
+    const option = {
+      xAxis: {
+        type: 'category',
+        data: dates,
+        axisLabel: {
+          formatter: (value: string) => {
+            return value.slice(5).replace('-', '/');
+          }
+        }
+      },
+      yAxis: {
+        type: 'value',
+        axisLabel: {
+          formatter: (value: number) => {
+            return value + ' BTC';
+          }
+        }
+      },
+      tooltip: {
+        trigger: 'axis',
+        formatter: (params: any) => {
+          const date = params[0].axisValue;
+          const value = params[0].data;
+          return `Transaction Fee: ${value} BTC`;
+        }
+      },
+      series: [{
+        data: values,
+        type: 'line',
+        smooth: true,
+      }],
+    };
+
+    chart.setOption(option);
+
+    return () => {
+      chart.dispose();
+    };
+  }, [data]);
+
+  return <div ref={chartRef} style={{ width: '800px', height: '400px' }} />;
 };
+
 
 export default TransactionFeesChart;
