@@ -199,10 +199,13 @@ query TransactionsAndAddresses {
 
 
   
-query GetBlocks {
-bitquery {
+  query GetBlocks {
+  bitquery {
     bitcoin {
-      blocks(date: {between: ["2024-02-18T00:00:00+0000", "2024-02-19T00:00:00+0000"]}) {
+      blocks(
+        options: {desc: ["height"]},
+        date: {between: ["2024-02-18T00:00:00+0000", "2024-02-19T00:00:00+0000"]}
+      ) {
         height
         blockSize
         transactionCount
@@ -212,7 +215,7 @@ bitquery {
       }
     }
   }
-  }
+}
 
 
   query GetTransactions($gteq: Int!, $lteq: Int!) {
