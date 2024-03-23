@@ -20,6 +20,7 @@ import BitcoinInfo from "../components/BitcoinInfo";
 import Fees from "../components/Fees";
 import "../components/MainContent.css";
 import BarGraph from "../components/BarGraph";
+import MempoolRecent from "@/components/mempoolRecentTransactions/MempoolRecent";
 
 async function getBitcoin(): Promise<BitcoinQuery> {
   return await graphqlClient.request(BitcoinDocument, {});
@@ -105,6 +106,10 @@ export default async function Home() {
         </div>
       </div>
       <components.RankingData />
+
+      <div style={{ marginTop: "20px", width: "80%", display: "flex" }}>
+        <MempoolRecent/>
+      </div>
     </main>
   );
 }
