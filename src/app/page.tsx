@@ -12,10 +12,10 @@ import { components } from "../components";
 import DistributionChart from "./components/minerdistributionpool/DistributionChart";
 import MinerDetails from "./minerdetails/page";
 import "bootstrap/dist/css/bootstrap.min.css";
+import TodayBlockStats from "../components/TodayBlockStats";
 
 //Mainent Imports
 import MarketData from "../components/MarketData";
-import TodayBlockStats from "../components/TodayBlockStats";
 import BitcoinInfo from "../components/BitcoinInfo";
 import Fees from "../components/Fees";
 import "../components/MainContent.css";
@@ -90,7 +90,9 @@ export default async function Home() {
       <div style={{ height: "300px", width: "800px" }}>
         <DistributionChart />
       </div>
-
+      <div>
+            <TodayBlockStats></TodayBlockStats>
+        </div>
       <div style={{ marginTop: "50px", width: "100%" }}>
         {/*<MinerDetails />*/}
       </div>
