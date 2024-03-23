@@ -10,9 +10,9 @@ import Blocklists from "./Blocklists";
 import React from "react";
 import { components } from "../components";
 import DistributionChart from "./components/minerdistributionpool/DistributionChart";
-import MinerDetails from './minerdetails/page';
+// import MinerDetails from './minerdetails/page';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import MinerDetails from "./minerdetails/page";
+// import MinerDetails from "./minerdetails/page";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 //Mainent Imports
@@ -121,14 +121,18 @@ export default async function Home() {
       </div>
       <components.RankingData />
 
-       <div>
-      <h1>Transactions</h1>
-      <LatestTransactions />
-      </div>
-
       <div style={{ marginTop: "20px", width: "80%", display: "flex" }}>
         <MempoolRecent/>
       </div>
-    </main>
+
+      <div>
+      <h1>Transactions</h1>
+      <LatestTransactions />
+    </div>
   );
+    </main>
+
+
+  )
+      
 }
