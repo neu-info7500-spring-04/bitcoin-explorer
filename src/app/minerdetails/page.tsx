@@ -19,7 +19,6 @@ function getBitcoinData(limit: number, offset: number, from: string, till: strin
   .then(response => response.bitquery.bitcoin.outputs)
   .catch(error => {
     console.error('Error fetching Bitcoin data:', error);
-    throw new Error('Error fetching Bitcoin data');
   });
 }
 
@@ -33,7 +32,6 @@ function getAddressData(from: string, till: string, address: string) {
   .then(response => response.bitquery.bitcoin)
   .catch(error => {
     console.error('Error fetching address data:', error);
-    throw new Error('Error fetching address data');
   });
 }
 
