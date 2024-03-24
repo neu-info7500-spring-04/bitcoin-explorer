@@ -1,4 +1,6 @@
 import { CodegenConfig } from '@graphql-codegen/cli'
+import dotenv from 'dotenv';
+dotenv.config();
 
 const config: CodegenConfig = {
     schema: {
