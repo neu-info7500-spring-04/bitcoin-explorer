@@ -1,24 +1,24 @@
-import Head from 'next/head';
-import './globals.css';
+import type {Metadata} from "next";
+import {Inter} from "next/font/google";
+import "./globals.css";
+import {BitcoinDocument} from "@/graphql/__generated__/graphql";
+import {graphqlClient} from "@/graphql/client";
 
-interface RootLayoutProps {
+const inter = Inter({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  title: "NU Bitcoin Explorer",
+  description: "Northeastern University's Bitcoin Explorer",
+};
+
+export default async function RootLayout({
+  children,
+}: Readonly<{
   children: React.ReactNode;
-  // Optionally, include other props you might need like title, description etc.
-}
-
-export default function RootLayout({ children }: RootLayoutProps) {
+}>) {
   return (
-    <>
-      <Head>
-        <title>NU Bitcoin Explorer</title>
-        <meta name="description" content="Northeastern University's Bitcoin Explorer" />
-        {/* Add any other head elements here */}
-        <link href="/path-to-your-fonts.css" rel="stylesheet" /> {/* If you're using custom fonts */}
-      </Head>
-      <main>
-        {children}
-      </main>
-      {/* Add your global components like header, footer etc. here if you have them */}
-    </>
+    <html lang="en">
+      <body className={inter.className}>{children}</body>
+    </html>
   );
 }
