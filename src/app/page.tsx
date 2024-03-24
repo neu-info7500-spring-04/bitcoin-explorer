@@ -110,6 +110,9 @@ export default async function Home() {
       <div style={{ marginTop: "20px", width: "80%", display: "flex" }}>
         <MempoolRecent/>
       </div>
+        <div className={styles.containerRow}>
+          <components.DailyBlockCountData />
+        </div>
     </main>
   );
 }
