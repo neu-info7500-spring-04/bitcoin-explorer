@@ -1,0 +1,68 @@
+.additional-info-container {
+    margin-top: 2rem;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+  }
+  
+  .additional-info {
+    padding: 1rem;
+  }
+  
+  .tabs {
+    display: flex;
+    border-bottom: 2px solid #eaeaea;
+    margin-bottom: 1rem;
+  }
+  
+  .tab {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border: none;
+    background: none;
+    outline: none;
+    border-radius: 8px;
+    margin-right: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .tab:hover,
+  .tab.active {
+    background-color: #e6ac0f;
+    color: #333;
+  }
+  
+  .content {
+    padding: 1rem;
+    color: black;
+  }
+  
+  .tool-detail {
+    background: #cccac6;
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .tool-detail span {
+    font-weight: bold;
+  }
+  
+  /* You might want to adjust font sizes, colors, and other properties as needed. */
+  
+  /* If you have media queries for responsiveness, add them as needed. */
+  @media (max-width: 768px) {
+    .tabs {
+      flex-direction: column;
+    }
+  
+    .tab:not(:last-child) {
+      margin-bottom: 0.5rem;
+    }
+  }
+  
