@@ -5,12 +5,12 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { coinUuid } = req.query; // 从查询参数中解构coinUuid
+  const { coinUuid } = req.query; 
 
   const API_KEY = process.env.API_KEY!;
   const API_HOST = process.env.API_HOST!;
 
-  // 使用这些参数构建请求外部API的URL
+
   const url = `https://${API_HOST}/coin/${coinUuid}/supply`;
 
   try {
