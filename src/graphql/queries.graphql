@@ -308,3 +308,16 @@ query AddressDetails(
     }
   }
 }
+
+query GetDailyBlockCounts {
+  bitquery {
+    bitcoin {
+      blocks(options: { desc: "date.date", limit: 1900 }) {
+        date {
+          date
+        }
+        count
+      }
+    }
+  }
+}
