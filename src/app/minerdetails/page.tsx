@@ -66,7 +66,7 @@ export default async function Home() {
       <div className={styles.tableContainer}>
       <h1 style={{ textAlign: 'center', color:'black', fontWeight: 'bold'}}>This Week's Miner statistics</h1>
 
-        <table className={styles.table}>
+        <table className={styles.table} id="minersStatisticsTable">
           <thead>
             <tr>
             <th style={{ color: 'black' }}>Address</th>
@@ -94,7 +94,7 @@ export default async function Home() {
                {/* New table for allAddressData */}
         <h2 style={{ textAlign: 'center', color: 'black', marginTop: '50px',fontWeight: 'bold',backgroundColor: 'white' }}>This Week's Miner Address Statistics</h2>
         <br></br>
-        <table className={styles.table}>
+        <table className={styles.table} id="addressStatisticsTable">
         <thead>
   
         <tr>
