@@ -1,0 +1,86 @@
+/* src/components/TransactionsDetails.module.css */
+.transactionsContainer {
+    margin: 20px auto;
+    padding: 20px;
+    background: #ffffff; /* Lighter shade for a cleaner look */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .transactionsContainer:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Slightly larger shadow on hover for depth */
+  }
+  
+  .title {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5rem; /* Make the title larger */
+  }
+  
+  .transactionsTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px; /* Add space between title and table */
+  }
+  
+  .transactionsTable th,
+  .transactionsTable td {
+    padding: 15px; /* More padding for a spacious look */
+    text-align: left;
+    border-bottom: 2px solid #eaeaea; /* Slightly thicker and lighter border for a softer look */
+  }
+  
+  .transactionsTable th {
+    background-color: #4e6af6;
+    color: white;
+    user-select: none; /* Prevents text selection */
+  }
+  
+  .transactionsTable tr {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .transactionsTable tr:hover {
+    background-color: #eff0f6; /* A soft blue that complements the header */
+    transform: translateY(-2px); /* Slight raise effect */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow effect for lifted look */
+  }
+  
+  /* Add a zebra-stripe effect for rows */
+  .transactionsTable tr:nth-child(odd) {
+    background-color: #fafafa;
+  }
+  
+  .transactionsTable tr:nth-child(odd):hover {
+    background-color: #eef0fa; /* A softer hover effect for odd rows */
+  }
+  
+  /* Style for the clickable items, if any */
+  .clickable {
+    cursor: pointer;
+    color: #4e6af6;
+    font-weight: bold;
+  }
+  
+  .clickable:hover {
+    text-decoration: underline; /* Simple effect for interactivity */
+  }
+  
+  /* Responsive design adjustments can go here */
+  @media (max-width: 768px) {
+    .transactionsContainer {
+      padding: 10px;
+    }
+  
+    .transactionsTable th,
+    .transactionsTable td {
+      padding: 8px;
+    }
+  
+    .title {
+      font-size: 1.2rem;
+    }
+  }
+  
