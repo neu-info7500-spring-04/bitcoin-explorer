@@ -11,6 +11,7 @@ import { components } from "../components";
 import DistributionChart from "./components/minerdistributionpool/DistributionChart";
 import MinerDetails from "./minerdetails/page";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Link from "next/link";
 
 //Mainent Imports
 import MarketData from "../components/MarketData";
@@ -59,9 +60,18 @@ export default async function Home() {
           </div>
         </div>
         <div className={styles.blockTitle}>Rich chart of Bitcoin addresses</div>
-          {/*<div>
+        {/*<div>
           <RichListChart />
         </div>*/}
+        {/* Link to Active Node details route */}
+        <div className="relative border-2 border-white-500 rounded-lg p-2 font-bold hover:border-2 hover:border-blue hover:bg-blue hover:text-blue">
+          <Link
+            className="after:absolute after:inset-0 no-underline "
+            href="/country"
+          >
+            Display Active Node Details
+          </Link>
+        </div>
         <div>
           <components.POWAndEmission />
         </div>
@@ -88,6 +98,7 @@ export default async function Home() {
       <div style={{ height: "300px", width: "800px" }}>
         <DistributionChart />
       </div>
+
       <div style={{ marginTop: "50px", width: "100%" }}>
         <MinerDetails />
       </div>

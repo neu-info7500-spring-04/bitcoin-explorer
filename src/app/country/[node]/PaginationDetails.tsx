@@ -20,7 +20,7 @@ const PaginationDetails: React.FC<Props> = ({
       >
         Previous
       </button>
-      <p className="cursor-default text-red-500">
+      <p className="cursor-default text-red-500 m-2">
         Page {currentPage} of {totalPages}
       </p>
       <button

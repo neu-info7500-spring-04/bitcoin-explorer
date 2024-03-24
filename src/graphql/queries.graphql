@@ -18,9 +18,9 @@ query ActiveNodes {
       timestamp
       latestHeight
       nodes
-      }
     }
   }
+}
 
 query TransactionFee($network: BitqueryBitcoinNetwork!, $limit: Int!) {
   bitquery {
@@ -197,12 +197,14 @@ query TransactionsAndAddresses {
   }
 }
 
-
-  
 query GetBlocks {
-bitquery {
+  bitquery {
     bitcoin {
-      blocks(date: {between: ["2024-02-18T00:00:00+0000", "2024-02-19T00:00:00+0000"]}) {
+      blocks(
+        date: {
+          between: ["2024-02-18T00:00:00+0000", "2024-02-19T00:00:00+0000"]
+        }
+      ) {
         height
         blockSize
         transactionCount
@@ -212,14 +214,13 @@ bitquery {
       }
     }
   }
-  }
+}
 
-
-  query GetTransactions($gteq: Int!, $lteq: Int!) {
+query GetTransactions($gteq: Int!, $lteq: Int!) {
   bitquery {
     bitcoin {
-      transactions(options: {limit: 15}) {
-        block(height: {gteq: $gteq, lteq: $lteq}) {
+      transactions(options: { limit: 15 }) {
+        block(height: { gteq: $gteq, lteq: $lteq }) {
           height
         }
         feeValueDecimal
@@ -227,7 +228,7 @@ bitquery {
       }
     }
   }
-  }
+}
 
 query Mempool {
   mempool {
@@ -243,46 +244,66 @@ query Mempool {
   }
 }
 
-query MinerData($limit: Int!, $offset: Int!, $from: BitqueryISO8601DateTime, $till: BitqueryISO8601DateTime) {
-  bitquery{
-  bitcoin{
-    outputs(
-      options: { desc: "value", asc: "outputAddress.address", limit: $limit, offset: $offset }
-      time: { since: $from, till: $till }
-      txIndex: { is: 0 }
-      outputDirection: { is: mining }
-      outputScriptType: { notIn: ["nulldata", "nonstandard"] }
-    ) {
-     count(uniq: blocks)
-                outputAddress {
-                    annotation
-                    address
-                }
-                minimum(of: date)
-                maximum(of: date)
-                countBigInt(uniq: blocks)
-                value
+query MinerData(
+  $limit: Int!
+  $offset: Int!
+  $from: BitqueryISO8601DateTime
+  $till: BitqueryISO8601DateTime
+) {
+  bitquery {
+    bitcoin {
+      outputs(
+        options: {
+          desc: "value"
+          asc: "outputAddress.address"
+          limit: $limit
+          offset: $offset
+        }
+        time: { since: $from, till: $till }
+        txIndex: { is: 0 }
+        outputDirection: { is: mining }
+        outputScriptType: { notIn: ["nulldata", "nonstandard"] }
+      ) {
+        count(uniq: blocks)
+        outputAddress {
+          annotation
+          address
+        }
+        minimum(of: date)
+        maximum(of: date)
+        countBigInt(uniq: blocks)
+        value
+      }
     }
   }
 }
-}
 
-query AddressDetails($since: BitqueryISO8601DateTime, $till: BitqueryISO8601DateTime, $inputAddress: String, $outputAddress: String) {
-    bitquery {
-        bitcoin {
-            inputs(date: { since: $since, till: $till }, inputAddress: { is: $inputAddress }) {
-                count
-                maximum(of: date)
-                minimum(of: date)
-                value
-            }
-            outputs(date: { since: $since, till: $till }, outputAddress: { is: $outputAddress }) {
-                count
-                maximum(of: date)
-                minimum(of: date)
-                value
-            }
-        }
+query AddressDetails(
+  $since: BitqueryISO8601DateTime
+  $till: BitqueryISO8601DateTime
+  $inputAddress: String
+  $outputAddress: String
+) {
+  bitquery {
+    bitcoin {
+      inputs(
+        date: { since: $since, till: $till }
+        inputAddress: { is: $inputAddress }
+      ) {
+        count
+        maximum(of: date)
+        minimum(of: date)
+        value
+      }
+      outputs(
+        date: { since: $since, till: $till }
+        outputAddress: { is: $outputAddress }
+      ) {
+        count
+        maximum(of: date)
+        minimum(of: date)
+        value
+      }
     }
+  }
 }
-
