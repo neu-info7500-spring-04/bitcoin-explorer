@@ -114,6 +114,11 @@ export default async function Home() {
         <MempoolRecent/>
       </div>
 
+        <div className={styles.containerRow}>
+          <components.DailyBlockCountData />
+        </div>
+
+
       <div>
         <CryptoMarketData/>
       </div>

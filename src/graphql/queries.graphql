@@ -289,3 +289,15 @@ query AddressDetails($since: BitqueryISO8601DateTime, $till: BitqueryISO8601Date
     }
 }
 
+query GetDailyBlockCounts {
+    bitquery {
+        bitcoin {
+            blocks(options: {desc: "date.date", limit: 1900}) {
+                date {
+                    date
+                }
+                count
+            }
+        }
+    }
+}
