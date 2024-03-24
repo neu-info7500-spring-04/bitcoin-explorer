@@ -11,8 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GRAPHQL_API_GATEWAY_URL: ${{ secrets.GRAPHQL_API_GATEWAY_URL }}
-
+      GRAPHQL_API_GATEWAY_KEY: ${{secrets.GRAPHQL_API_GATEWAY_KEY}}
     strategy:
+    
       matrix:
         node-version: [21.x]
 
