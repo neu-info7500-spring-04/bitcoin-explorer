@@ -1,5 +1,6 @@
 import React from "react";
 import displayCountryName from "../displayCountryName";
+import { formatTimeStamp } from "../formatTimestamp";
 
 interface Props {
   nodeData: CountryNode;
@@ -29,7 +30,7 @@ const NodeItem: React.FC<Props> = ({ nodeData }) => {
       className="border border-red-500"
       style={{
         display: "grid",
-        gridTemplateColumns: "4fr 5fr 1fr 2fr 2fr",
+        gridTemplateColumns: "4fr 2fr 1fr 2fr 3fr",
         gap: "5px",
       }}
     >
@@ -37,10 +38,12 @@ const NodeItem: React.FC<Props> = ({ nodeData }) => {
         {/* Address Details */}
         <div className="flex flex-col gap-1 p-1">
           <p className="text-red-500 cursor-default px-1">
-            Address: {address ? address : "N/A"}
+            IPv4/IPv6 Address: {address ? address : "N/A"}
           </p>
+
           <p className="text-red-500 cursor-default px-1">
-            Connected Since: {connectedSince ? connectedSince : "N/A"}
+            Connected Since:{" "}
+            {connectedSince ? formatTimeStamp(connectedSince) : "N/A"}
           </p>
           <p className="text-red-500 cursor-default px-1">
             Host Name: {hostName ? hostName : "N/A"}
@@ -71,6 +74,7 @@ const NodeItem: React.FC<Props> = ({ nodeData }) => {
             Timezone: {timeZone ? timeZone : "N/A"}
           </p>
           <p className="text-red-500 cursor-default px-1">
+            {/* Bug here */}
             {/* Location: {city ? city : "N/A"}, {displayCountryName(countryCode)} */}
           </p>
           <p className="text-red-500 cursor-default px-1">
