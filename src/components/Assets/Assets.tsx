@@ -1,6 +1,6 @@
 import { GraphQLClient, gql } from "graphql-request";
 import React from "react";
-import './style.css';
+import '../Assets/Assets.css';
 
 
 export default async function Assets() {
