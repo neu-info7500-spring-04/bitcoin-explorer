@@ -6,7 +6,7 @@ const NodeListColumnHeader: React.FC = () => {
       className="border border-red-500 my-1"
       style={{
         display: "grid",
-        gridTemplateColumns: "4fr 5fr 1fr 2fr 2fr",
+        gridTemplateColumns: "4fr 2fr 1fr 2fr 3fr",
         gap: "5px",
       }}
     >
