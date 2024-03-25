@@ -13,6 +13,7 @@ import DistributionChart from "./components/minerdistributionpool/DistributionCh
 import MinerDetails from "./minerdetails/page";
 import "bootstrap/dist/css/bootstrap.min.css";
 import CryptoMarketData from "../components/CryptoMarketData";
+import BitcoinBlocks from '@/pages/LatestBlocks/BitcoinBlocks'
 
 //Mainent Imports
 import MarketData from "../components/MarketData";
@@ -40,7 +41,7 @@ async function getMempoolCountryNodes(): Promise<MempoolQuery> {
 export default async function Home() {
   const bitcoin = await getBitcoin();
 
-  const lastBlock = bitcoin.bitquery.bitcoin?.blocks?.[0];
+  const lastestBlock = bitcoin.bitquery.bitcoin?.blocks?.[0];
 
   const formatBlockHeight = (height: number | undefined) => {
     if (height === undefined) return "";
@@ -117,6 +118,9 @@ export default async function Home() {
           <components.DailyBlockCountData />
         </div>
 
+      <div>
+        <BitcoinBlocks/>
+      </div>
 
       <div>
         <CryptoMarketData/>
