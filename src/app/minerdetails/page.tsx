@@ -3,10 +3,6 @@ import { graphqlClient } from "@/graphql/client";
 import { MinerDataDocument } from "@/graphql/__generated__/graphql";
 import { AddressDetailsDocument } from "@/graphql/__generated__/graphql";
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { useNavigation } from 'next/navigation';
-import { add } from "../../../node_modules/date-fns/add";
-import { color } from "../../../node_modules/echarts/index";
 
 
 function getBitcoinData(limit: number, offset: number, from: string, till: string) {
