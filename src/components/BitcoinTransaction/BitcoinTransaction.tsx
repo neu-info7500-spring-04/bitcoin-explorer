@@ -9,8 +9,8 @@ export default async function BitcoinTransaction(this: any) {
   const graphClient = new GraphQLClient(endpoint);
 
   const query = gql`
-      query Mempool {
-        mempool {
+      {
+        mempool1 {
           transactions {
             value
             vsize
@@ -23,8 +23,8 @@ export default async function BitcoinTransaction(this: any) {
 
   try {
     // Fetch data from GraphQL API
-    const response = await graphClient.request(query) as { mempool: { transactions: any[] } };
-    const { mempool: { transactions } } = response;
+    const response = await graphClient.request(query) as { mempool1: { transactions: any[] } };
+    const { mempool1: { transactions } } = response;
 
     // console.log(transactions);
     const formatBTCValue = (value: string) => {
