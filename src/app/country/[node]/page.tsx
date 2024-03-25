@@ -10,7 +10,7 @@ import NodeList from "./NodeList";
 export default async function Page() {
   return (
     <main>
-      <div className="bg-black ">
+      <div className="bg-[#131f31]">
         <div className="border border-red-500 p-1 flex flex-col gap-1">
           <CountryProvider>
             <NodeProvider>
