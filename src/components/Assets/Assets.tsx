@@ -4,7 +4,7 @@ import '../Assets/Assets.css';
 
 
 export default async function Assets() {
-  const endpoint = "http://127.0.0.1:4000/graphql";
+  const endpoint = 'http://127.0.0.1:4000/graphql';
   const graph = new GraphQLClient(endpoint);
 
   const query = gql`
