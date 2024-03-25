@@ -1,1 +1,8 @@
+Name: Rekha Sajja
+Username: @5060Rekha
 
+Contributions:
+* Created query in graphQL client and use liquid api to retrieve data.
+* Fetches liquid asset data from a GraphQL endpoint.
+* Displays asset information such as name, ticker, total supply, and issuer domain in a table.
+* Supports dynamic data for specific assets.
