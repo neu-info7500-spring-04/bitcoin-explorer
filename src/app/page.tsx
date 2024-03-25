@@ -155,9 +155,6 @@ export default async function Home() {
       <div>
       <LiquidTransaction />
       </div>
-      <div>
-      <LiquidTransaction />
-      </div>
     </main>
   );
 }
