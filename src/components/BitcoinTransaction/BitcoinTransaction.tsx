@@ -5,7 +5,7 @@ import '../BitcoinTransaction/BitcoinTransaction.css';
 
 // Define the Home component
 export default async function BitcoinTransaction(this: any) {
-  const endpoint = process.env.GRAPHQL_API_GATEWAY_URL as string;
+  const endpoint = 'http://127.0.0.1:4000/graphql';
   const graphClient = new GraphQLClient(endpoint);
 
   const query = gql`
