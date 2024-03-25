@@ -11,7 +11,7 @@ export default async function BitcoinTransaction(this: any) {
   const query = gql`
       query Mempoolutxo {
     mempoolutxo {
-      transactions(limit: 10) {
+      transactions{
         value
         vsize
         fee
