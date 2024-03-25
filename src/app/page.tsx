@@ -104,6 +104,7 @@ export default async function Home() {
           <Blocklists />
         </div>
       </div>
+      <div><UnconfirmedTransactions /></div>
       <components.CountryNodeStats mempoolCountryNodes={mempoolCountryNodes} />
       <div style={{ height: "300px", width: "800px" }}>
         <DistributionChart />
