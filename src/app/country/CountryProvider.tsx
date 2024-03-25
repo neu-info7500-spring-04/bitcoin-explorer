@@ -2,9 +2,9 @@
 
 //Importing react hooks
 import { createContext, useState, useEffect, useMemo } from "react";
-import { getSnapshot } from "./page";
-import { resourceLimits } from "worker_threads";
-// import data from "../../data.json";
+
+//Importing function to fetch graphQL data.
+import { getSnapshot } from "./getSnapshot";
 
 //Defining Country Context
 export const CountryContext = createContext<CountryProviderValueType>({
@@ -19,20 +19,24 @@ export const CountryProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  //Defining the state for snapshot.
-  const [snapshot, setSnapshot] = useState<SnapshotType>({
+  //Default value of Snapshot Object
+  const defaultSnapshot: SnapshotType = {
     timestamp: 0,
-    total_nodes: 0,
-    latest_height: 0,
+    totalNodes: 0,
+    latestHeight: 0,
     nodes: {},
-  });
+  };
+
+  //Defining the state for snapshot.
+  const [snapshot, setSnapshot] = useState<SnapshotType>(defaultSnapshot);
 
   // useEffect to fetch the API data
   useEffect(() => {
     const fetchData = async () => {
       try {
         const activeNodes = await getSnapshot();
-        const result: SnapshotType = activeNodes.bitnodes.snapshot;
+        const result: SnapshotType =
+          activeNodes.bitnodes.snapshot ?? defaultSnapshot;
 
         setSnapshot(result);
       } catch (error) {
@@ -50,22 +54,26 @@ export const CountryProvider = ({
 
   // Update CountryProviderValue whenever snapshot changes
   const CountryProviderValue = useMemo(() => {
-    if (snapshot) {
-      return {
-        total_nodes: snapshot.total_nodes,
-        timestamp: snapshot.timestamp,
-        noOfActiveNodesByCountry: fetchNoOfActiveNodesByCountry(snapshot.nodes),
-        nodes: snapshot.nodes,
-      };
-    }
-
-    // If snapshot is null, return a default value or handle it appropriately
-    return {
+    //Defining default value of the country provider.
+    const defaultCountryProvider: CountryProviderValueType = {
       total_nodes: 0,
       timestamp: 0,
       noOfActiveNodesByCountry: {},
       nodes: {},
     };
+
+    if (snapshot) {
+      return {
+        total_nodes: snapshot.totalNodes ?? 0,
+        timestamp: snapshot.timestamp ?? 0,
+        noOfActiveNodesByCountry:
+          fetchNoOfActiveNodesByCountry(snapshot?.nodes) ?? {},
+        nodes: snapshot.nodes ?? {},
+      };
+    }
+
+    // If snapshot is null, return a default value
+    return defaultCountryProvider;
   }, [snapshot]);
 
   return (
@@ -77,8 +85,10 @@ export const CountryProvider = ({
 
 // Function to fetch the number of active nodes by country from the given data
 function fetchNoOfActiveNodesByCountry(
-  data: Nodes
+  data: Nodes | undefined
 ): NoOfActiveNodesByCountryType {
+  if (!data) return {};
+
   const nodes: Nodes = data;
   const countryCodes: NoOfActiveNodesByCountryType = {}; // Object to store country codes and their occurrences
 

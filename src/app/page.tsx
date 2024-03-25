@@ -13,10 +13,11 @@ import DistributionChart from "./components/minerdistributionpool/DistributionCh
 import MinerDetails from "./minerdetails/page";
 import "bootstrap/dist/css/bootstrap.min.css";
 import CryptoMarketData from "../components/CryptoMarketData";
+import Link from "next/link";
 
 //Mainent Imports
 import MarketData from "../components/MarketData";
-import TransactionDetails from '../components/TransactionDetails';
+import TransactionDetails from "../components/TransactionDetails";
 
 import BitcoinInfo from "../components/BitcoinInfo";
 import Fees from "../components/Fees";
@@ -66,11 +67,20 @@ export default async function Home() {
         {/*<div>
           <RichListChart />
         </div>*/}
+        {/* Link to Active Node details route */}
+        <div className="relative border-2 border-white-500 rounded-lg p-2 font-bold hover:border-2 hover:border-blue hover:bg-blue hover:text-blue">
+          <Link
+            className="after:absolute after:inset-0 no-underline "
+            href="/country"
+          >
+            Display Active Node Details
+          </Link>
+        </div>
         <div>
           <components.POWAndEmission />
         </div>
         <div className={styles.containerRow}>
-            <components.TransactionFeeData />
+          <components.TransactionFeeData />
         </div>
         <div className="main-content">
           <div className="info-content">
@@ -96,9 +106,24 @@ export default async function Home() {
       <div style={{ marginTop: "50px", width: "100%" }}>
         {/*<MinerDetails />*/}
       </div>
-      <div style={{ marginTop: "50px", width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
+      <div
+        style={{
+          marginTop: "50px",
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
         <h2>Enter address to get UTXO distribution statistics</h2>
-        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "100%" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+          }}
+        >
           <div style={{ marginRight: "20px" }}>
             <UtxoChart />
           </div>
@@ -110,21 +135,20 @@ export default async function Home() {
       <components.RankingData />
 
       <div style={{ marginTop: "20px", width: "80%", display: "flex" }}>
-        <MempoolRecent/>
+        <MempoolRecent />
       </div>
 
-        <div className={styles.containerRow}>
-          <components.DailyBlockCountData />
-        </div>
-
-
-      <div>
-        <CryptoMarketData/>
+      <div className={styles.containerRow}>
+        <components.DailyBlockCountData />
       </div>
 
       <div>
-      <h1>Transactions</h1>
-      <TransactionDetails />
+        <CryptoMarketData />
+      </div>
+
+      <div>
+        <h1>Transactions</h1>
+        <TransactionDetails />
       </div>
     </main>
   );
