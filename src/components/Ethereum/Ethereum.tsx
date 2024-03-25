@@ -2,7 +2,7 @@ import { GraphQLClient, gql } from "graphql-request";
 import React from "react";
 
 export default async function Ethereum() {
-  const endpoint =process.env.GRAPHQL_API_GATEWAY_URL as string; 
+  const endpoint = process.env.NEXT_PUBLIC_GRAPHQL_API_GATEWAY_URL as string;
   const graphClient = new GraphQLClient(endpoint);
 
   const query = gql`
