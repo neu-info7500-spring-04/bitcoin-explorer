@@ -21,7 +21,7 @@ const CountryItem: React.FC<Props> = ({ index, countryCode, nodeCount }) => {
   return (
     <>
       <div
-        className="border border-red-500 p-1 group text-red-500 cursor-pointer hover:bg-red-500 hover:text-black"
+        className="border border-red-500 p-1 group text-red-500 cursor-pointer hover:bg-red-500 hover:text-black rounded-lg"
         onClick={handleCountrySelect}
       >
         <p className="font-bold">
