@@ -12,6 +12,15 @@
   },
   "dependencies": {
     "@apollo/client": "^3.9.7",
+    "@types/topojson": "^3.2.6",
+    "@types/topojson-client": "^3.1.4",
+    "@visx/geo": "^3.5.0",
+    "@visx/group": "^3.3.0",
+    "@visx/mock-data": "^3.3.0",
+    "@visx/responsive": "^3.3.0",
+    "@visx/scale": "^3.5.0",
+    "@visx/shape": "^3.5.0",
+    "@visx/visx": "^3.8.0",
     "axios": "^1.6.8",
     "chart.js": "^4.4.2",
     "chartjs-plugin-datalabels": "^2.2.0",
@@ -25,7 +34,8 @@
     "react-datepicker": "^6.4.0",
     "react-dom": "^18",
     "react-router-dom": "^6.22.3",
-    "swr": "^2.2.5"
+    "swr": "^2.2.5",
+    "topojson-client": "^3.1.0"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^5.0.2",

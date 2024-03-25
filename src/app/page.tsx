@@ -29,6 +29,7 @@ import LiquidTransaction from "@/components/LiquidTransaction/LiquidTransaction"
 import Assets from "@/components/Assets/Assets";
 import BitcoinTransaction from "@/components/BitcoinTransaction/BitcoinTransaction";
 import Ethereum from "@/components/Ethereum/Ethereum";
+import NodeDistributionMap from "@/components/GeoMap/NodeDistributionMap";
 
 async function getBitcoin(): Promise<BitcoinQuery> {
   return await graphqlClient.request(BitcoinDocument, {});
@@ -146,6 +147,8 @@ export default async function Home() {
 
       <div className={styles.containerRow}>
         <components.DailyBlockCountData />
+
+        <NodeDistributionMap height={400} width={400} />
       </div>
 
       <div>
@@ -157,10 +160,10 @@ export default async function Home() {
         <TransactionDetails />
       </div>
       <div>
-      <LiquidTransaction />
+        <LiquidTransaction />
       </div>
       <div>
-      <Assets />
+        <Assets />
       </div>
       <div>
         <BitcoinTransaction />
