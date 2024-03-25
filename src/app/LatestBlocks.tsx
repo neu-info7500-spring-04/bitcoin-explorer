@@ -32,7 +32,7 @@ interface LatestBlocksDataResponse {
 async function getLatestBlocks(): Promise<LatestBlocksDataResponse | null> {
     try {
         const response = await graphqlClient.request(GetLatestBlocksDocument, {});
-        return response as LatestBlocksDataResponse;
+        return response as unknown as LatestBlocksDataResponse;
     } catch (error) {
         console.error("Error fetching latest blocks:", error);
         return null;
