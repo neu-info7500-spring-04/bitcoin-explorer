@@ -4,7 +4,7 @@ import React from "react";
 import '../Ethereum/Ethereum.css';
 
 export default async function Ethereum() {
-  const endpoint =  process.env.GRAPHQL_API_GATEWAY_URL as string;
+  const endpoint =  process.env.ETHEREUM_URL as string;
   const graphClient = new GraphQLClient(endpoint);
 
   const query = gql`
