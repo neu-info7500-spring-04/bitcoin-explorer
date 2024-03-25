@@ -13,6 +13,7 @@ import DistributionChart from "./components/minerdistributionpool/DistributionCh
 import MinerDetails from "./minerdetails/page";
 import "bootstrap/dist/css/bootstrap.min.css";
 import CryptoMarketData from "../components/CryptoMarketData";
+import BitcoinBlockData from "@/components/BlockDataTable";
 
 //Mainent Imports
 import MarketData from "../components/MarketData";
@@ -120,6 +121,10 @@ export default async function Home() {
 
       <div>
         <CryptoMarketData/>
+      </div>
+
+      <div>
+        <BitcoinBlockData/>
       </div>
 
       <div>
