@@ -3,7 +3,7 @@ import React from "react";
 import '../LiquidTransaction/LiquidTransaction.css';
 
 export default async function LiquidTransaction() {
-  const endpoint = 'http://127.0.0.1:4000/graphql';
+  const endpoint = process.env.GRAPHQL_API_GATEWAY_URL as string;
   const graphClient = new GraphQLClient(endpoint);
 
   const query = gql`
