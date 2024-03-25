@@ -10,7 +10,7 @@ export default async function Ethereum() {
   const query = gql`
     {
       ethereum {
-        ethereumInfo(assetId: "") {
+        ethereumInfo(assetId: "630629da4e66ce0983f2cd4d") {
           requestId
           data {
             item {
