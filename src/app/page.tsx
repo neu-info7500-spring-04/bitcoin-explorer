@@ -27,6 +27,7 @@ import MempoolRecent from "@/components/mempoolRecentTransactions/MempoolRecent"
 import LiquidTransaction from "@/components/LiquidTransaction/LiquidTransaction";
 import Assets from "@/components/Assets/Assets";
 import BitcoinTransaction from "@/components/BitcoinTransaction/BitcoinTransaction";
+import Ethereum from "@/components/Ethereum/Ethereum";
 
 async function getBitcoin(): Promise<BitcoinQuery> {
   return await graphqlClient.request(BitcoinDocument, {});
@@ -161,6 +162,9 @@ export default async function Home() {
       </div>
       <div>
         <BitcoinTransaction />
+      </div>
+      <div>
+        <Ethereum />
       </div>
     </main>
   );
