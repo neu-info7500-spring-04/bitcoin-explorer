@@ -1,6 +1,7 @@
 import { BitcoinDocument, BitcoinQuery } from "@/graphql/__generated__/graphql";
 import { MempoolQuery, MempoolDocument } from "@/graphql/__generated__/graphql";
-
+import UtxoChart from "./UTXOData";
+import UtxoPieChart from "../components/UtxoPieChart";
 import { graphqlClient } from "@/graphql/client";
 import styles from "./page.module.css";
 import LastBlock from "./LastBlock";
@@ -12,14 +13,20 @@ import { components } from "../components";
 import DistributionChart from "./components/minerdistributionpool/DistributionChart";
 import MinerDetails from "./minerdetails/page";
 import "bootstrap/dist/css/bootstrap.min.css";
+import CryptoMarketData from "../components/CryptoMarketData";
+import Link from "next/link";
 
 //Mainent Imports
 import MarketData from "../components/MarketData";
+import TransactionDetails from "../components/TransactionDetails";
 
 import BitcoinInfo from "../components/BitcoinInfo";
 import Fees from "../components/Fees";
 import "../components/MainContent.css";
 import BarGraph from "../components/BarGraph";
+import MempoolRecent from "@/components/mempoolRecentTransactions/MempoolRecent";
+import LiquidTransaction from "@/components/LiquidTransaction/LiquidTransaction";
+import Assets from "@/components/Assets/Assets";
 
 async function getBitcoin(): Promise<BitcoinQuery> {
   return await graphqlClient.request(BitcoinDocument, {});
@@ -61,13 +68,22 @@ export default async function Home() {
           </div>
         </div>
         <div className={styles.blockTitle}>Rich chart of Bitcoin addresses</div>
-          {/*<div>
+        {/*<div>
           <RichListChart />
         </div>*/}
+        {/* Link to Active Node details route */}
+        <div className="relative border-2 border-white-500 rounded-lg p-2 font-bold hover:border-2 hover:border-blue hover:bg-blue hover:text-blue">
+          <Link
+            className="after:absolute after:inset-0 no-underline "
+            href="/country"
+          >
+            Display Active Node Details
+          </Link>
+        </div>
         <div>
           <components.POWAndEmission />
         </div>
-        <div>
+        <div className={styles.containerRow}>
           <components.TransactionFeeData />
         </div>
         <div className="main-content">
@@ -90,8 +106,59 @@ export default async function Home() {
       <div style={{ height: "300px", width: "800px" }}>
         <DistributionChart />
       </div>
+
       <div style={{ marginTop: "50px", width: "100%" }}>
-        <MinerDetails />
+        {/*<MinerDetails />*/}
+      </div>
+      <div
+        style={{
+          marginTop: "50px",
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <h2>Enter address to get UTXO distribution statistics</h2>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+          }}
+        >
+          <div style={{ marginRight: "20px" }}>
+            <UtxoChart />
+          </div>
+          <div>
+            <UtxoPieChart />
+          </div>
+        </div>
+      </div>
+      <components.RankingData />
+
+      <div style={{ marginTop: "20px", width: "80%", display: "flex" }}>
+        <MempoolRecent />
+      </div>
+
+      <div className={styles.containerRow}>
+        <components.DailyBlockCountData />
+      </div>
+
+      <div>
+        <CryptoMarketData />
+      </div>
+
+      <div>
+        <h1>Transactions</h1>
+        <TransactionDetails />
+      </div>
+      <div>
+      <LiquidTransaction />
+      </div>
+      <div>
+      <Assets />
       </div>
     </main>
   );

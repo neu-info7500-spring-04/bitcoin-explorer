@@ -1,0 +1,29 @@
+# yaml file to test github actions
+
+name: Playwright test
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  Playwright_test:
+    runs-on: ubuntu-latest
+    env:
+      GRAPHQL_API_GATEWAY_URL: ${{ secrets.GRAPHQL_API_GATEWAY_URL }}
+
+    strategy:
+      matrix:
+        node-version: [21.x]
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npx playwright install --with-deps
+    - run: npm install
+    - run: npm run codegen
+    - run: npm run test
