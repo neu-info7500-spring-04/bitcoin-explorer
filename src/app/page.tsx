@@ -24,6 +24,7 @@ import Fees from "../components/Fees";
 import "../components/MainContent.css";
 import BarGraph from "../components/BarGraph";
 import MempoolRecent from "@/components/mempoolRecentTransactions/MempoolRecent";
+import LiquidTransaction from "@/components/LiquidTransaction/LiquidTransaction";
 
 async function getBitcoin(): Promise<BitcoinQuery> {
   return await graphqlClient.request(BitcoinDocument, {});
@@ -149,6 +150,9 @@ export default async function Home() {
       <div>
         <h1>Transactions</h1>
         <TransactionDetails />
+      </div>
+      <div>
+      <LiquidTransaction />
       </div>
     </main>
   );
