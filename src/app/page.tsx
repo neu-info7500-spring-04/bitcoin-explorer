@@ -6,6 +6,7 @@ import { graphqlClient } from "@/graphql/client";
 import styles from "./page.module.css";
 import LastBlock from "./LastBlock";
 import RichListChart from "./RichListChart";
+import LatestBlocks from "./LatestBlocks";
 import Blocklists from "./Blocklists";
 import React from "react";
 import { components } from "../components";
@@ -60,6 +61,7 @@ export default async function Home() {
     <main className={styles.container} id="main">
       <div className={styles.block}>
         <div>Northeastern Bitcoin Explorer</div>
+        <LatestBlocks />
         <div className={styles.containerRow}>
           <div className={styles.containerRow}>
             <LastBlock bitcoin={bitcoin} />
@@ -108,8 +110,8 @@ export default async function Home() {
         <DistributionChart />
       </div>
 
-      <div style={{ marginTop: "50px", width: "100%" }}>
-        {/*<MinerDetails />*/}
+      <div style={{ marginTop: "90px", width: "100%" }}>
+        <MinerDetails />
       </div>
       <div
         style={{
