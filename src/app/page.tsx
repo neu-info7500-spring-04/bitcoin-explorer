@@ -1,6 +1,7 @@
 import { BitcoinDocument, BitcoinQuery } from "@/graphql/__generated__/graphql";
 import { MempoolQuery, MempoolDocument } from "@/graphql/__generated__/graphql";
 import UtxoChart from "./UTXOData";
+import CombinedChart from "./CombinedChart";
 import UtxoPieChart from "../components/UtxoPieChart";
 import { graphqlClient } from "@/graphql/client";
 import styles from "./page.module.css";
@@ -14,6 +15,7 @@ import DistributionChart from "./components/minerdistributionpool/DistributionCh
 import MinerDetails from "./minerdetails/page";
 import "bootstrap/dist/css/bootstrap.min.css";
 import CryptoMarketData from "../components/CryptoMarketData";
+import App from '../components/transactions'; 
 import BitcoinBlocks from '@/pages/LatestBlocks/BitcoinBlocks'
 import Link from "next/link";
 
@@ -25,11 +27,15 @@ import BitcoinInfo from "../components/BitcoinInfo";
 import Fees from "../components/Fees";
 import "../components/MainContent.css";
 import BarGraph from "../components/BarGraph";
+import BitcoinHeaderInfo from "./components/bitcoinHeader/BitcoinHeaderInfo";
 import MempoolRecent from "@/components/mempoolRecentTransactions/MempoolRecent";
 import LiquidTransaction from "@/components/LiquidTransaction/LiquidTransaction";
 import Assets from "@/components/Assets/Assets";
 import BitcoinTransaction from "@/components/BitcoinTransaction/BitcoinTransaction";
 import Ethereum from "@/components/Ethereum/Ethereum";
+import Statistics from './components/best-fee/Statistics'
+import LineChart from './components/best-fee/LineChart'
+import Bitcoinassetdata from "./bitcoinassetdata";
 import LatestBlocksBlockStream from "./LatestBlocksBlockStream";
 
 async function getBitcoin(): Promise<BitcoinQuery> {
@@ -71,6 +77,10 @@ export default async function Home() {
             <components.BTCMarketData />
           </div>
         </div>
+        <div>
+          <BitcoinHeaderInfo/>
+        </div>
+        <div className={styles.container}><components.bitcoinExchangePrices/></div>
         <div className={styles.blockTitle}>Rich chart of Bitcoin addresses</div>
         {/*<div>
           <RichListChart />
@@ -124,7 +134,7 @@ export default async function Home() {
           alignItems: "center",
         }}
       >
-        <h2>Enter address to get UTXO distribution statistics</h2>
+        <h2>Enter address to get Transaction distribution statistics</h2>
         <div
           style={{
             display: "flex",
@@ -134,7 +144,7 @@ export default async function Home() {
           }}
         >
           <div style={{ marginRight: "20px" }}>
-            <UtxoChart />
+            <CombinedChart />
           </div>
           <div>
             <UtxoPieChart />
@@ -159,9 +169,7 @@ export default async function Home() {
         <CryptoMarketData/>
       </div>
 
-      <div>
-        <CryptoMarketData />
-      </div>
+
       <div>
         <h1>Transactions</h1>
         <TransactionDetails />
@@ -183,6 +191,24 @@ export default async function Home() {
       <div>
         <Ethereum />
       </div>
+
+      <div>
+        <Ethereum />
+      </div>
+
+      <div><App/></div>
+      <div className="container">
+            <h1 style={{ color: "black" }}>Best fee Pool Statistics For Today</h1><br />
+                <Statistics /><br />
+            <h2 style={{ color: "black" }}>Last 7 days Bitcoin Transaction Fee data</h2><br />
+            <div className="chart-container">
+                <LineChart />
+            </div>
+      </div>
+      <div>
+        <Bitcoinassetdata />
+      </div>
+
     </main>
   );
 }
