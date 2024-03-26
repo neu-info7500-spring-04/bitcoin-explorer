@@ -34,6 +34,7 @@ import Assets from "@/components/Assets/Assets";
 import BitcoinTransaction from "@/components/BitcoinTransaction/BitcoinTransaction";
 import Ethereum from "@/components/Ethereum/Ethereum";
 import Statistics from './components/best-fee/Statistics.tsx'
+import LatestBlocksBlockStream from "./LatestBlocksBlockStream";
 import LineChart from './components/best-fee/LineChart'
 import Bitcoinassetdata from "./bitcoinassetdata";
 
@@ -110,6 +111,7 @@ export default async function Home() {
           <div className="info-content">
             <MarketData />
           </div>
+
         </div>
         <div>
           <Blocklists />
@@ -167,10 +169,14 @@ export default async function Home() {
         <CryptoMarketData/>
       </div>
 
-
       <div>
         <h1>Transactions</h1>
         <TransactionDetails />
+      </div>
+
+      <div>
+        <h2>Latest Blocks from Blockstream</h2>
+        <LatestBlocksBlockStream />
       </div>
       <div>
       <LiquidTransaction />
