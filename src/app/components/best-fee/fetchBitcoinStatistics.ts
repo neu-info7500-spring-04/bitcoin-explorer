@@ -1,7 +1,8 @@
 import { GraphQLClient } from "graphql-request";
-import { BitcoinTransactionsDocument, BitcoinInputsDocument, BitcoinAvgDocument } from "@/graphql/__generated__/graphql";
+import { BitcoinTransactionsDocument, BitcoinInputsDocument, BitcoinAvgDocument } from "../../../graphql/__generated__/graphql";
 
 async function getTransactions() {
+  try {
     let currentDate = new Date();
     let year = currentDate.getUTCFullYear();
     let month = currentDate.getUTCMonth() + 1;
@@ -12,20 +13,24 @@ async function getTransactions() {
   
     let formattedDate = year + '-' + newMonth + '-' + newDay;
 
-    const gclient = new GraphQLClient(process.env.NEXT_PUBLIC_GRAPHQL_API_GATEWAY_URL!,
+    const gclient = new GraphQLClient(process.env.GRAPHQL_API_GATEWAY_URL!,
         { fetch, cache: "no-cache" })
   
     return await gclient.request(BitcoinTransactionsDocument, {
       current_date: formattedDate
     });
+  } catch (error) {
+    console.error("Something went wrong", error);
+  }
 }
   
 async function fetchBitcoinTransactions() {
-    const response = await getTransactions();
+  try {
+    const response = await getTransactions() as { bitquery?: { bitcoin: { transactions: any } } };
   
     // console.log(response)
   
-    const transactions = response?.bitquery.bitcoin.transactions;
+    const transactions = response?.bitquery?.bitcoin?.transactions;
   
     // console.log(transactions)
   
@@ -33,7 +38,7 @@ async function fetchBitcoinTransactions() {
   
     let totalVSize = 0;
   
-    let values = []
+    let values: number[] = []
   
     for(let i = 0; i < transactions.length; i++) {
       const transaction = transactions[i];
@@ -49,31 +54,39 @@ async function fetchBitcoinTransactions() {
     }
   
     return { best_fee: Math.min(...values), avg_fee: sum/10, avg_size: totalSize/10, avg_v_size: totalVSize/10 };
+  } catch (error) {
+    console.error("Something went wrong", error);
+  }  
 }
   
 export async function fetchBitcoinInputs() {
-      let dates = [];
-      let today = new Date();
-      for (let i = 6; i >= 0; i--) {
-        let date = new Date(today);
-        date.setDate(today.getDate() - i);
-        dates.push(date.toISOString().split('T')[0]);
-      }
+  try {
+    let dates: string[] = [];
+    let today = new Date();
+    for (let i = 6; i >= 0; i--) {
+      let date = new Date(today);
+      date.setDate(today.getDate() - i);
+      dates.push(date.toISOString().split('T')[0]);
+    }
 
-      const gclient = new GraphQLClient(process.env.NEXT_PUBLIC_GRAPHQL_API_GATEWAY_URL!,
-        { fetch, cache: "no-cache" })
-  
-      const response = await gclient.request(BitcoinInputsDocument, {
-          since: dates[0]
-      });
-  
-      const responseData = response;
-  
-      return responseData?.bitquery?.bitcoin;
+    const gclient = new GraphQLClient(process.env.GRAPHQL_API_GATEWAY_URL!,
+      { fetch, cache: "no-cache" })
+
+    const response = await gclient.request(BitcoinInputsDocument, {
+        since: dates[0]
+    });
+
+    const responseData = response as { bitquery?: { bitcoin: any } };
+
+    return responseData?.bitquery?.bitcoin;
+  } catch (error) {
+    console.error("Something went wrong", error);
+  }      
 }
 
 export async function fetchBitcoinAvg() {
-    let dates = [];
+  try {
+    let dates: string[] = [];
     let today = new Date();
     for (let i = 6; i >= 0; i--) {
     let date = new Date(today);
@@ -81,14 +94,17 @@ export async function fetchBitcoinAvg() {
     dates.push(date.toISOString().split('T')[0]);
     }
 
-    const gclient = new GraphQLClient(process.env.NEXT_PUBLIC_GRAPHQL_API_GATEWAY_URL!,
+    const gclient = new GraphQLClient(process.env.GRAPHQL_API_GATEWAY_URL!,
     { fetch, cache: "no-cache" })
 
     const response = await gclient.request(BitcoinAvgDocument, {
         since: dates[0]
-    });
+    })  as { bitquery?: { bitcoin: any } };
 
     return response?.bitquery?.bitcoin; 
+  } catch (error) {
+    console.error("Something went wrong", error);
+  } 
 }
   
   
@@ -96,7 +112,10 @@ export async function fetchBitcoinStatistics() {
     try {
       const response = await fetchBitcoinTransactions();
   
-      const data = response ?? {};
+      const data = response ?? {best_fee: 0.0,
+        avg_fee: 0.0,
+        avg_size: 0.0,
+        avg_v_size: 0.0};
   
       const response1 = await fetchBitcoinInputs();
   

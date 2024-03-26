@@ -5,9 +5,13 @@ import HighchartsReact from 'highcharts-react-official';
 import { fetchBitcoinInputs, fetchBitcoinAvg } from './fetchBitcoinStatistics';
 
 const LineChart = () => {
+  interface TransactionData {
+    name: string;
+    data: number[];
+  }
   const [avgFee, setAvgFee] = useState([]);
   const [totalFee, setTotalFee] = useState([]);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<TransactionData[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,7 +40,7 @@ const LineChart = () => {
   }, []);
 
   function getDatesFromTodayToSevenDaysAgo() {
-    let dates = [];
+    let dates: string[] = [];
     let today = new Date();
     for (let i = 6; i >= 0; i--) {
       let date = new Date(today);
