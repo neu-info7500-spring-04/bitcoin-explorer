@@ -158,9 +158,6 @@ export default async function Home() {
         <CryptoMarketData/>
       </div>
 
-      <div>
-        <CryptoMarketData />
-      </div>
 
       <div>
         <h1>Transactions</h1>

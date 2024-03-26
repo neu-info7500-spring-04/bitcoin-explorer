@@ -9,7 +9,7 @@ const httpLink = createHttpLink({
 // Middleware to attach the authorization token to requests
 const authLink = setContext((_, { headers }) => {
   // Replace 'YOUR_API_KEY_HERE' with your actual API key
-  const token = 'BQYlkVI8ij08ei2MqX0TRInXum4IrejN';
+  const token = 'BQY4CwS6ONqGdo0ewnVWYDixEPi9sRca';
   return {
     headers: {
       ...headers,
