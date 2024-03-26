@@ -8,13 +8,10 @@ import { useSearchParams } from "next/navigation";
 //Importing Providers
 import { CountryContext } from "../CountryProvider";
 
-//Importing hardcoded data
-// import data from "../../../data.json";
-
 export const NodeContext = createContext<NodeProviderValueType>({
   countryCode: "N/A",
   noOfActiveNodes: "0",
-  countryNodes: [[]],
+  countryNodes: [],
   percentOfActiveNodes: "0",
 });
 
@@ -55,8 +52,8 @@ export const NodeProvider = ({ children }: { children: React.ReactNode }) => {
 const fetchActiveNodesByCountryCode = (
   countryCodeData: string,
   nodeData: Nodes
-): CountryNodesType => {
-  const countryNodes = [];
+): CountryNode[] => {
+  const countryNodes: CountryNode[] = [];
   const nodes: Nodes = nodeData;
 
   for (const [node, details] of Object.entries(nodes)) {
@@ -66,8 +63,6 @@ const fetchActiveNodesByCountryCode = (
       countryNodes.push({ [node]: details });
     }
   }
-  console.log(countryNodes);
-
   return countryNodes;
 };
 
