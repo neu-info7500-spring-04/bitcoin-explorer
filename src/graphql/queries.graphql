@@ -358,6 +358,7 @@ query GetBlockTransactions($pageNumber: Int!) {
       }
     }
   }
+}
 
 query GetLatestBlocksApi {
     bitquery {
