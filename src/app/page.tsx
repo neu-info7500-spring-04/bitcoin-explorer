@@ -34,6 +34,7 @@ import BitcoinTransaction from "@/components/BitcoinTransaction/BitcoinTransacti
 import Ethereum from "@/components/Ethereum/Ethereum";
 import Statistics from './components/best-fee/Statistics.tsx'
 import LineChart from './components/best-fee/LineChart'
+import Bitcoinassetdata from "./bitcoinassetdata";
 
 async function getBitcoin(): Promise<BitcoinQuery> {
   return await graphqlClient.request(BitcoinDocument, {});
@@ -180,6 +181,10 @@ export default async function Home() {
         <Ethereum />
       </div>
 
+      <div>
+        <Ethereum />
+      </div>
+
       <div><App/></div>
       <div className="container">
             <h1 style={{ color: "black" }}>Best fee Pool Statistics For Today</h1><br />
@@ -188,6 +193,9 @@ export default async function Home() {
             <div className="chart-container">
                 <LineChart />
             </div>
+      </div>
+      <div>
+        <Bitcoinassetdata />
       </div>
 
     </main>
