@@ -1,25 +1,9 @@
 //Defining the structure for SnapshotType
 interface SnapshotType {
-  timestamp: number;
-  total_nodes: number;
-  latest_height: number;
-  nodes: {
-    [key: string]: [
-      number,
-      string,
-      number,
-      number,
-      number,
-      string,
-      string,
-      string,
-      number,
-      number,
-      string,
-      string,
-      string
-    ];
-  };
+  timestamp?: number | null | undefined;
+  totalNodes?: number | null | undefined;
+  latestHeight?: number | undefined | null;
+  nodes?: Nodes;
 }
 
 //Defining structure for Nodes(placeholder for Node-Info)
