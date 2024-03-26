@@ -29,6 +29,7 @@ import LiquidTransaction from "@/components/LiquidTransaction/LiquidTransaction"
 import Assets from "@/components/Assets/Assets";
 import BitcoinTransaction from "@/components/BitcoinTransaction/BitcoinTransaction";
 import Ethereum from "@/components/Ethereum/Ethereum";
+import LatestBlocksBlockStream from "./LatestBlocksBlockStream";
 
 async function getBitcoin(): Promise<BitcoinQuery> {
   return await graphqlClient.request(BitcoinDocument, {});
@@ -99,6 +100,7 @@ export default async function Home() {
           <div className="info-content">
             <MarketData />
           </div>
+
         </div>
         <div>
           <Blocklists />
@@ -151,11 +153,15 @@ export default async function Home() {
       <div>
         <CryptoMarketData />
       </div>
-
       <div>
         <h1>Transactions</h1>
         <TransactionDetails />
       </div>
+
+      <div>
+        <h2>Latest Blocks from Blockstream</h2>
+       <LatestBlocksBlockStream />
+       </div>
       <div>
       <LiquidTransaction />
       </div>
