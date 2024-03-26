@@ -27,6 +27,7 @@ import BitcoinInfo from "../components/BitcoinInfo";
 import Fees from "../components/Fees";
 import "../components/MainContent.css";
 import BarGraph from "../components/BarGraph";
+import BitcoinHeaderInfo from "./components/bitcoinHeader/BitcoinHeaderInfo";
 import MempoolRecent from "@/components/mempoolRecentTransactions/MempoolRecent";
 import LiquidTransaction from "@/components/LiquidTransaction/LiquidTransaction";
 import Assets from "@/components/Assets/Assets";
@@ -74,6 +75,9 @@ export default async function Home() {
           <div className={styles.containerRow}>
             <components.BTCMarketData />
           </div>
+        </div>
+        <div>
+          <BitcoinHeaderInfo/>
         </div>
         <div className={styles.container}><components.bitcoinExchangePrices/></div>
         <div className={styles.blockTitle}>Rich chart of Bitcoin addresses</div>
