@@ -14,6 +14,7 @@ import DistributionChart from "./components/minerdistributionpool/DistributionCh
 import MinerDetails from "./minerdetails/page";
 import "bootstrap/dist/css/bootstrap.min.css";
 import CryptoMarketData from "../components/CryptoMarketData";
+import App from '../components/transactions'; 
 import BitcoinBlocks from '@/pages/LatestBlocks/BitcoinBlocks'
 import Link from "next/link";
 
@@ -157,9 +158,6 @@ export default async function Home() {
         <CryptoMarketData/>
       </div>
 
-      <div>
-        <CryptoMarketData />
-      </div>
 
       <div>
         <h1>Transactions</h1>
@@ -177,6 +175,9 @@ export default async function Home() {
       <div>
         <Ethereum />
       </div>
+
+      <div><App/></div>
+
     </main>
   );
 }
