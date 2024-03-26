@@ -16,6 +16,8 @@ interface Block {
   expanded: boolean;
 }
 
+const GRAPHQL_GATEWAY_URL = process.env.GRAPHQL_API_GATEWAY_URL || 'http://127.0.0.1:4000/graphql';
+
 function BitcoinBlockData() {
   const [blocks, setBlocks] = useState<Block[]>([]);
   const [expandedRow, setExpandedRow] = useState<number | null>(null);
@@ -23,7 +25,7 @@ function BitcoinBlockData() {
   useEffect(() => {
     async function fetchBitcoinBlocks() {
       try {
-        const response = await axios.post('http://127.0.0.1:4000/graphql', {
+        const response = await axios.post(GRAPHQL_GATEWAY_URL, {
           query: `
           query {
             bitquery {
