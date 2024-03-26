@@ -176,8 +176,8 @@ export default async function Home() {
 
       <div>
         <h2>Latest Blocks from Blockstream</h2>
-       <LatestBlocksBlockStream />
-       </div>
+        <LatestBlocksBlockStream />
+      </div>
       <div>
       <LiquidTransaction />
       </div>
