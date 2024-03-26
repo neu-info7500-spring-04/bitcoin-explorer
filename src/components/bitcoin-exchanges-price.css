@@ -1,0 +1,108 @@
+/* General styles */
+.App {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  font-family: 'lattow', sans-serif;
+  font-size: 18px;
+}
+
+/* Link styles */
+.App a {
+  display: block;
+  margin-bottom: 0.7rem;
+  text-decoration: none;
+  color: white;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+/* Header styles */
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+/* Exchange container styles */
+.exchange-container {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center !important;
+  -webkit-box-pack: justify !important;
+  padding: 10px 10px;
+  color: white;
+  font-size: 80%;
+  font-weight: 400;
+  font-family: 'lattow', sans-serif;
+  font-size: 18px;
+  max-width: 900px;
+  margin: 80px auto;
+  background-color: #131f31;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.exchange-type {
+  display: table-column;
+  margin-left: 12px;
+  color:beige;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Exchange name styles */
+.exchange-names {
+  text-align: left;
+  margin-top: 40px;
+  margin-left: 5px;
+  justify-content: space-between;
+  text-shadow: 0rem 0rem 0.02em #ffffff;
+}
+
+/* Exchange price styles */
+.exchange-prices {
+  text-align: left;
+  color: green;
+  margin-bottom: 10px;
+  cursor: pointer;
+  justify-content: space-between;
+  margin-right: 6px;
+}
+
+/* Flex utility classes */
+.d-flex {
+  display: flex;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+/* Price change colors */
+.up {
+  color: rgb(76, 175, 80);
+}
+
+.down {
+  color: rgb(217, 60, 60);
+}
+
+.border-line {
+  padding-left: 10%;
+  padding-right: 10%;
+  border-left: 0.04em solid rgba(255, 255, 255, 0.3);
+}
+
+.market{
+    min-width: 12.1em;
+    color: white !important;
+}
