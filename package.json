@@ -22,6 +22,7 @@
     "echarts-for-react": "^3.0.2",
     "highcharts-react-official": "^3.2.1",
     "next": "14.1.0",
+    "ra-data-graphql": "^4.16.12",
     "react": "^18",
     "react-chartjs-2": "^5.2.0",
     "react-datepicker": "^6.4.0",
