@@ -336,3 +336,68 @@ query GetLatestBlocksApi {
   }
   }
 }
+
+query BitcoinTransactions($current_date: BitqueryISO8601DateTime){
+    bitquery {
+      bitcoin {
+        transactions(
+          date: {is: $current_date}
+          options: {desc: "block.timestamp.iso8601", limit: 10}
+        ) {
+          block {
+            height
+            timestamp {
+              iso8601
+            }
+          }
+          hash
+          feeValue
+          feeValueDecimal
+          inputCount
+          inputCountBigInt
+          inputValueDecimal
+          txSize
+          txVsize
+          count
+        }
+      }
+    }
+}
+
+query BitcoinInputs($since: BitqueryISO8601DateTime){
+  bitquery {
+    bitcoin(network: bitcoin) {
+      transactions(options: {asc: "date.date"}, 
+        date: {since: $since}) {
+        date: date {
+          date(format: "%Y-%m-%d")
+        }        
+        inputCount: inputCount(calculate: sum)
+        feeValue: feeValue(calculate: sum)
+        total: feeValue(calculate: sum)
+      }
+      inputs(options: {asc: "date.date"}, 
+        date: {since: $since}) {
+        date: date {
+          date(format: "%Y-%m-%d")
+        }
+        count
+        value: value(calculate: sum)
+      }
+    }
+  }
+}
+
+query BitcoinAvg($since: BitqueryISO8601DateTime){
+  bitquery {
+    bitcoin(network: bitcoin) {
+      transactions(options: {asc: "date.date"}, 
+        date: {since: $since}) {
+        date: date {
+          date(format: "%Y-%m-%d")
+        }
+        feeValue: feeValue(calculate: average)
+      }
+    }
+  }
+}
