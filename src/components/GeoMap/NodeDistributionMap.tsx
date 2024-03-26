@@ -24,12 +24,6 @@ interface FeatureShape {
   properties: { name: string };
 }
 
-export interface CoordinateShape {
-  name?: string;
-  lat: number;
-  long: number;
-}
-
 const world = topojson?.feature(
   // @ts-ignore: module error in not recognizing type for topology
   topology,
@@ -38,16 +32,6 @@ const world = topojson?.feature(
   type: "FeatureCollection";
   features: FeatureShape[];
 };
-
-const points = [
-  { name: "Point A", coordinates: [-59.479, -64.042] },
-  { name: "Boston", coordinates: [-71.079906, 42.349126] },
-  { name: "Chad", coordinates: [16.69616, 19.035] },
-  { name: "Kalyan", coordinates: [73.135382, 19.221667] },
-  { name: "Rio", coordinates: [-43.209, -23] },
-  { name: "Tasmania", coordinates: [146.4667, -41.94] },
-  // Add more points as needed...
-];
 
 const color = scaleQuantize({
   domain: [
@@ -90,6 +74,16 @@ function latLonToOffsets(
   return { x, y };
 }
 
+interface TooltipShape {
+  hostName: string;
+  hostURL: string;
+  town: string;
+  region: string;
+  nodeNumber?: string;
+}
+
+const NUMBER_OF_NODES = 100;
+
 export default function ({
   width,
   height,
@@ -97,8 +91,9 @@ export default function ({
   rotate,
   events = false,
 }: GeoMercatorProps) {
+  const [tooltip, setTooltip] = useState<TooltipShape | null>(null);
   const [maximized, setMaximized] = useState<boolean>(false);
-  const [coords, setCoords] = useState<FeatureShape[]>();
+  const [coords, setCoords] = useState<any>();
 
   const centerX = (width * (maximized ? 2 : 1)) / 2;
   const centerY = (height * (maximized ? 2 : 1)) / 2;
@@ -107,7 +102,7 @@ export default function ({
   const config = {
     method: "GET",
     maxBodyLength: Infinity,
-    url: "https://bitnodes.io/api/v1/snapshots/latest/?field=coordinates",
+    url: "https://bitnodes.io/api/v1/snapshots/latest/",
     headers: {
       "Content-Type": "application/json",
     },
@@ -115,17 +110,35 @@ export default function ({
 
   useEffect(() => {
     axios.request(config).then((response) => {
-      const _tmp = response?.data?.coordinates?.slice(0, 100);
+      const nodes = response?.data?.nodes;
+      const keys = Object.keys(nodes)
+        .filter((ele) => !ele.includes(".onion:")) // this means the nodes are using a TOR network and lat/long are set to 0
+        .slice(0, NUMBER_OF_NODES);
+
+      const _tmp = keys.map((ele: any) => {
+        return [
+          nodes[ele][8], // long
+          nodes[ele][9], // lat
+          nodes[ele][12], // Host name
+          nodes[ele][5], // Host URL
+          nodes[ele][6], // Town name
+          nodes[ele][10], // Region
+          nodes[ele][4], // Node number/height
+        ];
+      });
+
       setCoords(() => _tmp);
     });
   }, []);
 
   return width * (maximized ? 2 : 1) < 10 ? null : (
-    <div className="relative">
+    <div className="relative" data-test-id="nodeDistributionMain">
+      <Tooltip isVisible={tooltip === null} data={tooltip} />
       <svg
         width={width * (maximized ? 2 : 1)}
         height={height * (maximized ? 2 : 1)}
         className={`${className}`}
+        data-test-id="nodeDistributionMap"
       >
         <rect
           x={0}
@@ -165,7 +178,7 @@ export default function ({
           )}
         </Mercator>
         <g>
-          {coords?.map((point, index) => {
+          {coords?.map((point: any, index: number) => {
             const { x, y } = latLonToOffsets(
               // @ts-ignore:  point is of type [number, number]
               point[0],
@@ -179,8 +192,7 @@ export default function ({
 
             return (
               <circle
-                key={"circle_key_" + x + ">>>" + y}
-                r={maximized ? 3 : 1}
+                r={maximized ? 3.5 : 1}
                 x={x}
                 y={y}
                 fill={fillColor}
@@ -188,6 +200,19 @@ export default function ({
                 strokeWidth={0}
                 opacity={1.7}
                 transform={`translate(${[x, y]})`}
+                className="cursor-pointer hover:fill-green-300"
+                onMouseEnter={() =>
+                  setTooltip(() => {
+                    return {
+                      hostName: point[2],
+                      hostURL: point[3],
+                      town: point[4],
+                      region: point[5],
+                      nodeNumber: point[6],
+                    };
+                  })
+                }
+                onMouseLeave={() => setTooltip(null)}
               />
             );
           })}
@@ -203,19 +228,41 @@ export default function ({
   );
 }
 
-export interface OverlayProps {
+interface TooltipProps {
+  className?: string;
+  isVisible: boolean;
+  data: TooltipShape | null;
+}
+
+function Tooltip({ className, isVisible, data }: TooltipProps) {
+  return (
+    <div
+      className={`absolute bottom-5 left-5 p-1 bg-slate-800 text-white rounded text-xs transition ease-in-out delay-300 ${
+        isVisible ? "hidden" : "block"
+      } ${className}`}
+    >
+      <span className="font-bold">Host name</span>:{" "}
+      <span className="text-gray-400">{data?.hostName}</span>,{" "}
+      <span className="font-bold">Host domain</span>:{" "}
+      <span className="text-gray-400">{data?.hostURL}</span> <br />
+      <span className="font-bold">Town</span>:{" "}
+      <span className="text-gray-400">{data?.town}</span>,{" "}
+      <span className="font-bold">Region</span>:
+      <span className="text-gray-400"> {data?.region}</span> <br />
+      <span className="font-bold">Node number</span>:{" "}
+      <span className="text-gray-400">{data?.nodeNumber}</span>
+    </div>
+  );
+}
+
+interface OverlayProps {
   className?: string;
   text: string;
   isMaximized: boolean;
   maximize: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export function Overlay({
-  className,
-  text,
-  isMaximized,
-  maximize,
-}: OverlayProps) {
+function Overlay({ className, text, isMaximized, maximize }: OverlayProps) {
   return (
     <div
       className={`absolute top-5 right-5 p-1 bg-slate-800 text-white rounded font-sm font-bold hover:bg-slate-600 cursor-pointer ${className}`}

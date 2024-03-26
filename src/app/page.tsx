@@ -148,7 +148,10 @@ export default async function Home() {
       <div className={styles.containerRow}>
         <components.DailyBlockCountData />
 
-        <NodeDistributionMap height={400} width={400} />
+        <div className="">
+          <h4>Bitcoin top 100 nodes mapped</h4>
+          <NodeDistributionMap height={400} width={400} />
+        </div>
       </div>
 
       <div>
