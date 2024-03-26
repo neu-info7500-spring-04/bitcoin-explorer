@@ -75,6 +75,7 @@ export default async function Home() {
         <div>
           <BitcoinHeaderInfo/>
         </div>
+        <div className={styles.container}><components.bitcoinExchangePrices/></div>
         <div className={styles.blockTitle}>Rich chart of Bitcoin addresses</div>
         {/*<div>
           <RichListChart />
