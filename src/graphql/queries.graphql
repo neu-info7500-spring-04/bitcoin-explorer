@@ -319,6 +319,46 @@ query GetDailyBlockCounts {
     }
 }
 
+query GetBlockTransactions($pageNumber: Int!) {
+  bitquery {
+    bitcoin {
+      transactions(
+        options: {
+          desc: ["block.height", "index"]
+          limit: 10
+          offset: $pageNumber
+        }
+        date: { since: "2023-07-13", till: "2023-07-20" }
+      ) {
+        block {
+          timestamp {
+            time(format: "%Y-%m-%d %H:%M:%S")
+          }
+          height
+        }
+        inputValue
+        input_value_usd: inputValue(in: USD)
+        outputCount
+        inputCount
+        index
+        hash
+        feeValue
+        fee_value_usd: feeValue(in: USD)
+        feeValueDecimal
+        minedValue
+        minedValueDecimal
+        outputValue
+        outputValueDecimal
+        txCoinbase
+        txLocktime
+        txSize
+        txVersion
+        txVsize
+        txWeight
+      }
+    }
+  }
+}
 
 query GetLatestBlocksApi {
     bitquery {
