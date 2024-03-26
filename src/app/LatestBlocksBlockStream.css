@@ -1,60 +1,57 @@
 #lb-table-container {
     font-family: Arial, sans-serif;
     width: 100%;
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        background-color: #073763;
-        color: #fff;
-    }
-    
-    thead {
-        color: lightgray;
-        font-weight: bolder;
-    }
-    
-    thead th {
-        padding: 10px;
-        text-align: left;
-    }
-    
-    tbody tr {
-        height: 4rem;
-        border-bottom: 1px solid lightgray;
-        transition: background-color 0.3s;
-    }
-    
-    tbody tr:hover {
-        background-color: #4ABEFF; 
-    }
-    
-    tbody tr:last-child {
-        border-bottom: none;
-    }
-    
-    tbody td {
-        color:#fff;
-        padding: 10px;
-        text-align: left;
-    }
-    
-    tbody td:first-child {
-        width: 15%;
-    }
-    
-    tbody td:not(:first-child) {
-        width: 21%;
-    }
-    
-    
-    tbody tr:hover td {
-        color: #000; 
-    }
-    
-    tbody tr:hover td.light-blue {
-        color: #fff; 
-    }
-    
 }
 
+#lb-table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #073763;
+    color: #fff;
+}
+
+#lb-table-container thead {
+    color: lightgray;
+    font-weight: bolder;
+}
+
+#lb-table-container thead th {
+    padding: 10px;
+    text-align: left;
+}
+
+#lb-table-container tbody tr {
+    height: 4rem;
+    border-bottom: 1px solid lightgray;
+    transition: background-color 0.3s;
+}
+
+#lb-table-container tbody tr:hover {
+    background-color: #4ABEFF; 
+}
+
+#lb-table-container tbody tr:last-child {
+    border-bottom: none;
+}
+
+#lb-table-container tbody td {
+    color:#fff;
+    padding: 10px;
+    text-align: left;
+}
+
+#lb-table-container tbody td:first-child {
+    width: 15%;
+}
+
+#lb-table-container tbody td:not(:first-child) {
+    width: 21%;
+}
+
+#lb-table-container tbody tr:hover td {
+    color: #000; 
+}
+
+#lb-table-container tbody tr:hover td.light-blue {
+    color: #fff; 
+}
