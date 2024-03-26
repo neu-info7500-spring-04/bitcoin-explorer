@@ -1,6 +1,6 @@
 # Bitcoin Explorer
 
-### Setup for Bitcoin Explorer Project
+### Setup for Bitcoin Explorer Project.
 * Install the latest LTS version of Nodejs.
 * Clone this repository: `git clone git@github.com:neu-info7500-spring-04/bitcoin-explorer.git`
 * Copy the `.env.example` file and name it `.env`. 
