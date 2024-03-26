@@ -1,6 +1,7 @@
 import { BitcoinDocument, BitcoinQuery } from "@/graphql/__generated__/graphql";
 import { MempoolQuery, MempoolDocument } from "@/graphql/__generated__/graphql";
 import UtxoChart from "./UTXOData";
+import CombinedChart from "./CombinedChart";
 import UtxoPieChart from "../components/UtxoPieChart";
 import { graphqlClient } from "@/graphql/client";
 import styles from "./page.module.css";
@@ -126,7 +127,7 @@ export default async function Home() {
           alignItems: "center",
         }}
       >
-        <h2>Enter address to get UTXO distribution statistics</h2>
+        <h2>Enter address to get Transaction distribution statistics</h2>
         <div
           style={{
             display: "flex",
@@ -136,7 +137,7 @@ export default async function Home() {
           }}
         >
           <div style={{ marginRight: "20px" }}>
-            <UtxoChart />
+            <CombinedChart />
           </div>
           <div>
             <UtxoPieChart />
