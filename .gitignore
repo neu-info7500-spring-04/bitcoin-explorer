@@ -45,11 +45,11 @@ next-env.d.ts
 /playwright-report/
 /blob-report/
 /playwright/.cache/
-<<<<<<< HEAD
-=======
+
+
 /e2e/
 /test-results/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
->>>>>>> upstream/main
+
