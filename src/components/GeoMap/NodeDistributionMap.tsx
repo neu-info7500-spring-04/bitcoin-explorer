@@ -6,6 +6,7 @@ import { Mercator, Graticule } from "@visx/geo";
 import * as topojson from "topojson-client";
 import topology from "./world-topo.json";
 import axios from "axios";
+import { bitnodes } from "./bitnodesSnapshot";
 
 export const background = "#f9f7e8";
 
@@ -99,46 +100,45 @@ export default function ({
   const centerY = (height * (maximized ? 2 : 1)) / 2;
   const scale = ((width * (maximized ? 2 : 1)) / 630) * 100;
 
-  const config = {
-    method: "GET",
-    maxBodyLength: Infinity,
-    url: "https://bitnodes.io/api/v1/snapshots/latest/",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  };
-
   useEffect(() => {
-    axios.request(config).then((response) => {
-      const nodes = response?.data?.nodes;
-      const keys = Object.keys(nodes)
-        .filter((ele) => !ele.includes(".onion:")) // this means the nodes are using a TOR network and lat/long are set to 0
-        .slice(0, NUMBER_OF_NODES);
+    async function fetchAndPopulateNodes() {
+      try {
+        const response = await bitnodes();
 
-      const _tmp = keys.map((ele: any) => {
-        return [
-          nodes[ele][8], // long
-          nodes[ele][9], // lat
-          nodes[ele][12], // Host name
-          nodes[ele][5], // Host URL
-          nodes[ele][6], // Town name
-          nodes[ele][10], // Region
-          nodes[ele][4], // Node number/height
-        ];
-      });
+        const nodes = response?.bitnodes?.snapshot?.nodes;
+        const keys = Object.keys(nodes)
+          .filter((ele) => !ele.includes(".onion:")) // this means the nodes are using a TOR network and lat/long are set to 0
+          .slice(0, NUMBER_OF_NODES);
 
-      setCoords(() => _tmp);
-    });
+        const _tmp = keys.map((ele: any) => {
+          return [
+            nodes[ele][8], // long
+            nodes[ele][9], // lat
+            nodes[ele][12], // Host name
+            nodes[ele][5], // Host URL
+            nodes[ele][6], // Town name
+            nodes[ele][10], // Region
+            nodes[ele][4], // Node number/height
+          ];
+        });
+
+        setCoords(() => _tmp);
+      } catch (error) {
+        console.error("BitNodes API call error:", error);
+      }
+    }
+
+    fetchAndPopulateNodes();
   }, []);
 
   return width * (maximized ? 2 : 1) < 10 ? null : (
-    <div className="relative" data-test-id="nodeDistributionMain">
+    <div className="relative" data-testid="nodeDistributionMain">
       <Tooltip isVisible={tooltip === null} data={tooltip} />
       <svg
         width={width * (maximized ? 2 : 1)}
         height={height * (maximized ? 2 : 1)}
         className={`${className}`}
-        data-test-id="nodeDistributionMap"
+        data-testid="nodeDistributionMap"
       >
         <rect
           x={0}
