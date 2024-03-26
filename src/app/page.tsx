@@ -17,6 +17,7 @@ import CryptoMarketData from "../components/CryptoMarketData";
 import App from '../components/transactions'; 
 import BitcoinBlocks from '@/pages/LatestBlocks/BitcoinBlocks'
 import Link from "next/link";
+import Top100nodesbyliquidty from '../components/Top100nodesbyliquidty';
 
 //Mainent Imports
 import MarketData from "../components/MarketData";
@@ -177,6 +178,9 @@ export default async function Home() {
       </div>
 
       <div><App/></div>
+      <div>
+        <Top100nodesbyliquidty initialBitcoinValue={66343.40}/>
+      </div>
 
     </main>
   );
