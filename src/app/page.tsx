@@ -19,6 +19,7 @@ import BitcoinInfo from "../components/BitcoinInfo";
 import Fees from "../components/Fees";
 import "../components/MainContent.css";
 import BarGraph from "../components/BarGraph";
+import BitcoinHeaderInfo from "./components/bitcoinHeader/BitcoinHeaderInfo";
 
 async function getBitcoin(): Promise<BitcoinQuery> {
   return await graphqlClient.request(BitcoinDocument, {});
@@ -57,6 +58,9 @@ export default async function Home() {
           <div className={styles.containerRow}>
             <components.BTCMarketData />
           </div>
+        </div>
+        <div>
+          <BitcoinHeaderInfo/>
         </div>
         <div className={styles.blockTitle}>Rich chart of Bitcoin addresses</div>
           {/*<div>
