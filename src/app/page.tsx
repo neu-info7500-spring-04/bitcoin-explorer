@@ -27,6 +27,7 @@ import BitcoinInfo from "../components/BitcoinInfo";
 import Fees from "../components/Fees";
 import "../components/MainContent.css";
 import BarGraph from "../components/BarGraph";
+import BitcoinHeaderInfo from "./components/bitcoinHeader/BitcoinHeaderInfo";
 import MempoolRecent from "@/components/mempoolRecentTransactions/MempoolRecent";
 import LiquidTransaction from "@/components/LiquidTransaction/LiquidTransaction";
 import Assets from "@/components/Assets/Assets";
@@ -35,6 +36,7 @@ import Ethereum from "@/components/Ethereum/Ethereum";
 import NodeDistributionMap from "@/components/GeoMap/NodeDistributionMap";
 import Statistics from './components/best-fee/Statistics.tsx'
 import LineChart from './components/best-fee/LineChart'
+import Bitcoinassetdata from "./bitcoinassetdata";
 
 async function getBitcoin(): Promise<BitcoinQuery> {
   return await graphqlClient.request(BitcoinDocument, {});
@@ -74,6 +76,9 @@ export default async function Home() {
           <div className={styles.containerRow}>
             <components.BTCMarketData />
           </div>
+        </div>
+        <div>
+          <BitcoinHeaderInfo/>
         </div>
         <div className={styles.container}><components.bitcoinExchangePrices/></div>
         <div className={styles.blockTitle}>Rich chart of Bitcoin addresses</div>
@@ -185,6 +190,10 @@ export default async function Home() {
         <Ethereum />
       </div>
 
+      <div>
+        <Ethereum />
+      </div>
+
       <div><App/></div>
       <div className="container">
             <h1 style={{ color: "black" }}>Best fee Pool Statistics For Today</h1><br />
@@ -193,6 +202,9 @@ export default async function Home() {
             <div className="chart-container">
                 <LineChart />
             </div>
+      </div>
+      <div>
+        <Bitcoinassetdata />
       </div>
     </main>
   );
