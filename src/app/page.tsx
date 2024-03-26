@@ -34,9 +34,9 @@ import Assets from "@/components/Assets/Assets";
 import BitcoinTransaction from "@/components/BitcoinTransaction/BitcoinTransaction";
 import Ethereum from "@/components/Ethereum/Ethereum";
 import Statistics from './components/best-fee/Statistics'
+import LatestBlocksBlockStream from "./LatestBlocksBlockStream";
 import LineChart from './components/best-fee/LineChart'
 import Bitcoinassetdata from "./bitcoinassetdata";
-import LatestBlocksBlockStream from "./LatestBlocksBlockStream";
 
 async function getBitcoin(): Promise<BitcoinQuery> {
   return await graphqlClient.request(BitcoinDocument, {});
@@ -169,6 +169,9 @@ export default async function Home() {
         <CryptoMarketData/>
       </div>
 
+      <div>
+        <CryptoMarketData />
+      </div>
 
       <div>
         <h1>Transactions</h1>
