@@ -2,7 +2,7 @@ import { GraphQLClient, gql } from "graphql-request";
 import React from "react";
 
 export default async function Bitcoinassetdata() {
-  const endpoint = process.env.GRAPHQL_API_GATEWAY_URL || 'http://127.0.0.1:4000/graphql';
+  const endpoint = process.env.NEXT_PUBLIC_GRAPHQL_API_GATEWAY_URL;
   const graphClient = new GraphQLClient(endpoint);
 
   const query = gql`
