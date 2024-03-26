@@ -176,12 +176,10 @@ export default async function Home() {
       <div>
         <Ethereum />
       </div>
-
       <div><App/></div>
       <div>
         <Bitcoinassetdata />
       </div>
-
     </main>
   );
 }
