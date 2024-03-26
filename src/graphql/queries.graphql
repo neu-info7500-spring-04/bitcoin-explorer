@@ -318,3 +318,21 @@ query GetDailyBlockCounts {
         }
     }
 }
+
+
+query GetLatestBlocksApi {
+    bitquery {
+  bitcoin {
+    blocks(options: {limit: 10, desc: ["height"]}) {
+      height
+      timestamp {
+        time(format: "%Y-%m-%d %H:%M:%S")
+      }
+      transactionCount
+      blockSize
+      blockWeight
+      difficulty
+    }
+  }
+  }
+}
