@@ -179,6 +179,14 @@ export default async function Home() {
       </div>
 
       <div><App/></div>
+      <div className="container">
+            <h1>Best fee Pool Statistics For Today</h1><br />
+                <Statistics /><br />
+            <h2>Last 7 days Bitcoin Transaction Fee data</h2><br />
+            <div className="chart-container">
+                <LineChart />
+            </div>
+      </div>
 
     </main>
   );

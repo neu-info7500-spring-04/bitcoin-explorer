@@ -19,14 +19,7 @@ const Statistics = () => {
       const fetchData = async () => {
         try {
           const data = await fetchBitcoinStatistics();
-          setStatisticsData(data || {bestFee: "",
-            optimalFee: "",
-            size: "",
-            virtualSize: "",
-            feeAmount: "",
-            avgFeeAmount: "",
-            inputsCount: "",
-            inputsAmount: ""});
+          setStatisticsData(data);
         } catch (error) {
           console.error("Could not fetch statistics", error);
         }
