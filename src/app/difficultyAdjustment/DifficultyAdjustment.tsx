@@ -1,7 +1,6 @@
 import { GraphQLClient, gql } from 'graphql-request';
 import React from 'react'
 import './difficultyAdjustment.modules.css';
-//import './bitcoin-explorer/src/app/difficultyAdjustment/difficultyAdjustment.css'
 const DifficultyAdjustment = async() => {
   const endpoint = process.env.GRAPHQL_API_GATEWAY_URL as string;
   const graphClient = new GraphQLClient(endpoint);
