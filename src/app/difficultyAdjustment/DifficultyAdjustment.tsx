@@ -1,6 +1,7 @@
 import { GraphQLClient, gql } from 'graphql-request';
 import React from 'react'
-//import 'bitcoin-explorer/src/app/difficultyAdjustment/.css'
+import './difficultyAdjustment.modules.css';
+//import './bitcoin-explorer/src/app/difficultyAdjustment/difficultyAdjustment.css'
 const DifficultyAdjustment = async() => {
   const endpoint = process.env.GRAPHQL_API_GATEWAY_URL as string;
   const graphClient = new GraphQLClient(endpoint);
@@ -37,6 +38,8 @@ const DifficultyAdjustment = async() => {
     <div>
       <h2>Difficulty Adjustment</h2>
       <div>
+        <div className="difficulty-adjustment">
+      <div className="difficulty-details">
           <p>Estimated next difficulty adjustment in: {secondsToTime(mempool.difficultyAdjustmentResponse.remainingTime)}</p>
           <p>Average block time: {mempool.difficultyAdjustmentResponse.timeAvg} seconds</p>
           <p>Change in difficulty: {mempool.difficultyAdjustmentResponse.difficultyChange}%</p>
@@ -45,6 +48,9 @@ const DifficultyAdjustment = async() => {
           <p>Expected difficulty adjustment date: {new Date(mempool.difficultyAdjustmentResponse.estimatedRetargetDate).toLocaleString()}</p>
         </div>
     </div>
+    </div>
+    </div>
+    
   )
 }
 
