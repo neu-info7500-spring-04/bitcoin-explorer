@@ -1,7 +1,10 @@
 import * as block from "./block";
+import * as unconfirmedTransactions from "../components/UnconfirmedTransactions";
+
 
 const api = {
-    block
+    block,
+    unconfirmedTransactions
 };
 
 export { api };
