@@ -157,7 +157,7 @@ export default async function Home() {
             <CombinedChart />
           </div>
           <div>
-            {/* <UtxoPieChart /> */}
+            <UtxoPieChart />
           </div>
         </div>
       </div>
