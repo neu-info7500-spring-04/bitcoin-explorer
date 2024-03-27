@@ -1,0 +1,35 @@
+/* DifficultyAdjustment.css */
+
+.difficulty-adjustment {
+    text-align: center; /* Align content to center */
+}
+
+.difficulty-details {
+    display: flex; /* Use flexbox to arrange items */
+    flex-wrap: wrap; /* Allow items to wrap to the next line if needed */
+    justify-content: center; /* Center items horizontally */
+}
+
+.difficulty-details p {
+    flex: 0 0 calc(40% - 20px); /* Set width to 40% with some margin */
+    margin: 10px; /* Add margin between items */
+    padding: 15px; /* Add padding for spacing */
+    border-radius: 10px; /* Add rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+    background-color: #85d4f5; /* Light Blue */
+    font-size: 14px; /* Decrease font size */
+    transition: all 0.3s ease; /* Add transition effect */
+}
+
+/* Add hover effect */
+.difficulty-details p:hover {
+    transform: translateY(-5px); /* Move the box up on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increase shadow size */
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+    .difficulty-details p {
+        flex: 0 0 calc(90% - 20px); /* Set width to 90% on smaller screens */
+    }
+}
