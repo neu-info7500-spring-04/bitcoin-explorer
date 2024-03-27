@@ -15,9 +15,10 @@ import DistributionChart from "./components/minerdistributionpool/DistributionCh
 import MinerDetails from "./minerdetails/page";
 import "bootstrap/dist/css/bootstrap.min.css";
 import CryptoMarketData from "../components/CryptoMarketData";
-import App from '../components/transactions'; 
-import BitcoinBlocks from '@/pages/LatestBlocks/BitcoinBlocks'
+import App from "../components/transactions";
+import BitcoinBlocks from "@/pages/LatestBlocks/BitcoinBlocks";
 import Link from "next/link";
+import LatestBlock from "@/components/LatestBlock";
 
 //Mainent Imports
 import MarketData from "../components/MarketData";
@@ -33,8 +34,8 @@ import LiquidTransaction from "@/components/LiquidTransaction/LiquidTransaction"
 import Assets from "@/components/Assets/Assets";
 import BitcoinTransaction from "@/components/BitcoinTransaction/BitcoinTransaction";
 import Ethereum from "@/components/Ethereum/Ethereum";
-import Statistics from './components/best-fee/Statistics.tsx'
-import LineChart from './components/best-fee/LineChart'
+import Statistics from "./components/best-fee/Statistics.tsx";
+import LineChart from "./components/best-fee/LineChart";
 import Bitcoinassetdata from "./bitcoinassetdata";
 
 async function getBitcoin(): Promise<BitcoinQuery> {
@@ -68,6 +69,7 @@ export default async function Home() {
       <div className={styles.block}>
         <div>Northeastern Bitcoin Explorer</div>
         <LatestBlocks />
+        <LatestBlock />
         <div className={styles.containerRow}>
           <div className={styles.containerRow}>
             <LastBlock bitcoin={bitcoin} />
@@ -77,9 +79,11 @@ export default async function Home() {
           </div>
         </div>
         <div>
-          <BitcoinHeaderInfo/>
+          <BitcoinHeaderInfo />
         </div>
-        <div className={styles.container}><components.bitcoinExchangePrices/></div>
+        <div className={styles.container}>
+          <components.bitcoinExchangePrices />
+        </div>
         <div className={styles.blockTitle}>Rich chart of Bitcoin addresses</div>
         {/*<div>
           <RichListChart />
@@ -155,28 +159,27 @@ export default async function Home() {
         <MempoolRecent />
       </div>
 
-        <div className={styles.containerRow}>
-          <components.DailyBlockCountData />
-        </div>
-
-      <div>
-        <BitcoinBlocks/>
+      <div className={styles.containerRow}>
+        <components.DailyBlockCountData />
       </div>
 
       <div>
-        <CryptoMarketData/>
+        <BitcoinBlocks />
       </div>
 
+      <div>
+        <CryptoMarketData />
+      </div>
 
       <div>
         <h1>Transactions</h1>
         <TransactionDetails />
       </div>
       <div>
-      <LiquidTransaction />
+        <LiquidTransaction />
       </div>
       <div>
-      <Assets />
+        <Assets />
       </div>
       <div>
         <BitcoinTransaction />
@@ -189,19 +192,25 @@ export default async function Home() {
         <Ethereum />
       </div>
 
-      <div><App/></div>
+      <div>
+        <App />
+      </div>
       <div className="container">
-            <h1 style={{ color: "black" }}>Best fee Pool Statistics For Today</h1><br />
-                <Statistics /><br />
-            <h2 style={{ color: "black" }}>Last 7 days Bitcoin Transaction Fee data</h2><br />
-            <div className="chart-container">
-                <LineChart />
-            </div>
+        <h1 style={{ color: "black" }}>Best fee Pool Statistics For Today</h1>
+        <br />
+        <Statistics />
+        <br />
+        <h2 style={{ color: "black" }}>
+          Last 7 days Bitcoin Transaction Fee data
+        </h2>
+        <br />
+        <div className="chart-container">
+          <LineChart />
+        </div>
       </div>
       <div>
         <Bitcoinassetdata />
       </div>
-
     </main>
   );
 }

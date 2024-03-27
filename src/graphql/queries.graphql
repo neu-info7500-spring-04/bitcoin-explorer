@@ -401,3 +401,21 @@ query BitcoinAvg($since: BitqueryISO8601DateTime){
     }
   }
 }
+
+query Latestblocksbitcoin {
+  bitquery {
+    bitcoin {
+      blocks(options: { limit: 10, desc: "height" }) {
+        height
+        blockHash
+        blockSize
+        blockWeight
+        difficulty
+        transactionCount
+        timestamp {
+          time(format: "YYYY-MM-DDTHH:mm:ssZ")
+        }
+      }
+    }
+  }
+}
