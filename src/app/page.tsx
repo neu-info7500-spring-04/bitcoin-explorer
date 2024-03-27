@@ -33,7 +33,7 @@ import LiquidTransaction from "@/components/LiquidTransaction/LiquidTransaction"
 import Assets from "@/components/Assets/Assets";
 import BitcoinTransaction from "@/components/BitcoinTransaction/BitcoinTransaction";
 import Ethereum from "@/components/Ethereum/Ethereum";
-import Statistics from './components/best-fee/Statistics.tsx'
+import Statistics from './components/best-fee/Statistics'
 import LineChart from './components/best-fee/LineChart'
 import Bitcoinassetdata from "./bitcoinassetdata";
 

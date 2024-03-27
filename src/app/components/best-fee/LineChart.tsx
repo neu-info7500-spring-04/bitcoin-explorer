@@ -9,21 +9,21 @@ const LineChart = () => {
     name: string;
     data: number[];
   }
-  const [avgFee, setAvgFee] = useState([]);
-  const [totalFee, setTotalFee] = useState([]);
+  const [avgFee, setAvgFee] = useState<number[]>([]);
+  const [totalFee, setTotalFee] = useState<number[]>([]);
   const [data, setData] = useState<TransactionData[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetchBitcoinInputs();
-        const transactions = response.transactions || [];
+        const transactions = response?.transactions || [];
 
         const response1 = await fetchBitcoinAvg();
-        const avgTransactions = response1.transactions || [];
+        const avgTransactions = response1?.transactions || [];        
 
-        const newAvgFee = avgTransactions.map(t => t.feeValue);
-        const newTotalFee = transactions.map(t => t.feeValue);
+        const newAvgFee: number[] = avgTransactions.map(t => t.feeValue ?? 0.0);
+        const newTotalFee: number[] = transactions.map(t => t.feeValue ?? 0.0);
 
         setAvgFee(newAvgFee);
         setTotalFee(newTotalFee);
@@ -54,6 +54,9 @@ const LineChart = () => {
 
   // Highcharts configuration options
   const options = {
+    accessibility: {
+      enabled: false
+    },
     title: {
       text: 'Daily Fee Amount'
     },

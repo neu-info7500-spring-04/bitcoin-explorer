@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { fetchBitcoinStatistics } from './fetchBitcoinStatistics.ts';
+import { fetchBitcoinStatistics } from './fetchBitcoinStatistics';
 import './Statistics.css';
 
 const Statistics = () => {
