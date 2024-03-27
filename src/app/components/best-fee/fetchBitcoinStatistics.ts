@@ -1,5 +1,5 @@
 import { GraphQLClient } from "graphql-request";
-import { BitcoinTransactionsDocument, BitcoinInputsDocument, BitcoinAvgDocument } from "../../../graphql/__generated__/graphql";
+import { BitcoinTransactionsDocument, BitcoinInputsDocument, BitcoinAvgDocument, BitcoinInputsQuery, BitcoinAvgQuery } from "../../../graphql/__generated__/graphql";
 
 async function getTransactions() {
   try {
@@ -72,11 +72,11 @@ export async function fetchBitcoinInputs() {
     const gclient = new GraphQLClient(process.env.GRAPHQL_API_GATEWAY_URL!,
       { fetch, cache: "no-cache" })
 
-    const response = await gclient.request(BitcoinInputsDocument, {
+    const response: BitcoinInputsQuery = await gclient.request(BitcoinInputsDocument, {
         since: dates[0]
     });
 
-    const responseData = response as { bitquery?: { bitcoin: any } };
+    const responseData = response;
 
     return responseData?.bitquery?.bitcoin;
   } catch (error) {
@@ -97,9 +97,9 @@ export async function fetchBitcoinAvg() {
     const gclient = new GraphQLClient(process.env.GRAPHQL_API_GATEWAY_URL!,
     { fetch, cache: "no-cache" })
 
-    const response = await gclient.request(BitcoinAvgDocument, {
+    const response: BitcoinAvgQuery = await gclient.request(BitcoinAvgDocument, {
         since: dates[0]
-    })  as { bitquery?: { bitcoin: any } };
+    });
 
     return response?.bitquery?.bitcoin; 
   } catch (error) {
