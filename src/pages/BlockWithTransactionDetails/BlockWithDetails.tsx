@@ -1,5 +1,5 @@
 "use client";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 import BitcoinChartsPage from "./components/ChartPage";
 import BlockList from "./components/BlockList";
 import Container from "react-bootstrap/Container";
