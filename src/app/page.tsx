@@ -36,6 +36,7 @@ import Ethereum from "@/components/Ethereum/Ethereum";
 import Statistics from './components/best-fee/Statistics.tsx'
 import LineChart from './components/best-fee/LineChart'
 import Bitcoinassetdata from "./bitcoinassetdata";
+import BlockWithTransactionDetails from "@/pages/BlockWithTransactionDetails/BlockWithDetails";
 
 async function getBitcoin(): Promise<BitcoinQuery> {
   return await graphqlClient.request(BitcoinDocument, {});
