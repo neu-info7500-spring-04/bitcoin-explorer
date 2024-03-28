@@ -18,6 +18,7 @@ import CryptoMarketData from "../components/CryptoMarketData";
 import App from '../components/transactions'; 
 import BitcoinBlocks from '@/pages/LatestBlocks/BitcoinBlocks'
 import Link from "next/link";
+import UnconfirmedTransactions from '../components/UnconfirmedTransactions';
 
 //Mainent Imports
 import MarketData from "../components/MarketData";
@@ -111,6 +112,7 @@ export default async function Home() {
             <MarketData />
           </div>
         </div>
+        <div><UnconfirmedTransactions /></div>
         <div>
           <Blocklists />
         </div>
