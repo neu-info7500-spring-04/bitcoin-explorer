@@ -202,7 +202,9 @@ export default async function Home() {
       <div>
         <Bitcoinassetdata />
       </div>
-
+      <div>
+          <BlockWithTransactionDetails />
+      </div>
     </main>
   );
 }
