@@ -1,0 +1,117 @@
+.header {
+    color: #040504;
+    padding: 10px;
+    font-size: 24px;
+    text-align: left;  
+    font-family: 'Roboto', sans-serif;  
+
+    font-weight: 700;  
+  }
+
+
+  .table-container {
+    margin: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .table-header {
+    background-color: #f0f0f0;
+    padding: 25px;
+  }
+
+  .table-header th {
+    background-color: #f0f0f0;
+    color: #040504;
+    padding: 
+    15px;
+  }
+  .table-row {
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+
+  .table-row:last-child {
+    border-bottom: none;
+  }
+
+  .table-row:hover {
+    background-color: #c1c1c1;
+  }
+
+  .table-cell {
+    padding: 100px 20px;  
+    text-align: left;
+  }
+  .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5vh;  
+  }
+
+  .button {
+    background-color: #d6d6d6;
+    color: rgb(0, 0, 0);
+    border: 20px;  
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 20px;  
+  }
+
+
+  .button:hover {
+    background-color: #818281;
+  }
+  .rowbutton{
+    background-color: #040504;  
+    color: rgb(255, 255, 255);  
+    border: none;  
+    padding: 5px 15px;  
+    text-align: center;  
+    text-decoration: none; 
+    display: inline-block;  
+    margin: 4px 2px;  
+    cursor: pointer;  
+    border-radius: 20px;  
+    font-size: 14px;  
+    font-weight: bold;  
+  }
+
+  .pagination {
+    padding: 20px;
+    text-align: center;
+  }
+
+  .disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .table-row td {
+    color: rgb(52, 51, 51);  
+    text-align: center; 
+    vertical-align: middle; 
+    padding: 20px; 
+    font-size: 14px;
+    font-weight: bold; 
+  }
+
+
+  .table-row img {
+    display: block;
+    margin: auto;
+  }
