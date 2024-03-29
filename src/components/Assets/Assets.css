@@ -43,8 +43,4 @@
     background-repeat: no-repeat;
     background-position: center;
 }
-span::after{
-    content: "\25BC";
-    font-size: 12px;
-    margin-left: 4px;
-}
+

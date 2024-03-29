@@ -12,19 +12,19 @@ query Bitcoin {
 }
 
 query GetLatestBlocks {
-    bitquery {
-  bitcoin {
-    blocks(options: {limit: 10, desc: ["height"]}) {
-      height
-      timestamp {
-        time(format: "%Y-%m-%d %H:%M:%S")
+  bitquery {
+    bitcoin {
+      blocks(options: { limit: 10, desc: ["height"] }) {
+        height
+        timestamp {
+          time(format: "%Y-%m-%d %H:%M:%S")
+        }
+        transactionCount
+        blockSize
+        blockWeight
+        difficulty
       }
-      transactionCount
-      blockSize
-      blockWeight
-      difficulty
     }
-  }
   }
 }
 
@@ -35,9 +35,9 @@ query ActiveNodes {
       timestamp
       latestHeight
       nodes
-      }
     }
   }
+}
 
 query TransactionFee($network: BitqueryBitcoinNetwork!, $limit: Int!) {
   bitquery {
@@ -214,14 +214,14 @@ query TransactionsAndAddresses {
   }
 }
 
-
-  
-  query GetBlocks {
+query GetBlocks {
   bitquery {
     bitcoin {
       blocks(
-        options: {desc: ["height"]},
-        date: {between: ["2024-02-18T00:00:00+0000", "2024-02-19T00:00:00+0000"]}
+        options: { desc: ["height"] }
+        date: {
+          between: ["2024-02-18T00:00:00+0000", "2024-02-19T00:00:00+0000"]
+        }
       ) {
         height
         blockSize
@@ -234,12 +234,11 @@ query TransactionsAndAddresses {
   }
 }
 
-
-  query GetTransactions($gteq: Int!, $lteq: Int!) {
+query GetTransactions($gteq: Int!, $lteq: Int!) {
   bitquery {
     bitcoin {
-      transactions(options: {limit: 15}) {
-        block(height: {gteq: $gteq, lteq: $lteq}) {
+      transactions(options: { limit: 15 }) {
+        block(height: { gteq: $gteq, lteq: $lteq }) {
           height
         }
         feeValueDecimal
@@ -247,7 +246,7 @@ query TransactionsAndAddresses {
       }
     }
   }
-  }
+}
 
 query Mempool {
   mempool {
@@ -263,121 +262,139 @@ query Mempool {
   }
 }
 
-query MinerData($limit: Int!, $offset: Int!, $from: BitqueryISO8601DateTime, $till: BitqueryISO8601DateTime) {
-  bitquery{
-  bitcoin{
-    outputs(
-      options: { desc: "value", asc: "outputAddress.address", limit: $limit, offset: $offset }
-      time: { since: $from, till: $till }
-      txIndex: { is: 0 }
-      outputDirection: { is: mining }
-      outputScriptType: { notIn: ["nulldata", "nonstandard"] }
-    ) {
-     count(uniq: blocks)
-                outputAddress {
-                    annotation
-                    address
-                }
-                minimum(of: date)
-                maximum(of: date)
-                countBigInt(uniq: blocks)
-                value
+query MinerData(
+  $limit: Int!
+  $offset: Int!
+  $from: BitqueryISO8601DateTime
+  $till: BitqueryISO8601DateTime
+) {
+  bitquery {
+    bitcoin {
+      outputs(
+        options: {
+          desc: "value"
+          asc: "outputAddress.address"
+          limit: $limit
+          offset: $offset
+        }
+        time: { since: $from, till: $till }
+        txIndex: { is: 0 }
+        outputDirection: { is: mining }
+        outputScriptType: { notIn: ["nulldata", "nonstandard"] }
+      ) {
+        count(uniq: blocks)
+        outputAddress {
+          annotation
+          address
+        }
+        minimum(of: date)
+        maximum(of: date)
+        countBigInt(uniq: blocks)
+        value
+      }
     }
   }
 }
-}
 
-query AddressDetails($since: BitqueryISO8601DateTime, $till: BitqueryISO8601DateTime, $inputAddress: String, $outputAddress: String) {
-    bitquery {
-        bitcoin {
-            inputs(date: { since: $since, till: $till }, inputAddress: { is: $inputAddress }) {
-                count
-                maximum(of: date)
-                minimum(of: date)
-                value
-            }
-            outputs(date: { since: $since, till: $till }, outputAddress: { is: $outputAddress }) {
-                count
-                maximum(of: date)
-                minimum(of: date)
-                value
-            }
-        }
+query AddressDetails(
+  $since: BitqueryISO8601DateTime
+  $till: BitqueryISO8601DateTime
+  $inputAddress: String
+  $outputAddress: String
+) {
+  bitquery {
+    bitcoin {
+      inputs(
+        date: { since: $since, till: $till }
+        inputAddress: { is: $inputAddress }
+      ) {
+        count
+        maximum(of: date)
+        minimum(of: date)
+        value
+      }
+      outputs(
+        date: { since: $since, till: $till }
+        outputAddress: { is: $outputAddress }
+      ) {
+        count
+        maximum(of: date)
+        minimum(of: date)
+        value
+      }
     }
+  }
 }
 
 query GetDailyBlockCounts {
-    bitquery {
-        bitcoin {
-            blocks(options: {desc: "date.date", limit: 1900}) {
-                date {
-                    date
-                }
-                count
-            }
+  bitquery {
+    bitcoin {
+      blocks(options: { desc: "date.date", limit: 1900 }) {
+        date {
+          date
         }
+        count
+      }
     }
+  }
 }
-
 
 query GetLatestBlocksApi {
-    bitquery {
-  bitcoin {
-    blocks(options: {limit: 10, desc: ["height"]}) {
-      height
-      timestamp {
-        time(format: "%Y-%m-%d %H:%M:%S")
-      }
-      transactionCount
-      blockSize
-      blockWeight
-      difficulty
-    }
-  }
-  }
-}
-
-query BitcoinTransactions($current_date: BitqueryISO8601DateTime){
-    bitquery {
-      bitcoin {
-        transactions(
-          date: {is: $current_date}
-          options: {desc: "block.timestamp.iso8601", limit: 10}
-        ) {
-          block {
-            height
-            timestamp {
-              iso8601
-            }
-          }
-          hash
-          feeValue
-          feeValueDecimal
-          inputCount
-          inputCountBigInt
-          inputValueDecimal
-          txSize
-          txVsize
-          count
+  bitquery {
+    bitcoin {
+      blocks(options: { limit: 10, desc: ["height"] }) {
+        height
+        timestamp {
+          time(format: "%Y-%m-%d %H:%M:%S")
         }
+        transactionCount
+        blockSize
+        blockWeight
+        difficulty
       }
     }
+  }
 }
 
-query BitcoinInputs($since: BitqueryISO8601DateTime){
+query BitcoinTransactions($current_date: BitqueryISO8601DateTime) {
+  bitquery {
+    bitcoin {
+      transactions(
+        date: { is: $current_date }
+        options: { desc: "block.timestamp.iso8601", limit: 10 }
+      ) {
+        block {
+          height
+          timestamp {
+            iso8601
+          }
+        }
+        hash
+        feeValue
+        feeValueDecimal
+        inputCount
+        inputCountBigInt
+        inputValueDecimal
+        txSize
+        txVsize
+        count
+      }
+    }
+  }
+}
+
+query BitcoinInputs($since: BitqueryISO8601DateTime) {
   bitquery {
     bitcoin(network: bitcoin) {
-      transactions(options: {asc: "date.date"}, 
-        date: {since: $since}) {
+      transactions(options: { asc: "date.date" }, date: { since: $since }) {
         date: date {
           date(format: "%Y-%m-%d")
-        }        
+        }
         inputCount: inputCount(calculate: sum)
         feeValue: feeValue(calculate: sum)
         total: feeValue(calculate: sum)
       }
-      inputs(options: {asc: "date.date"}, 
-        date: {since: $since}) {
+      inputs(options: { asc: "date.date" }, date: { since: $since }) {
         date: date {
           date(format: "%Y-%m-%d")
         }
@@ -388,15 +405,104 @@ query BitcoinInputs($since: BitqueryISO8601DateTime){
   }
 }
 
-query BitcoinAvg($since: BitqueryISO8601DateTime){
+query BitcoinAvg($since: BitqueryISO8601DateTime) {
   bitquery {
     bitcoin(network: bitcoin) {
-      transactions(options: {asc: "date.date"}, 
-        date: {since: $since}) {
+      transactions(options: { asc: "date.date" }, date: { since: $since }) {
         date: date {
           date(format: "%Y-%m-%d")
         }
         feeValue: feeValue(calculate: average)
+      }
+    }
+  }
+}
+query BitqueryChartData(
+  $network: BitqueryBitcoinNetwork!
+  $dateFormat: String!
+  $from: BitqueryISO8601DateTime
+  $till: BitqueryISO8601DateTime
+) {
+  bitquery {
+    bitcoin(network: $network) {
+      transactions(
+        options: { asc: "date.date" }
+        date: { since: $from, till: $till }
+      ) {
+        date: date {
+          date(format: $dateFormat)
+        }
+        count: countBigInt
+        blockCount: countBigInt(uniq: blocks)
+        feeValue
+        avgFee: feeValue(calculate: average)
+        minedValue
+      }
+      outputs(
+        options: { asc: "date.date" }
+        date: { since: $from, till: $till }
+        txIndex: { is: 0 }
+        outputDirection: { is: mining }
+        outputScriptType: { notIn: ["nulldata", "nonstandard"] }
+      ) {
+        date: date {
+          date(format: $dateFormat)
+        }
+        count: countBigInt(uniq: addresses)
+        value
+      }
+    }
+  }
+}
+
+query BitqueryBlockData(
+  $network: BitqueryBitcoinNetwork!
+  $limit: Int!
+  $offset: Int!
+  $from: BitqueryISO8601DateTime
+  $till: BitqueryISO8601DateTime
+) {
+  bitquery {
+    bitcoin(network: $network) {
+      blocks(
+        options: { desc: "height", limit: $limit, offset: $offset }
+        date: { since: $from, till: $till }
+      ) {
+        timestamp {
+          time(format: "%Y-%m-%d %H:%M:%S")
+        }
+        height
+        difficulty
+        transactionCount
+        blockSizeBigInt
+        blockHash
+        blockSize
+      }
+    }
+  }
+}
+query BitqueryTransactionData(
+  $network: BitqueryBitcoinNetwork!
+  $limit: Int!
+  $offset: Int!
+  $date: BitqueryISO8601DateTime
+  $height: Int
+) {
+  bitquery {
+    bitcoin(network: $network) {
+      transactions(
+        options: { asc: ["index"], limit: $limit, offset: $offset }
+        date: { is: $date }
+        height: { is: $height }
+      ) {
+        inputValue
+        input_value_usd: inputValue(in: USD)
+        outputCount
+        inputCount
+        index
+        hash
+        feeValue
+        fee_value_usd: feeValue(in: USD)
       }
     }
   }
