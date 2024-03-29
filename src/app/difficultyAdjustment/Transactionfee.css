@@ -1,0 +1,50 @@
+/* TransactionFee.css */
+
+.transaction-fee {
+    text-align: center; /* Align content to center */
+  }
+  
+  .fee-details {
+    display: flex; /* Use flexbox to arrange items */
+    flex-wrap: wrap; /* Allow items to wrap to the next line if needed */
+    justify-content: center; /* Center items horizontally */
+  }
+  
+  .fee-details p {
+    flex: 0 0 calc(45% - 20px); /* Set width to 45% with some margin */
+    margin: 10px; /* Add margin between items */
+    padding: 10px; /* Add padding for spacing */
+    border-radius: 10px; /* Add rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+    font-size: 12px; /* Decrease font size for tighter fit */
+    transition: all 0.3s ease; /* Add transition effect */
+  }
+  
+  /* Add hover effect */
+  .fee-details p:hover {
+    transform: translateY(-5px); /* Move the box up on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increase shadow size */
+  }
+  
+  /* Red background for Low Priority */
+  .fee-details p:nth-child(2) {
+    background-color: #ff6666; /* Red */
+  }
+  
+  /* Orange background for Medium Priority */
+  .fee-details p:nth-child(3) {
+   background-color: #ffcc66; /* Orange */
+  }
+  
+  /* Green background for High Priority */
+  .fee-details p:nth-child(4) {
+    background-color: #66cc66; /* Green */
+  }
+  
+  /* Media query for smaller screens */
+  @media screen and (max-width: 768px) {
+    .fee-details p {
+      flex: 0 0 calc(90% - 20px); /* Set width to 90% on smaller screens */
+    }
+  }
+  
