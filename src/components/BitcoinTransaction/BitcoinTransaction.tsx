@@ -9,22 +9,22 @@ export default async function BitcoinTransaction(this: any) {
   const graphClient = new GraphQLClient(endpoint);
 
   const query = gql`
-      query Mempool {
-        mempool {
-          transactions {
-            value
-            vsize
-            fee
-            txid
-          }
-        }
-      }
+    query MempoolBitcoin {
+  mempoolBitcoin {
+    transactions{
+      vsize
+      fee
+      txid
+      value
+    }
+  }
+}
     `;
 
   try {
     // Fetch data from GraphQL API
-    const response = await graphClient.request(query) as { mempool: { transactions: any[] } };
-    const { mempool: { transactions } } = response;
+    const response = await graphClient.request(query) as { mempoolBitcoin: { transactions: any[] } };
+    const { mempoolBitcoin: { transactions } } = response;
 
     // console.log(transactions);
     const formatBTCValue = (value: string) => {

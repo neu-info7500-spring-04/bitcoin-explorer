@@ -1,14 +1,14 @@
 import { GraphQLClient, gql } from "graphql-request";
 import React from "react";
 
-export default async function Ethereum() {
-  const endpoint =process.env.GRAPHQL_API_GATEWAY_URL as string; 
+export default async function Bitcoinassetdata() {
+  const endpoint = "http://127.0.0.1:4000/graphql";
   const graphClient = new GraphQLClient(endpoint);
 
   const query = gql`
     {
-      ethereum {
-        ethereumInfo(assetId: "630629da4e66ce0983f2cd4d") {
+      bitcoin {
+        bitcoinInfo(assetId: "630629f84e66ce0983f2cd4e") {
           requestId
           data {
             item {
@@ -38,9 +38,9 @@ export default async function Ethereum() {
   `;
 
 try{
-    const response = await graphClient.request(query) as { ethereum: { ethereumInfo: any } };
-    const { ethereum: { ethereumInfo } } = response;
-    const { latestRate, specificData } = ethereumInfo.data.item; 
+    const response = await graphClient.request(query) as { bitcoin: { bitcoinInfo: any } };
+    const { bitcoin: { bitcoinInfo } } = response;
+    const { latestRate, specificData } = bitcoinInfo.data.item; 
 
     const formatChange = (change: string) => {
       const roundedChange = parseFloat(change).toFixed(2);
@@ -53,13 +53,13 @@ try{
         <div style={{  marginLeft: "5%", backgroundColor:"white" }}>
           <div className="info" style={{ display: 'flex', alignItems: 'center', }}>
             <img
-              src={`data:image/png;base64,${ethereumInfo.data.item.assetLogo.imageData}`}
+              src={`data:image/png;base64,${bitcoinInfo.data.item.assetLogo.imageData}`}
               alt="Ethereum"
               style={{ width: '100px', height: '100px', marginRight: '20px', marginTop:"10%" }}
             />
             <div className="general" style={{marginTop:"10%"}}>
               <h2 className="blockTitle">
-                Ethereum
+                Bitcoin
                 <br />
                 <div style={{ fontWeight: "lighter" }} className="priceHolder">
                   {(parseFloat(latestRate.amount).toFixed(4))} USD
@@ -68,7 +68,7 @@ try{
             </div>
             <div style={{ marginLeft: "15%", marginTop:"10%" }}>
               <h5 >
-                Market Cap:
+                Market Cap
                 <br />
                 <div style={{ fontWeight: "lighter" }} className="priceHolder">
                   {parseInt(specificData.marketCapInUSD)}
@@ -77,7 +77,7 @@ try{
 
               </h5>
               <h5 >
-                Change (1 Hour):
+                Change (1 Hour)
                 <br />
                 <div style={{ fontWeight: "lighter" }} className="priceHolder">
                   {formatChange(specificData["1HourPriceChangeInPercentage"])}%
@@ -89,7 +89,7 @@ try{
 
             <div style={{ marginLeft: "5%", marginTop:"10%" }}>
               <h5 >
-                Circulating Supply:
+                Circulating Supply
                 <br />
                 <div style={{ fontWeight: "lighter" }} className="priceHolder">
                   {parseInt(specificData.circulatingSupply)}
@@ -98,7 +98,7 @@ try{
 
               </h5>
               <h5 >
-                Change (1 Day):
+                Change (1 Day)
                 <br />
                 <div style={{ fontWeight: "lighter" }} className="priceHolder">
                   {(formatChange(specificData["24HoursPriceChangeInPercentage"]))}%
@@ -109,7 +109,7 @@ try{
             </div>
             <div style={{ marginLeft: "5%", marginTop:"10%" }}>
               <h5 >
-                Maximum Supply:
+                Maximum Supply
                 <br />
                 <div style={{ fontWeight: "lighter" }} className="priceHolder">
                   {parseInt(specificData.maxSupply)}
@@ -118,7 +118,7 @@ try{
 
               </h5>
               <h5 >
-                Change (1 Week):
+                Change (1 Week)
                 <br />
                 <div style={{ fontWeight: "lighter" }} className="priceHolder">
                   {formatChange(specificData["1WeekPriceChangeInPercentage"])}%
@@ -129,7 +129,7 @@ try{
             </div>
             <div style={{ marginLeft: "5%", marginTop:"10%" }}>
               <h5 >
-                Price:
+                Price
                 <br />
                 <div style={{ fontWeight: "lighter" }} className="priceHolder">
                   {(parseFloat(latestRate.amount).toFixed(4))} USD
@@ -138,7 +138,7 @@ try{
 
               </h5>
               <h5 >
-                Symbol:
+                Symbol
                 <br />
                 <div style={{ fontWeight: "lighter" }} className="priceHolder">
                   ETH
@@ -150,8 +150,8 @@ try{
           </div>
 
           <div style={{ marginLeft: "3%", marginTop:"3%" }}>
-            <h2>About Ethereum</h2>
-            <p>Ethereum (ETH) is a digital asset, its price now is {(parseFloat(latestRate.amount).toFixed(4))} USD.</p>
+            <h2>About Bitcoin</h2>
+            <p>Bitcoin (BTC) is a digital asset, its price now is {(parseFloat(latestRate.amount).toFixed(4))} USD.</p>
           </div>
         </div>
       </div>
