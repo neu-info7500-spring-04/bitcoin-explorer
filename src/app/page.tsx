@@ -18,11 +18,11 @@ import CryptoMarketData from "../components/CryptoMarketData";
 import App from '../components/transactions'; 
 import BitcoinBlocks from '@/pages/LatestBlocks/BitcoinBlocks'
 import Link from "next/link";
+import TodayBlockStats from "../components/TodayBlockStats";
 
 //Mainent Imports
 import MarketData from "../components/MarketData";
 import TransactionDetails from "../components/TransactionDetails";
-
 import BitcoinInfo from "../components/BitcoinInfo";
 import Fees from "../components/Fees";
 import "../components/MainContent.css";
@@ -123,7 +123,9 @@ export default async function Home() {
       <div style={{ height: "300px", width: "800px" }}>
         <DistributionChart />
       </div>
-
+      <div>
+            <TodayBlockStats></TodayBlockStats>
+        </div>
       <div style={{ marginTop: "90px", width: "100%" }}>
         <MinerDetails />
       </div>
