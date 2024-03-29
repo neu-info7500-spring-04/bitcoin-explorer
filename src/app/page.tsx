@@ -18,6 +18,8 @@ import CryptoMarketData from "../components/CryptoMarketData";
 import App from '../components/transactions'; 
 import BitcoinBlocks from '@/pages/LatestBlocks/BitcoinBlocks'
 import Link from "next/link";
+import BitcoinBlockData from "@/components/BlockDataTable";
+
 
 //Mainent Imports
 import MarketData from "../components/MarketData";
@@ -171,6 +173,10 @@ export default async function Home() {
         <CryptoMarketData/>
       </div>
 
+
+      <div>
+        <BitcoinBlockData/>
+      </div>
 
       <div>
         <h1>Transactions</h1>

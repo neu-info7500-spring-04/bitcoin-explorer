@@ -1,0 +1,33 @@
+.container {
+  padding: 20px;
+}
+
+.blockTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.blockTable th,
+.blockTable td {
+  padding: 12px; 
+  border: 1px solid #ddd;
+}
+
+.container div {
+  margin-left: 0;
+}
+
+.blockTable th {
+  background-color: #840170;
+  color: white; 
+  text-align: left;
+  font-weight: bold; 
+}
+
+.blockTable tr {
+  background-color: #f2f2f2;
+}
+
+.blockTable tr:hover {
+  background-color: #ddd;
+}
