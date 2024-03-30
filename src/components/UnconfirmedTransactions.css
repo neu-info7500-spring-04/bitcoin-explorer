@@ -1,0 +1,55 @@
+/* UnconfirmedTransactions.css */
+
+.unconfirmed-transactions {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 20px;
+    position: relative;
+  }
+  
+  .transactions-header {
+    color: black; /* Black color for the header */
+    font-size: 1.5em; /* Adjust the size as needed */
+    text-align: center;
+    padding-bottom: 10px;
+  }
+  
+  .transactions-list {
+    max-height: calc(7 * 58px); /* Adjust based on the number of transactions and item height */
+    overflow-y: auto;
+  }
+  
+  .transaction-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    height: 58px; /* Set a fixed height for each transaction */
+  }
+  
+  .hash {
+    color: blue;
+    word-break: break-all;
+  }
+  
+  .value {
+    color: black;
+  }
+  
+  .pause-button-container {
+    text-align: center;
+    margin-top: 20px; /* Space above the pause button */
+  }
+  
+  .pause-button {
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
