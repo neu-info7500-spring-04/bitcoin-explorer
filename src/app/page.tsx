@@ -189,11 +189,9 @@ export default async function Home() {
         <Ethereum />
       </div>
 
-      <div>
-        <Ethereum />
-      </div>
+      
 
-      <div><App/></div>
+      {/* <div><App/></div> */}
       <div className="container">
             <h1 style={{ color: "black" }}>Best fee Pool Statistics For Today</h1><br />
                 <Statistics /><br />
