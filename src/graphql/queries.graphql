@@ -401,3 +401,18 @@ query BitcoinAvg($since: BitqueryISO8601DateTime){
     }
   }
 }
+query BitconNodeip {
+    bitconNodeip {
+        nodesStatistic {
+            data {
+                network {
+                    tor
+                    ipv6
+                    ipv4
+                }
+            }
+        }
+    }
+}
+
+

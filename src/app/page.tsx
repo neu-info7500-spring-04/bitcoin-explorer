@@ -38,6 +38,7 @@ import TransactionFee from "./difficultyAdjustment/TransactionFee";
 import Statistics from './components/best-fee/Statistics.tsx'
 import LineChart from './components/best-fee/LineChart'
 import Bitcoinassetdata from "./bitcoinassetdata";
+import Nodeip from "./bitcoinnodeip";
 
 async function getBitcoin(): Promise<BitcoinQuery> {
   return await graphqlClient.request(BitcoinDocument, {});
@@ -204,6 +205,9 @@ export default async function Home() {
       </div>
       <div>
         <Bitcoinassetdata />
+      </div>
+      <div>
+        <Nodeip />
       </div>
 
     </main>

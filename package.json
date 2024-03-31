@@ -26,6 +26,7 @@
     "react-chartjs-2": "^5.2.0",
     "react-datepicker": "^6.4.0",
     "react-dom": "^18",
+    "react-google-charts": "^4.0.1",
     "react-router-dom": "^6.22.3",
     "swr": "^2.2.5"
   },
