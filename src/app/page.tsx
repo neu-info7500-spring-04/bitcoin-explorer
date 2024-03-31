@@ -191,7 +191,7 @@ export default async function Home() {
 
       
 
-      {/* <div><App/></div> */}
+      <div><App/></div>
       <div className="container">
             <h1 style={{ color: "black" }}>Best fee Pool Statistics For Today</h1><br />
                 <Statistics /><br />
