@@ -34,6 +34,9 @@ import Assets from "@/components/Assets/Assets";
 import BitcoinTransaction from "@/components/BitcoinTransaction/BitcoinTransaction";
 import Ethereum from "@/components/Ethereum/Ethereum";
 import Statistics from './components/best-fee/Statistics'
+import DifficultyAdjustment from "./difficultyAdjustment/DifficultyAdjustment";
+import TransactionFee from "./difficultyAdjustment/TransactionFee";
+import Statistics from './components/best-fee/Statistics.tsx'
 import LineChart from './components/best-fee/LineChart'
 import Bitcoinassetdata from "./bitcoinassetdata";
 
@@ -68,6 +71,8 @@ export default async function Home() {
       <div className={styles.block}>
         <div>Northeastern Bitcoin Explorer</div>
         <LatestBlocks />
+        <DifficultyAdjustment/>
+        <TransactionFee/>
         <div className={styles.containerRow}>
           <div className={styles.containerRow}>
             <LastBlock bitcoin={bitcoin} />
