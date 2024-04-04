@@ -4,6 +4,7 @@ import CountryNodeStats from "./CountryNodeStats";
 import BTCMarketData from "./btc-market-data";
 import RankingData from "./ispRanking/Ranking";
 import DailyBlockCountData from "./dailyBlockCount/dailyBlockCountData";
+import bitcoinExchangePrices from "./bitcoin-exchanges-price";
 
 const components = {
     POWAndEmission,
@@ -11,6 +12,7 @@ const components = {
     TransactionFeeData,
     BTCMarketData,
     RankingData,
-    DailyBlockCountData
+    DailyBlockCountData,
+    bitcoinExchangePrices
 };
 export { components };
