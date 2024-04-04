@@ -190,9 +190,7 @@ export default async function Home() {
         <Ethereum />
       </div>
 
-      <div>
-        <Ethereum />
-      </div>
+      
 
       <div><App/></div>
       <div className="container">
