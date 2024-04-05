@@ -1,4 +1,4 @@
-import { BitcoinDocument, BitcoinQuery } from "@/graphql/__generated__/graphql";
+import { BitcoinDocument, BitcoinQuery, BlockchairapiMergedDocument } from "@/graphql/__generated__/graphql";
 import { MempoolQuery, MempoolDocument } from "@/graphql/__generated__/graphql";
 import UtxoChart from "./UTXOData";
 import CombinedChart from "./CombinedChart";
@@ -53,6 +53,12 @@ async function getMempoolCountryNodes(): Promise<MempoolQuery> {
   }
 }
 
+async function getBlockchairapi() {
+  return await graphqlClient.request(BlockchairapiMergedDocument,
+    {}
+  );
+}
+
 export default async function Home() {
   const bitcoin = await getBitcoin();
 
@@ -63,7 +69,7 @@ export default async function Home() {
     const heightString = height.toString();
     return `${heightString.slice(0, 3)} ${heightString.slice(3)}`;
   };
-
+  const bitcoinAddressBalance = await getBlockchairapi()
   const mempoolCountryNodes = await getMempoolCountryNodes();
 
   return (
@@ -80,15 +86,15 @@ export default async function Home() {
           <div className={styles.containerRow}>
             <components.BTCMarketData />
           </div>
+
         </div>
         <div>
           <BitcoinHeaderInfo/>
         </div>
         <div className={styles.container}><components.bitcoinExchangePrices/></div>
         <div className={styles.blockTitle}>Rich chart of Bitcoin addresses</div>
-        {/*<div>
-          <RichListChart />
-        </div>*/}
+
+
         {/* Link to Active Node details route */}
         <div className="relative border-2 border-white-500 rounded-lg p-2 font-bold hover:border-2 hover:border-blue hover:bg-blue hover:text-blue">
           <Link
@@ -98,7 +104,13 @@ export default async function Home() {
             Display Active Node Details
           </Link>
         </div>
+
         <div>
+          {bitcoinAddressBalance != null ? <RichListChart bitcoinAddressBalance={bitcoinAddressBalance}></RichListChart> : <div>Loading...</div>}
+        </div>
+        <div>
+
+
           <components.POWAndEmission />
         </div>
         <div className={styles.containerRow}>
@@ -150,7 +162,7 @@ export default async function Home() {
             <CombinedChart />
           </div>
           <div>
-            <UtxoPieChart />
+            {/* <UtxoPieChart /> */}
           </div>
         </div>
       </div>
@@ -158,6 +170,7 @@ export default async function Home() {
 
       <div style={{ marginTop: "20px", width: "80%", display: "flex" }}>
         <MempoolRecent />
+
       </div>
 
         <div className={styles.containerRow}>
@@ -170,6 +183,7 @@ export default async function Home() {
 
       <div>
         <CryptoMarketData/>
+
       </div>
 
 
@@ -212,4 +226,5 @@ export default async function Home() {
 
     </main>
   );
+
 }
