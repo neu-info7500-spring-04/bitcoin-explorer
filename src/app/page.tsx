@@ -18,7 +18,8 @@ import CryptoMarketData from "../components/CryptoMarketData";
 import App from '../components/transactions'; 
 import BitcoinBlocks from '@/pages/LatestBlocks/BitcoinBlocks'
 import Link from "next/link";
-import CoinMarket from "../components/CoinMarket"
+import CoinMarket from "../components/CoinMarket";
+import MempoolTopNodesConnectivity from '../components/mempoolTopNodesConnectivity';
 
 //Mainent Imports
 import MarketData from "../components/MarketData";
@@ -186,6 +187,7 @@ export default async function Home() {
       <div>
         <BitcoinTransaction />
       </div>
+      <div><MempoolTopNodesConnectivity /></div>
       <div>
         <Ethereum />
       </div>
