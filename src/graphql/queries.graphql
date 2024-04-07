@@ -28,6 +28,27 @@ query GetLatestBlocks {
   }
 }
 
+query BlockstreamLatestBlocks {
+    blockstreamLatestBlocks {
+        blocks(startHeight: 836306, limit: 15) {
+            difficulty
+            bits
+            nonce
+            mediantime
+            previousblockhash
+            merkleRoot
+            weight
+            size
+            txCount
+            timestamp
+            version
+            height
+            id
+        }
+    }
+}
+
+
 query ActiveNodes {
   bitnodes {
     snapshot {
