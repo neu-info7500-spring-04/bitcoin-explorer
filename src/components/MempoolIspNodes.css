@@ -1,0 +1,62 @@
+/* MempoolIspNodes.css */
+
+/* General styles */
+.MempoolIspNodes {
+  background-color: #f9f9f9; /* Light grey background */
+  padding: 20px; /* Add some padding for spacing */
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333; /* Dark blue color for the heading */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+table, th, td {
+  border: 1px solid #ccc; /* Light grey border */
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  color: black;
+}
+
+/* Input field styles */
+label {
+  margin-top: 20px;
+  display: block;
+  font-size: 16px;
+  background-color: #333; /* Dark grey background */
+  color: #fff; /* White text color */
+  padding: 5px; /* Add padding to the input field */
+}
+
+input {
+  margin-top: 5px;
+  padding: 5px;
+  width: 200px;
+  font-size: 14px;
+  color: black;
+}
+
+/* Table header styles */
+thead {
+  background-color: #f2f2f2; /* Light grey background for table header */
+}
+
+/* Table cell styles */
+td {
+  vertical-align: middle;
+}
+
+/* Highlight alternate rows */
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2; /* Light grey background for even rows */
+}
