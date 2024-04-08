@@ -20,6 +20,9 @@ import BitcoinBlocks from '@/pages/LatestBlocks/BitcoinBlocks'
 import Link from "next/link";
 import CoinMarket from "../components/CoinMarket"
 
+import TopNodesTable from "@/components/MempoolIspNodes";
+
+
 //Mainent Imports
 import MarketData from "../components/MarketData";
 import TransactionDetails from "../components/TransactionDetails";
@@ -209,6 +212,9 @@ export default async function Home() {
       <div className="main-content">
                 <CoinMarket />
             </div>
+      <div>
+        <TopNodesTable/>
+      </div>
 
     </main>
   );
