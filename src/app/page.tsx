@@ -15,8 +15,8 @@ import DistributionChart from "./components/minerdistributionpool/DistributionCh
 import MinerDetails from "./minerdetails/page";
 import "bootstrap/dist/css/bootstrap.min.css";
 import CryptoMarketData from "../components/CryptoMarketData";
-import App from '../components/transactions'; 
-import BitcoinBlocks from '@/pages/LatestBlocks/BitcoinBlocks'
+import App from "../components/transactions";
+import BitcoinBlocks from "@/pages/LatestBlocks/BitcoinBlocks";
 import Link from "next/link";
 import CoinMarket from "../components/CoinMarket"
 
@@ -34,6 +34,7 @@ import LiquidTransaction from "@/components/LiquidTransaction/LiquidTransaction"
 import Assets from "@/components/Assets/Assets";
 import BitcoinTransaction from "@/components/BitcoinTransaction/BitcoinTransaction";
 import Ethereum from "@/components/Ethereum/Ethereum";
+import NodeDistributionMap from "@/components/GeoMap/NodeDistributionMap";
 import DifficultyAdjustment from "./difficultyAdjustment/DifficultyAdjustment";
 import TransactionFee from "./difficultyAdjustment/TransactionFee";
 import Statistics from './components/best-fee/Statistics.tsx'
@@ -160,28 +161,32 @@ export default async function Home() {
         <MempoolRecent />
       </div>
 
-        <div className={styles.containerRow}>
-          <components.DailyBlockCountData />
+      <div className={styles.containerRow}>
+        <components.DailyBlockCountData />
+
+        <div className="">
+          <h4>Bitcoin top 100 nodes mapped</h4>
+          <NodeDistributionMap height={400} width={400} />
         </div>
-
-      <div>
-        <BitcoinBlocks/>
       </div>
 
       <div>
-        <CryptoMarketData/>
+        <BitcoinBlocks />
       </div>
 
+      <div>
+        <CryptoMarketData />
+      </div>
 
       <div>
         <h1>Transactions</h1>
         <TransactionDetails />
       </div>
       <div>
-      <LiquidTransaction />
+        <LiquidTransaction />
       </div>
       <div>
-      <Assets />
+        <Assets />
       </div>
       <div>
         <BitcoinTransaction />
@@ -206,6 +211,7 @@ export default async function Home() {
       <div>
         <Bitcoinassetdata />
       </div>
+
       <div className="main-content">
                 <CoinMarket />
             </div>
