@@ -1,5 +1,6 @@
 import { BitcoinDocument, BitcoinQuery } from "@/graphql/__generated__/graphql";
 import { MempoolQuery, MempoolDocument } from "@/graphql/__generated__/graphql";
+import TransactionTable from "@/components/getBlocks";
 import UtxoChart from "./UTXOData";
 import CombinedChart from "./CombinedChart";
 import UtxoPieChart from "../components/UtxoPieChart";
@@ -209,7 +210,9 @@ export default async function Home() {
       <div className="main-content">
                 <CoinMarket />
             </div>
-
+            <div>
+          <TransactionTable />
+      </div>
     </main>
   );
 }

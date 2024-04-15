@@ -1,0 +1,63 @@
+/* Styles for the container */
+.container {
+    margin: 20px;
+}
+
+h2{
+    color:black;
+}
+/* Styles for the loading indicator */
+.loading {
+    text-align: center;
+    font-size: 20px;
+    color: #333;
+}
+
+/* Styles for the error message */
+.error {
+    text-align: center;
+    font-size: 20px;
+    color: red;
+}
+
+/* Styles for the table */
+.blocks-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Styles for table headers */
+.blocks-table th {
+    padding: 8px;
+    font-weight: bold;
+    text-align: left;
+}
+
+/* Styles for table data cells */
+.blocks-table td {
+    padding: 8px;
+    text-align: left;
+}
+
+/* Set Height value color */
+.blocks-table td:first-child {
+    color: #1bd8f4;
+    /* Set Height value color */
+}
+
+/* Styles for health indicator */
+.health {
+    background-color: #1a9436;
+    font-weight: 700;
+    padding: 2px;
+    width: fit-content;
+    border-radius: 5px;
+}
+
+/* Styles for size indicator */
+.size {
+    background: repeating-linear-gradient(to right, #2d3348, #2d3348 0%, #105fb0 0%, #9339f4);
+    border-radius: 5px;
+    text-align: center;
+    font-size: 14px;
+}
